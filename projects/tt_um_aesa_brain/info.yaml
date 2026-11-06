@@ -1,0 +1,50 @@
+# Tiny Tapeout project information
+
+project:
+  title: "AESA Digital Brain"
+  author: "Kennan Lau"
+  description: "16-channel phase register bank and 24-bit SPI master for phased array beamforming."
+  language: "Verilog"
+  clock_hz: 50000000
+  tiles: "1x1"
+  top_module: "tt_um_aesa_brain"
+  source_files:
+    - "spi_master.v"
+    - "aesa_brain.v"
+    - "tt_um_aesa_brain.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "load"
+  ui[1]: "start_tx"
+  ui[2]: "antenna_index[0]"
+  ui[3]: "antenna_index[1]"
+  ui[4]: "antenna_index[2]"
+  ui[5]: "antenna_index[3]"
+  ui[6]: ""
+  ui[7]: ""
+
+  # Outputs
+  uo[0]: "spi_sclk"
+  uo[1]: "spi_mosi"
+  uo[2]: "spi_cs_n"
+  uo[3]: "done"
+  uo[4]: ""
+  uo[5]: ""
+  uo[6]: ""
+  uo[7]: ""
+
+  # Bidirectional pins
+  uio[0]: "phase_in[0]"
+  uio[1]: "phase_in[1]"
+  uio[2]: "phase_in[2]"
+  uio[3]: "phase_in[3]"
+  uio[4]: "phase_in[4]"
+  uio[5]: "phase_in[5]"
+  uio[6]: ""
+  uio[7]: ""
+
+# Do not change!
+yaml_version: 6
