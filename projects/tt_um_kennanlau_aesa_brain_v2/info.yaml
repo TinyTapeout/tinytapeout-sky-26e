@@ -1,0 +1,50 @@
+# Tiny Tapeout project information
+
+project:
+  title: "AESA Digital Brain"
+  author: "Kennan Lau"
+  description: "ADAR1000-format SPI frame engine (v2.1): single frames, readback, 16-frame bursts and datasheet-safe load sequencing for 4 beamformer chips."
+  language: "Verilog"
+  clock_hz: 50000000
+  tiles: "1x2"
+  top_module: "tt_um_kennanlau_aesa_brain_v2"
+  source_files:
+    - "spi_master.v"
+    - "aesa_brain.v"
+    - "tt_um_kennanlau_aesa_brain_v2.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "wr"
+  ui[1]: "start_single"
+  ui[2]: "sel[0]"
+  ui[3]: "sel[1]"
+  ui[4]: "sel[2]"
+  ui[5]: "start_burst"
+  ui[6]: "spi_sdo"
+  ui[7]: "read_out_en"
+
+  # Outputs
+  uo[0]: "spi_sclk"
+  uo[1]: "spi_sdio"
+  uo[2]: "spi_csb"
+  uo[3]: "done"
+  uo[4]: "busy"
+  uo[5]: "rx_load"
+  uo[6]: "tx_load"
+  uo[7]: ""
+
+  # Bidirectional pins
+  uio[0]: "data[0]"
+  uio[1]: "data[1]"
+  uio[2]: "data[2]"
+  uio[3]: "data[3]"
+  uio[4]: "data[4]"
+  uio[5]: "data[5]"
+  uio[6]: "data[6]"
+  uio[7]: "data[7]"
+
+# Do not change!
+yaml_version: 6
