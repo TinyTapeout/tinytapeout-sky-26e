@@ -1,0 +1,54 @@
+yaml_version: 6
+project:
+  title:        "Mini-TAGE Branch Predictor (1x1, single TAGE table)"
+  author:       "Sphatika"
+  discord:      ""
+  description: >
+    Miniaturized branch predictor for a single Tiny Tapeout tile: bimodal
+    base predictor + one tagged history table (8 entries, hist=4) + a
+    trip-count-learning loop predictor. Trace-replay model over the pins
+    (predict-then-train per cycle); exposes live hit/provider/misprediction
+    bits plus cumulative accuracy counters over a register-readback
+    interface. Synthesizes (generic techmap) to ~800 cells, comfortably
+    under the ~1000-gate 1x1 budget -- see README.md for the measurement.
+  language:     "Verilog"
+  clock_hz:     10000000
+  tiles:        "1x1"
+
+  source_files:
+    - "tt_um_sphatika11_minitage.v"
+    - "ghr.v"
+    - "bimodal.v"
+    - "tage_table.v"
+    - "loop_predictor.v"
+    - "predictor_core.v"
+
+  top_module:   "tt_um_sphatika11_minitage"
+
+pinout:
+  ui[0]: "pc[0]"
+  ui[1]: "pc[1]"
+  ui[2]: "pc[2]"
+  ui[3]: "pc[3]"
+  ui[4]: "pc[4]"
+  ui[5]: "pc[5]"
+  ui[6]: "pc[6]"
+  ui[7]: "actual_taken"
+
+  uo[0]: "final_pred"
+  uo[1]: "misp"
+  uo[2]: "provider[0]"
+  uo[3]: "provider[1]"
+  uo[4]: "loop_conf_ok"
+  uo[5]: "t1_hit"
+  uo[6]: "unused (0)"
+  uo[7]: "ghr[0] (debug)"
+
+  uio[0]: "valid (in)"
+  uio[1]: "readback_mode (in)"
+  uio[2]: "stat_reg_addr[0] (in)"
+  uio[3]: "stat_reg_addr[1] (in)"
+  uio[4]: "stat_reg_addr[2] (in)"
+  uio[5]: "unused"
+  uio[6]: "unused"
+  uio[7]: "unused"
