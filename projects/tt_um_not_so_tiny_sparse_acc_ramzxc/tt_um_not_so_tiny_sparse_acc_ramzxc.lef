@@ -190,8 +190,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN clk
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 2.573400 ;
-    ANTENNADIFFAREA 0.869400 ;
+    ANTENNAGATEAREA 4.608000 ;
     PORT
       LAYER met4 ;
         RECT 143.830 224.760 144.130 225.760 ;
@@ -200,7 +199,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN ena
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.159000 ;
+    ANTENNAGATEAREA 0.247500 ;
     PORT
       LAYER met4 ;
         RECT 146.590 224.760 146.890 225.760 ;
@@ -209,7 +208,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN rst_n
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.159000 ;
+    ANTENNAGATEAREA 0.247500 ;
     PORT
       LAYER met4 ;
         RECT 141.070 224.760 141.370 225.760 ;
@@ -218,7 +217,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN ui_in[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.213000 ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met4 ;
         RECT 138.310 224.760 138.610 225.760 ;
@@ -227,7 +226,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN ui_in[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.213000 ;
+    ANTENNAGATEAREA 0.621000 ;
     PORT
       LAYER met4 ;
         RECT 135.550 224.760 135.850 225.760 ;
@@ -236,7 +235,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN ui_in[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.213000 ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met4 ;
         RECT 132.790 224.760 133.090 225.760 ;
@@ -349,7 +348,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_oe[0]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.445500 ;
+    ANTENNADIFFAREA 0.621000 ;
     PORT
       LAYER met4 ;
         RECT 49.990 224.760 50.290 225.760 ;
@@ -358,6 +357,8 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_oe[1]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.318000 ;
+    ANTENNADIFFAREA 0.336000 ;
     PORT
       LAYER met4 ;
         RECT 47.230 224.760 47.530 225.760 ;
@@ -366,6 +367,8 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_oe[2]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.318000 ;
+    ANTENNADIFFAREA 0.336000 ;
     PORT
       LAYER met4 ;
         RECT 44.470 224.760 44.770 225.760 ;
@@ -374,6 +377,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_oe[3]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 41.710 224.760 42.010 225.760 ;
@@ -382,6 +386,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_oe[4]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 38.950 224.760 39.250 225.760 ;
@@ -390,6 +395,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_oe[5]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 36.190 224.760 36.490 225.760 ;
@@ -398,6 +404,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_oe[6]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 33.430 224.760 33.730 225.760 ;
@@ -406,6 +413,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_oe[7]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 30.670 224.760 30.970 225.760 ;
@@ -414,7 +422,8 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_out[0]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.445500 ;
+    ANTENNAGATEAREA 0.247500 ;
+    ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
         RECT 72.070 224.760 72.370 225.760 ;
@@ -423,6 +432,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_out[1]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 69.310 224.760 69.610 225.760 ;
@@ -431,6 +441,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_out[2]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 66.550 224.760 66.850 225.760 ;
@@ -439,6 +450,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_out[3]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 63.790 224.760 64.090 225.760 ;
@@ -447,6 +459,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_out[4]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 61.030 224.760 61.330 225.760 ;
@@ -455,6 +468,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_out[5]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
         RECT 58.270 224.760 58.570 225.760 ;
@@ -463,6 +477,8 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_out[6]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.318000 ;
+    ANTENNADIFFAREA 0.336000 ;
     PORT
       LAYER met4 ;
         RECT 55.510 224.760 55.810 225.760 ;
@@ -471,6 +487,8 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uio_out[7]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.318000 ;
+    ANTENNADIFFAREA 0.336000 ;
     PORT
       LAYER met4 ;
         RECT 52.750 224.760 53.050 225.760 ;
@@ -479,7 +497,8 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uo_out[0]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.445500 ;
+    ANTENNAGATEAREA 0.990000 ;
+    ANTENNADIFFAREA 1.242000 ;
     PORT
       LAYER met4 ;
         RECT 94.150 224.760 94.450 225.760 ;
@@ -488,7 +507,8 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uo_out[1]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.445500 ;
+    ANTENNAGATEAREA 1.611000 ;
+    ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
         RECT 91.390 224.760 91.690 225.760 ;
@@ -497,7 +517,8 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uo_out[2]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.445500 ;
+    ANTENNAGATEAREA 0.990000 ;
+    ANTENNADIFFAREA 1.242000 ;
     PORT
       LAYER met4 ;
         RECT 88.630 224.760 88.930 225.760 ;
@@ -506,6 +527,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uo_out[3]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.990000 ;
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
@@ -515,6 +537,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uo_out[4]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 1.116000 ;
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
@@ -524,7 +547,8 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uo_out[5]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.445500 ;
+    ANTENNAGATEAREA 0.373500 ;
+    ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
         RECT 80.350 224.760 80.650 225.760 ;
@@ -533,6 +557,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uo_out[6]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.247500 ;
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
@@ -542,7 +567,8 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   PIN uo_out[7]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 0.445500 ;
+    ANTENNAGATEAREA 0.373500 ;
+    ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
         RECT 74.830 224.760 75.130 225.760 ;
@@ -550,17 +576,17 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
   END uo_out[7]
   OBS
       LAYER nwell ;
-        RECT 2.570 2.635 1375.590 223.230 ;
+        RECT 2.570 8.010 1375.590 223.230 ;
       LAYER li1 ;
-        RECT 2.760 2.635 1375.400 223.125 ;
+        RECT 2.760 8.115 1375.400 223.125 ;
       LAYER met1 ;
-        RECT 2.760 0.040 1375.400 224.700 ;
+        RECT 2.760 2.480 1375.400 223.280 ;
       LAYER met2 ;
-        RECT 3.780 0.010 1373.920 224.730 ;
+        RECT 3.800 2.535 1374.590 224.245 ;
       LAYER met3 ;
-        RECT 6.045 0.175 1369.815 224.225 ;
+        RECT 3.750 2.480 1374.750 224.225 ;
       LAYER met4 ;
-        RECT 16.855 224.360 30.270 224.760 ;
+        RECT 3.740 224.360 30.270 224.760 ;
         RECT 31.370 224.360 33.030 224.760 ;
         RECT 34.130 224.360 35.790 224.760 ;
         RECT 36.890 224.360 38.550 224.760 ;
@@ -603,9 +629,9 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
         RECT 139.010 224.360 140.670 224.760 ;
         RECT 141.770 224.360 143.430 224.760 ;
         RECT 144.530 224.360 146.190 224.760 ;
-        RECT 147.290 224.360 1345.665 224.760 ;
-        RECT 16.855 223.680 1345.665 224.360 ;
-        RECT 16.855 2.480 17.880 223.680 ;
+        RECT 147.290 224.360 1374.420 224.760 ;
+        RECT 3.740 223.680 1374.420 224.360 ;
+        RECT 3.740 2.480 17.880 223.680 ;
         RECT 20.280 2.480 21.180 223.680 ;
         RECT 23.580 2.480 56.750 223.680 ;
         RECT 59.150 2.480 60.050 223.680 ;
@@ -648,7 +674,7 @@ MACRO tt_um_not_so_tiny_sparse_acc_ramzxc
         RECT 1302.990 2.480 1303.890 223.680 ;
         RECT 1306.290 2.480 1339.460 223.680 ;
         RECT 1341.860 2.480 1342.760 223.680 ;
-        RECT 1345.160 2.480 1345.665 223.680 ;
+        RECT 1345.160 2.480 1374.420 223.680 ;
   END
 END tt_um_not_so_tiny_sparse_acc_ramzxc
 END LIBRARY
