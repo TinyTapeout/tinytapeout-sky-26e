@@ -1,7 +1,7 @@
 yaml_version: 6
 project:
   title:        "Mini-TAGE Branch Predictor (1x1, single TAGE table)"
-  author:       "Sphatika"
+  author:       "Sphatika S Jain, Suhani Maity, Vidhi Khandelwal, Sai Aakankssha DM, Shylashree N, RV College of Engineering"
   discord:      ""
   description: >
     Miniaturized branch predictor for a single Tiny Tapeout tile: bimodal
