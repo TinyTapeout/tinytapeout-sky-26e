@@ -1,0 +1,42 @@
+
+project:
+  title: "Programmable Digital Pulse Stretcher"
+  author: "Anirudh Kulkarni, Ansh Agarwal, Shylashree N, Premananda B S, RV College of Engineering"
+  discord: ""
+  description: "A programmable digital circuit that extends the duration of an input pulse."
+  language: "Verilog"
+  clock_hz: 100000
+  tiles: "1x1"
+  top_module: "tt_um_pulse_stretcher"
+  source_files:
+    - "project.v"
+
+pinout:
+  ui[0]: "pulse_in"
+  ui[1]: "user_reset"
+  ui[2]: "mode[0]"
+  ui[3]: "mode[1]"
+  ui[4]: "duration[0]"
+  ui[5]: "duration[1]"
+  ui[6]: "duration[2]"
+  ui[7]: "duration[3]"
+
+  uo[0]: "pulse_out"
+  uo[1]: ""
+  uo[2]: ""
+  uo[3]: ""
+  uo[4]: ""
+  uo[5]: ""
+  uo[6]: ""
+  uo[7]: ""
+
+  uio[0]: ""
+  uio[1]: ""
+  uio[2]: ""
+  uio[3]: ""
+  uio[4]: ""
+  uio[5]: ""
+  uio[6]: ""
+  uio[7]: ""
+
+yaml_version: 6
