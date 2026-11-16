@@ -1,0 +1,66 @@
+# Tiny Tapeout project information
+project:
+  title:        "5V Cross-Coupled Charge Pump"      # Project title
+  author:       "Barak Hoffer"      # Your name
+  discord:      "barakh"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "A regulated 3.3 V to 5 V cross-coupled charge pump with an on-chip trimmed bandgap reference, a vout/3 monitor and on-chip switchable test loads"      # One line description of what your project does
+  language:     "Analog" # other examples include Verilog, Amaranth, VHDL, etc
+  clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x2"          # Valid values for analog projects: 1x2, 2x2
+
+  # How many analog pins does your project use?
+  analog_pins: 3        # Valid values: 0 to 6
+  uses_vapwr: true       # Set to true if your project uses second analog power supply (VAPWR) in addition to 1.8V (VDPWR)
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_barakhoffer_chargepump27"
+
+  # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
+  source_files:
+    - "project.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "EN (pump enable)"
+  ui[1]: "REG (regulate: vout = 9 x VREF)"
+  ui[2]: "EXT (clock from clk instead of the ring oscillator)"
+  ui[3]: "TRIM[0] (ring frequency)"
+  ui[4]: "TRIM[1]"
+  ui[5]: "TRIM[2]"
+  ui[6]: "LOAD[0] (0.4 mA test load at 5 V)"
+  ui[7]: "LOAD[1] (0.8 mA)"
+
+  # Outputs
+  uo[0]: "CLK/64 (the pump's clock divided by 64)"
+  uo[1]: "CMP (out of regulation: high while vout is below 9 x VREF, or REG low)"
+  uo[2]: ""
+  uo[3]: ""
+  uo[4]: ""
+  uo[5]: ""
+  uo[6]: ""
+  uo[7]: ""
+
+  # Bidirectional pins
+  uio[0]: "LOAD[2] (1.6 mA, input)"
+  uio[1]: "LOAD[3] (3.2 mA, input)"
+  uio[2]: "LOAD[4] (6.4 mA, input)"
+  uio[3]: "BGTRIM[0] (bandgap trim, input; each bit set lowers VREF about 0.5 %)"
+  uio[4]: "BGTRIM[1] (input)"
+  uio[5]: "BGTRIM[2] (input)"
+  uio[6]: "BGTRIM[3] (input)"
+  uio[7]: "BGTRIM[4] (input)"
+
+  # Analog pins - make sure to also set "analog_pins" above, else the pins won't be connected
+  ua[0]: "VMON (vout / 3)"
+  ua[1]: "VREF (reference, vout = 9 x VREF: the bandgap's output while rst_n is high, else an input)"
+  ua[2]: "RREP (replica load unit to ground)"
+  ua[3]: ""
+  ua[4]: ""
+  ua[5]: ""
+
+# Do not change!
+yaml_version: 6
