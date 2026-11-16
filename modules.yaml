@@ -6,3 +6,15 @@ modules:
   - name: 'factory_test' # Factory test module, address 1
     mux_id: 0
     blk_id: 1
+  # Force R0: Magic's HVNTM "bridge" generation is orientation-dependent and
+  # flags false hvntm.1 errors in the HVL flip-flops when this macro is rotated.
+  - name: barakhoffer_chargepump27
+    mux_id: 8
+    blk_id: 3
+    width: 1
+    height: 2
+    pg_vaa: true
+    analog:
+      0: null
+      1: null
+      2: null
