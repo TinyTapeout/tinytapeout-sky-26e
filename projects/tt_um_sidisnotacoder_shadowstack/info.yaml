@@ -1,0 +1,61 @@
+# Tiny Tapeout project information
+project:
+  title:        "Zicfiss-inspired Shadow Stack Monitor"      # Project title
+  author:       "Siddharth Senthil Kumar, Sumedh Kallapur, Vibin DJ, Yatin Sangwan, Shylashree N, RV College of Engineering"      # Your name
+  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "External return-address checker for RV32IMC instruction traces (not Zicfiss compliant)"      # One line description of what your project does
+  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
+  clock_hz:     50000000       # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_sidisnotacoder_shadowstack"
+
+  # List your project's source files here.
+  # Source files must be in ./src and you must list each source file separately, one per line.
+  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
+  source_files:
+    - "tt_um_sidisnotacoder_shadowstack.v"
+    - "ss_host_rx.v"
+    - "ss_cf_decode.v"
+    - "ss_shadow_stack.v"
+    - "ss_checker.v"
+    - "ss_readback.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "DATA[0]"
+  ui[1]: "DATA[1]"
+  ui[2]: "DATA[2]"
+  ui[3]: "DATA[3]"
+  ui[4]: "DATA[4]"
+  ui[5]: "DATA[5]"
+  ui[6]: "DATA[6]"
+  ui[7]: "DATA[7]"
+
+  # Outputs
+  uo[0]: "READBACK[0]"
+  uo[1]: "READBACK[1]"
+  uo[2]: "READBACK[2]"
+  uo[3]: "READBACK[3]"
+  uo[4]: "READBACK[4]"
+  uo[5]: "READBACK[5]"
+  uo[6]: "READBACK[6]"
+  uo[7]: "READBACK[7]"
+
+  # Bidirectional pins
+  uio[0]: "STROBE (in)"
+  uio[1]: "SOF (in)"
+  uio[2]: "reserved (in, tie low)"
+  uio[3]: "FAULT (out)"
+  uio[4]: "OVERFLOW (out)"
+  uio[5]: "UNDERFLOW (out)"
+  uio[6]: "LP_FAULT (out, always 0 in this build)"
+  uio[7]: "BUSY (out)"
+
+# Do not change!
+yaml_version: 6
