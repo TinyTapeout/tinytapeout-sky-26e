@@ -7,8 +7,8 @@
         |        | 
       998        - wires
      1033        - wire bits
-      134        - public wires
-      169        - public wire bits
+      133        - public wires
+      168        - public wire bits
         8        - ports
        43        - port bits
      1014 1.06E+04 cells
