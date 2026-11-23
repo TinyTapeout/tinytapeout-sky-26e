@@ -1,8 +1,8 @@
 {
-  "app": "Tiny Tapeout main 0922544e",
+  "app": "Tiny Tapeout main cf6f10e4",
   "repo": "https://github.com/rpolasa/tiny_kws",
-  "commit": "605d7b8eee335e2d7cebfbe1af4853f0b5b2ce6c",
-  "workflow_url": "https://github.com/rpolasa/tiny_kws/actions/runs/44528048626",
+  "commit": "62daea3887a7ae5084ebd58f083b1f0324202783",
+  "workflow_url": "https://github.com/rpolasa/tiny_kws/actions/runs/45180845422",
   "project_id": 6608,
   "sort_id": 1795107093299
 }
