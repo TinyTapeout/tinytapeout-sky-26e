@@ -1,0 +1,39 @@
+project:
+  title: 12-bit pulse-width time-to-digital converter
+  author: Ahmed Reda Mohamed
+  discord: ''
+  description: A 1 MHz counter-based TDC with synchronized input, automatic pulse
+    measurements, stored result, valid, busy and saturation flags.
+  language: Verilog
+  clock_hz: 1000000
+  tiles: 1x1
+  top_module: tt_um_armohamed_tdc12
+  source_files:
+  - project.v
+  - pulse_width_tdc.v
+pinout:
+  ui[0]: 'PULSE_IN: high interval to measure'
+  ui[1]: ''
+  ui[2]: ''
+  ui[3]: ''
+  ui[4]: ''
+  ui[5]: ''
+  ui[6]: ''
+  ui[7]: ''
+  uo[0]: WIDTH_CODE[0]
+  uo[1]: WIDTH_CODE[1]
+  uo[2]: WIDTH_CODE[2]
+  uo[3]: WIDTH_CODE[3]
+  uo[4]: WIDTH_CODE[4]
+  uo[5]: WIDTH_CODE[5]
+  uo[6]: WIDTH_CODE[6]
+  uo[7]: WIDTH_CODE[7]
+  uio[0]: WIDTH_CODE[8] (output)
+  uio[1]: WIDTH_CODE[9] (output)
+  uio[2]: WIDTH_CODE[10] (output)
+  uio[3]: WIDTH_CODE[11] (output)
+  uio[4]: 'DATA_VALID: new result, one clock'
+  uio[5]: 'BUSY: internal measurement active'
+  uio[6]: 'OVERFLOW: stored result saturated'
+  uio[7]: ''
+yaml_version: 6
