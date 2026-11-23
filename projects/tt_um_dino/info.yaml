@@ -23,6 +23,7 @@ project:
     - "LFSR.v"
     - "circle_lut.v"
     - "hud.v"
+    - "rst_sync.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
