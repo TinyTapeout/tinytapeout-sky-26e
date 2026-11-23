@@ -1,0 +1,38 @@
+115. Printing statistics.
+
+=== tt_um_armohamed_tdc12 ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+       92        - wires
+      127        - wire bits
+       28        - public wires
+       63        - public wire bits
+        8        - ports
+       43        - port bits
+      108  1.3E+03 cells
+       13  113.859   sky130_fd_sc_hd__a21oi_2
+       13  130.125   sky130_fd_sc_hd__a22o_2
+        2   17.517   sky130_fd_sc_hd__a31o_2
+        1   12.512   sky130_fd_sc_hd__a31oi_2
+        1   11.261   sky130_fd_sc_hd__a41o_2
+        1    7.507   sky130_fd_sc_hd__and2_2
+        2   15.014   sky130_fd_sc_hd__and3_2
+        4   40.038   sky130_fd_sc_hd__and4_2
+       10   50.048   sky130_fd_sc_hd__buf_2
+        2    7.507   sky130_fd_sc_hd__conb_1
+       32  680.653   sky130_fd_sc_hd__dfxtp_2
+        4   15.014   sky130_fd_sc_hd__inv_2
+        8   50.048   sky130_fd_sc_hd__nand2_2
+        2   17.517   sky130_fd_sc_hd__nand2b_2
+        1    6.256   sky130_fd_sc_hd__nor2_2
+        1    8.758   sky130_fd_sc_hd__o21a_2
+        2   20.019   sky130_fd_sc_hd__o21ba_2
+        5    31.28   sky130_fd_sc_hd__or2_2
+        2   32.531   sky130_fd_sc_hd__xnor2_2
+        2   32.531   sky130_fd_sc_hd__xor2_2
+
+   Chip area for module '\tt_um_armohamed_tdc12': 1299.996800
+     of which used for sequential elements: 680.652800 (52.36%)
+
