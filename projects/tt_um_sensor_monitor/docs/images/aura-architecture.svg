@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="900" viewBox="0 0 1500 900">
+<defs><style>
+.bg{fill:#f7f9fc}.panel{fill:#fff;stroke:#cbd5e1;stroke-width:2}.cal{fill:#eef5ff;stroke:#3973b9;stroke-width:2.5}.det{fill:#effaf5;stroke:#25845d;stroke-width:2.5}.shared{fill:#fff6e8;stroke:#c47a19;stroke-width:3}.store{fill:#f4f0ff;stroke:#7756ad;stroke-width:2.5}.out{fill:#eaf8f0;stroke:#25845d;stroke-width:2.5}
+.title{font:700 32px Arial;fill:#172033}.section{font:700 22px Arial;fill:#243247}.label{font:700 18px Arial;fill:#172033}.small{font:15px Arial;fill:#40516a}.tiny{font:13px Arial;fill:#53647b}.arrow{stroke:#52647a;stroke-width:3;fill:none;marker-end:url(#a)}.dash{stroke-dasharray:8 7}
+</style><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L0 6 L9 3z" fill="#52647a"/></marker></defs>
+<rect class="bg" width="1500" height="900"/>
+<text x="750" y="48" text-anchor="middle" class="title">AURA | Automated Undercover Risk &amp; Anomaly Detector</text>
+<text x="750" y="78" text-anchor="middle" class="small">8-channel sensor anomaly detection ASIC • shared arithmetic datapath</text>
+<rect x="45" y="110" width="1410" height="340" rx="18" class="panel"/>
+<text x="75" y="150" class="section">1 | CALIBRATION</text>
+<text x="75" y="178" class="small">Stream the same 64 signed sensor bytes twice (8 samples × 8 channels, row-major).</text>
+<rect x="80" y="245" width="190" height="100" rx="12" class="cal"/>
+<text x="175" y="282" text-anchor="middle" class="label">Calibration</text><text x="175" y="307" text-anchor="middle" class="label">byte stream</text><text x="175" y="330" text-anchor="middle" class="tiny">64 bytes × 2 passes</text>
+<rect x="340" y="205" width="220" height="105" rx="12" class="cal"/>
+<text x="450" y="243" text-anchor="middle" class="label">Pass 1: Mean</text><text x="450" y="273" text-anchor="middle" class="small">Per-channel running sum</text><text x="450" y="293" text-anchor="middle" class="tiny">Mean = sum / 8</text>
+<rect x="650" y="205" width="190" height="105" rx="12" class="store"/>
+<text x="745" y="245" text-anchor="middle" class="label">Mean profile</text><text x="745" y="275" text-anchor="middle" class="small">8 channel means</text>
+<rect x="340" y="345" width="220" height="75" rx="12" class="cal"/>
+<text x="450" y="375" text-anchor="middle" class="label">Pass 2</text><text x="450" y="400" text-anchor="middle" class="small">Re-stream same 64 bytes</text>
+<rect x="940" y="255" width="240" height="120" rx="12" class="shared"/>
+<text x="1060" y="291" text-anchor="middle" class="label">SHARED DATAPATH</text><text x="1060" y="321" text-anchor="middle" class="small">Subtract mean → square</text><text x="1060" y="348" text-anchor="middle" class="tiny">1 subtractor + 1 multiplier</text>
+<rect x="1270" y="255" width="155" height="120" rx="12" class="store"/>
+<text x="1347" y="294" text-anchor="middle" class="label">SSD profile</text><text x="1347" y="323" text-anchor="middle" class="small">Σ deviation²</text><text x="1347" y="350" text-anchor="middle" class="tiny">8 channel totals</text>
+<path d="M270 295 H340 M560 255 H650 M270 315 V382 H340 M560 382 H610 V350 H940 M840 255 H890 V280 H940 M1180 315 H1270" class="arrow"/>
+<text x="750" y="430" text-anchor="middle" class="tiny">Per channel: SSD = Σ (sample − mean)² (unnormalized sum of squared deviations)</text>
+<rect x="45" y="480" width="1410" height="350" rx="18" class="panel"/>
+<text x="75" y="520" class="section">2 | ANOMALY DETECTION</text>
+<text x="75" y="548" class="small">After calibration, stream one new 8-channel reading: one signed byte per channel.</text>
+<rect x="80" y="635" width="190" height="105" rx="12" class="det"/>
+<text x="175" y="674" text-anchor="middle" class="label">New sensor</text><text x="175" y="699" text-anchor="middle" class="label">reading</text><text x="175" y="724" text-anchor="middle" class="tiny">8 bytes, channel 0 first</text>
+<rect x="360" y="625" width="245" height="125" rx="12" class="shared"/>
+<text x="482" y="663" text-anchor="middle" class="label">SHARED DATAPATH</text><text x="482" y="693" text-anchor="middle" class="small">Deviation = reading − mean</text><text x="482" y="721" text-anchor="middle" class="small">Square the deviation</text>
+<rect x="700" y="625" width="215" height="125" rx="12" class="det"/>
+<text x="807" y="663" text-anchor="middle" class="label">Threshold check</text><text x="807" y="694" text-anchor="middle" class="small">deviation² &gt; 2 × SSD</text><text x="807" y="722" text-anchor="middle" class="tiny">Evaluate each channel</text>
+<rect x="1010" y="625" width="190" height="125" rx="12" class="det"/>
+<text x="1105" y="663" text-anchor="middle" class="label">Aggregate</text><text x="1105" y="693" text-anchor="middle" class="small">OR channel flags</text><text x="1105" y="722" text-anchor="middle" class="tiny">Any channel trips</text>
+<rect x="1290" y="610" width="135" height="155" rx="12" class="out"/>
+<text x="1357" y="648" text-anchor="middle" class="label">Outputs</text><text x="1357" y="685" text-anchor="middle" class="small">anomaly_flag</text><text x="1357" y="714" text-anchor="middle" class="small">anomaly_valid</text><text x="1357" y="742" text-anchor="middle" class="tiny">1-cycle pulse</text>
+<path d="M270 687 H360 M605 687 H700 M915 687 H1010 M1200 687 H1290" class="arrow"/>
+<path d="M745 310 V585 H482 V625 M1347 375 V590 H807 V625" class="arrow dash"/>
+<text x="610" y="579" text-anchor="middle" class="tiny">Mean profile</text><text x="1110" y="583" text-anchor="middle" class="tiny">SSD profile</text>
+<text x="750" y="790" text-anchor="middle" class="small">The subtractor and squaring multiplier are reused in calibration Pass 2 and detection.</text>
+<text x="750" y="865" text-anchor="middle" class="tiny">Conceptual architecture • 8 channels • signed 8-bit samples • SKY130 / Tiny Tapeout</text>
+</svg>
