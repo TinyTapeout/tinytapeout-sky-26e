@@ -1,0 +1,66 @@
+# Tiny Tapeout project information
+project:
+  title:        "Analog equilibrium propagation: three neurons, six learnable weights"      # Project title
+  author:       "Marc Bacvanski"          # Your name
+  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "Three analog neurons compute a fixed XOR, or learn six weights, two hidden offsets and an output bias by equilibrium propagation with an external controller"      # One line description of what your project does
+  language:     "Analog" # other examples include Verilog, Amaranth, VHDL, etc
+  clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "2x2"          # Valid values for analog projects: 1x2, 2x2, 3x2, 4x2, 6x2
+
+  # How many analog pins does your project use?
+  analog_pins: 3        # Valid values: 0 to 6
+  uses_vapwr: false       # Set to true if your project uses second analog power supply (VAPWR) in addition to 1.8V (VDPWR)
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_mbacvanski_analog_eqprop"
+
+  # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
+  source_files:
+    - "project.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "A (fixed mode input bit) and row address bit 0 while writing"
+  ui[1]: "B (fixed mode input bit) and row address bit 1 while writing"
+  ui[2]: "RESET"
+  ui[3]: "HOLD"
+  ui[4]: "REF_RESET: zeroes the reference and input buffers"
+  ui[5]: "SEL0: first output channel, bit 0"
+  ui[6]: "SEL1: first output channel, bit 1"
+  ui[7]: "SEL2: first output channel, bit 2, and word address bit 0 while writing"
+
+  # Outputs
+  uo[0]: "A_ECHO"
+  uo[1]: "B_ECHO"
+  uo[2]: "RESET_ECHO"
+  uo[3]: "HOLD_ECHO"
+  uo[4]: "REF_RESET_ECHO"
+  uo[5]: "SEL0_ECHO"
+  uo[6]: "SEL1_ECHO"
+  uo[7]: "SEL2_ECHO"
+
+  # Bidirectional pins
+  uio[0]: "EXT_EN1 (input, no pull-down): mode pin; writes input A; in fixed mode H1's bias from ua[1] or input A"
+  uio[1]: "EXT_EN2 (input, no pull-down): mode pin; writes input B; in fixed mode H2's bias from ua[1] or input B"
+  uio[2]: "OUT2_SEL0 (input, no pull-down): second output channel, bit 0, and word address bit 1 while writing"
+  uio[3]: "OUT2_SEL1 (input, no pull-down): second output channel, bit 1"
+  uio[4]: "BIAS_PROG (input, pull-down in the tile): mode pin; low lets the input stores be written"
+  uio[5]: "WRITE (input, pull-down in the tile): the addressed word takes the voltage on ua[1]"
+  uio[6]: "RES_SEL (input, pull-down in the tile): enables resistor and offset writes; in six-weight mode high holds the states, falling starts the computation"
+  uio[7]: "WEIGHT_PROG (input, pull-down in the tile): mode pin; with EXT_EN1, EXT_EN2 and BIAS_PROG high, connects the six-weight network"
+
+  # Analog pins - make sure to also set "analog_pins" above, else the pins won't be connected
+  ua[0]: "OUT: first analog output, 8 channels chosen by ui[7:5] (3 kOhm)"
+  ua[1]: "DAC input: value to write; output bias and nudge in six-weight mode (10 kOhm)"
+  ua[2]: "OUT2: second analog output, REF, Z, H1 or H2 chosen by uio[3:2] (5 kOhm)"
+  ua[3]: ""
+  ua[4]: ""
+  ua[5]: ""
+
+# Do not change!
+yaml_version: 6
