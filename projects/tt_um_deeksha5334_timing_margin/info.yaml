@@ -1,0 +1,59 @@
+# Tiny Tapeout project information
+project:
+  title:        "On-chip timing-margin sensor"      
+  author:       "Deeksha Patnam"      
+  discord:      "deeksha_."      
+  description:  "An onchip timing margin sensor for Tiny Tapeout SKY26d with a failing canary path to measure how early a warning comes before timing errors"        
+  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
+  clock_hz:     10000000       # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_deeksha5334_timing_margin"
+
+  # List your project's source files here.
+  # Source files must be in ./src and you must list each source file separately, one per line.
+  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
+  source_files:
+    - "project.v"
+    - "control.v"
+    - "canary.v"
+    - "margin_sensor.v"
+    - "ring_gauge.v"
+    - "readout_mux.v"
+
+pinout:
+  # Inputs
+  ui[0]: "ring_sel[0]"
+  ui[1]: "ring_sel[1]"
+  ui[2]: "ring_en (test mode: inject canary errors)"
+  ui[3]: "read_sel[0]"
+  ui[4]: "read_sel[1]"
+  ui[5]: "read_sel[2]"
+  ui[6]: "start"
+  ui[7]: "test_mode"
+
+  # Outputs
+  uo[0]: "data[0]"
+  uo[1]: "data[1]"
+  uo[2]: "data[2]"
+  uo[3]: "data[3]"
+  uo[4]: "data[4]"
+  uo[5]: "data[5]"
+  uo[6]: "data[6]"
+  uo[7]: "data[7]"
+
+  # Bidirectional pins
+  uio[0]: "ring_div256 (out)"
+  uio[1]: "done (out)"
+  uio[2]: "canary_error (out)"
+  uio[3]: "margin_warning (out)"
+  uio[4]: "level[0] (in)"
+  uio[5]: "level[1] (in)"
+  uio[6]: "level[2] (in)"
+  uio[7]: "level[3] (in)"
+
+# Do not change!
+yaml_version: 6
