@@ -1,0 +1,55 @@
+# Tiny Tapeout project information
+project:
+  title:        "Blocos: 8x8 falling-block game on VGA"
+  author:       "Duarte Diamantino"
+  discord:      ""      # Your discord username (optional)
+  description:  "Falling-block puzzle on an 8x8 board, all game logic in a state machine, drawn live on VGA (TinyVGA PMOD) without a framebuffer"
+  language:     "Verilog"
+  clock_hz:     25175000  # VGA 640x480 @ 60 Hz pixel clock (25 MHz also works on most monitors)
+
+  # yosys synthesis (sky130_fd_sc_hd, synth/synth.sh): 9 458 um2 of cells,
+  # 186 flip-flops, 52.7 % of a 1x1 tile before place & route.
+  tiles: "1x1"
+
+  top_module:  "tt_um_duarte_diamantino_blocos"
+
+  source_files:
+    - "pieces.v"
+    - "vga_sync.v"
+    - "game.v"
+    - "tt_um_duarte_diamantino_blocos.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+pinout:
+  # Inputs
+  ui[0]: "LEFT"
+  ui[1]: "RIGHT"
+  ui[2]: "ROTATE"
+  ui[3]: "DOWN"
+  ui[4]: ""
+  ui[5]: ""
+  ui[6]: ""
+  ui[7]: ""
+
+  # Outputs (TinyVGA PMOD)
+  uo[0]: "R1"
+  uo[1]: "G1"
+  uo[2]: "B1"
+  uo[3]: "VSYNC"
+  uo[4]: "R0"
+  uo[5]: "G0"
+  uo[6]: "B0"
+  uo[7]: "HSYNC"
+
+  # Bidirectional pins (all outputs: lines cleared, binary)
+  uio[0]: "SCORE0"
+  uio[1]: "SCORE1"
+  uio[2]: "SCORE2"
+  uio[3]: "SCORE3"
+  uio[4]: "SCORE4"
+  uio[5]: "SCORE5"
+  uio[6]: "SCORE6"
+  uio[7]: "SCORE7"
+
+# Do not change!
+yaml_version: 6
