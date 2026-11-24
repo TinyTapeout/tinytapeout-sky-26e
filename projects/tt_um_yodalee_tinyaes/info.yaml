@@ -1,0 +1,71 @@
+# Tiny Tapeout project information
+project:
+  title:        "ttsky_tiny_aes"
+  author:       "Yodalee"
+  discord:      ""
+  description:  "A complete implementation of Aes module that can perform encryption and decryption in all three security level"
+  language:     "SystemVerilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
+  clock_hz:     64000000       # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "2x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_yodalee_tinyaes"
+
+  # List your project's source files here.
+  # Source files must be in ./src and you must list each source file separately, one per line.
+  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
+  source_files:
+    - tt_um_yodalee_tinyaes.v
+    - AddRoundKey.v
+    - AesCore.v
+    - AesState.v
+    - AesTop.v
+    - ControlAdd.v
+    - ControlFsm.v
+    - ControlKeyExpand.v
+    - ControlMixColumn.v
+    - ControlShiftrow.v
+    - EnableFF.v
+    - KeyExpansion.v
+    - MixColumn.v
+    - MuxEnableFF.v
+    - RcLUT.v
+    - SboxArish.v
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "input valid"
+  ui[1]: "output ready"
+  ui[2]: ""
+  ui[3]: ""
+  ui[4]: "security level[0]"
+  ui[5]: "security level[1]"
+  ui[6]: "is_decrypt, encryption/decryption select"
+  ui[7]: ""
+
+  # Outputs
+  uo[0]: "input ready"
+  uo[1]: "output valid"
+  uo[2]: "status"
+  uo[3]: "status"
+  uo[4]: "status"
+  uo[5]: "status"
+  uo[6]: "status"
+  uo[7]: "status"
+
+  # Bidirectional pins
+  uio[0]: "data input output"
+  uio[1]: "data input output"
+  uio[2]: "data input output"
+  uio[3]: "data input output"
+  uio[4]: "data input output"
+  uio[5]: "data input output"
+  uio[6]: "data input output"
+  uio[7]: "data input output"
+
+# Do not change!
+yaml_version: 6
