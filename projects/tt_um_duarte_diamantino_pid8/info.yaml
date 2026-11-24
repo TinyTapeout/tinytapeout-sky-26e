@@ -1,0 +1,55 @@
+# Tiny Tapeout project information - 8-bit PID for ONE tile (see README.md)
+project:
+  title:        "8-bit Digital PID Controller"
+  author:       "Duarte Diamantino"
+  discord:      ""      # Your discord username (optional)
+  description:  "Discrete 8-bit PID (UQ4.8 gains, anti-windup, 0-255 output as a number on uo_out), byte-wide write-only register bus"
+  language:     "Verilog"
+  clock_hz:     10000000  # any clock works; the timer and the bus timing scale with it
+
+  # gds job (SKY26e): 11 965 um2 of cells after synthesis, 213 flip-flops,
+  # 84.1 % utilisation of the 1x1 tile after place & route (see src/config.json).
+  tiles: "1x1"
+
+  top_module:  "tt_um_duarte_diamantino_pid8"
+
+  source_files:
+    - "pid_sync.v"
+    - "pid8_tick.v"
+    - "pid8_regs.v"
+    - "pid8_core.v"
+    - "tt_um_duarte_diamantino_pid8.v"
+
+pinout:
+  # Inputs
+  ui[0]: "D0"
+  ui[1]: "D1"
+  ui[2]: "D2"
+  ui[3]: "D3"
+  ui[4]: "D4"
+  ui[5]: "D5"
+  ui[6]: "D6"
+  ui[7]: "D7"
+
+  # Outputs
+  uo[0]: "U0"
+  uo[1]: "U1"
+  uo[2]: "U2"
+  uo[3]: "U3"
+  uo[4]: "U4"
+  uo[5]: "U5"
+  uo[6]: "U6"
+  uo[7]: "U7"
+
+  # Bidirectional pins
+  uio[0]: "WR (in)"
+  uio[1]: "AD (in)"
+  uio[2]: "TICK (in)"
+  uio[3]: "HOLD (out)"
+  uio[4]: "DRDY (out)"
+  uio[5]: "SAT_HI (out)"
+  uio[6]: "SAT_LO (out)"
+  uio[7]: "BUSY (out)"
+
+# Do not change!
+yaml_version: 6
