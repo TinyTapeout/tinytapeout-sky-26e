@@ -2,7 +2,7 @@
 
 This SKY130A prototype converts a differential voltage on `ua[0]` and `ua[1]` into the frequency difference of two 15-stage cross-coupled ring oscillators. Level shifters and two-flop synchronizers bring 30 phase taps into the digital domain. At each sample, the readout counts transitions in each ring and subtracts the two counts. A signed 21-bit second-order CIC filter decimates that difference. The ADC transmits one signed 16-bit word per output interval.
 
-At the nominal operating point, the sample clock is 20 MHz, the supply is 1.80 V and the input common mode is 0.63 V. A positive differential input produces a positive settled code. The pre-silicon, loaded 50 kHz simulation gave HD3 of −62.64 dBc against a limit of −62 dBc. Sensitivity close to zero is history dependent. SNDR and chip-to-chip offset are first-silicon measurements.
+At the nominal operating point, the sample clock is 20 MHz, the supply is 1.80 V and the input common mode is 0.63 V. A positive differential input produces a positive settled code. The pre-silicon, loaded 50 kHz simulation gave HD3 of −63.40 dBc against a limit of −62 dBc. Sensitivity close to zero is history dependent. SNDR and chip-to-chip offset are first-silicon measurements.
 
 ## How to test
 
