@@ -420,7 +420,7 @@ MACRO tt_um_VCOerik1567
     USE POWER ;
     PORT
       LAYER met4 ;
-        RECT 1.000 5.000 3.000 220.760 ;
+        RECT 1.000 10.000 4.000 215.760 ;
     END
   END VDPWR
   PIN VGND
@@ -428,7 +428,7 @@ MACRO tt_um_VCOerik1567
     USE GROUND ;
     PORT
       LAYER met4 ;
-        RECT 4.000 5.000 6.000 220.760 ;
+        RECT 5.000 10.000 8.000 215.760 ;
     END
   END VGND
 END tt_um_VCOerik1567
