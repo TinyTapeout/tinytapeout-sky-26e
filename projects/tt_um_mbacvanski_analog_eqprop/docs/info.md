@@ -46,7 +46,7 @@ Sixteen values are stored on capacitors, each written from the voltage on `ua[1]
 
 | Stored value | How many | What it sets |
 | --- | --- | --- |
-| Resistor words | 12: three rows (Z, A, B) of four | Each weight is set by two words: a *shunt* from the middle of the connection's resistor pair to REF (more conductance, smaller weight) and a *bridge* across the pair (more conductance, larger weight). Each connection also puts a conductance on the two neurons it joins, its *load*. The board chooses the pair so that the load stays at 7.5 uS at every weight, which keeps every neuron balanced, and raises it on the hidden neurons' connections to null their self-terms (calibration item 5). |
+| Resistor words | 12: three rows (Z, A, B) of four | Two words set each weight. A *shunt* from the resistor pair's midpoint to REF reduces the weight as its conductance increases. A *bridge* across the pair increases the weight as its conductance increases. Each connection loads both ends. Four connect input A or B to a hidden activation wire. Two connect Z to a hidden activation wire. The board chooses the two words for a standard *load* of 7.5 uS at each end, and can raise the A and B connection loads to null the hidden self-terms (calibration item 5). |
 | Offset words | 2 | The hidden offsets of H1 and H2 |
 | Input stores | 2 | The analog inputs A and B in six-weight mode |
 
@@ -108,7 +108,7 @@ The mode follows four pins at once: EXT_EN1, EXT_EN2, BIAS_PROG and WEIGHT_PROG.
 
 - **Fixed mode:** apply the supply with REF_RESET, RESET and HOLD high, `uio[0]` to `uio[7]` low and `ua[1]` at
   ground; lower REF_RESET at 25 us, RESET at 55 us and HOLD at 60 us, then run transactions.
-- **Six-weight mode, as simulated (†):** the supply comes up (in 5 us) with every digital input low and `ua[1]` at
+- **Six-weight mode, as simulated:** the supply comes up (in 5 us) with every digital input low and `ua[1]` at
   0 V. 1 us later RESET and REF_RESET go high; 22 us later REF_RESET goes low; 9 us later the word block starts (its
   step 2). HOLD stays low. Nothing zeroes the reference and input buffers again in the simulated sequences.
 - At power-up both offset words are near 0 V, so both offsets are zero until written.
@@ -127,8 +127,8 @@ RESET (`ui[2]`) and REF_RESET (`ui[4]`) all go high:
 | 20-520 us | 0 | 0 | 0 | The network computes |
 | 520-570 us | 0 | 0 | 0 | Read `ua[0]` |
 
-- Drive `uio[0]` to `uio[7]` low and tie `ua[1]` to ground. Left floating, `ua[1]` can disturb the hidden neurons through
-  leakage on the board.
+- Drive `uio[0]` to `uio[7]` low and tie `ua[1]` to ground. Left floating, `ua[1]` can disturb the hidden neurons
+  through leakage on the board.
 - Choose the channel with SEL2..SEL0 (`ui[7:5]`) while HOLD is high and leave it fixed.
 - Z settles about one unit above REF when exactly one input is high and at REF otherwise: on `ua[0]` with Z selected,
   about 1.00 V for XOR = 1 and about 0.90 V for XOR = 0. The decision threshold is half a unit.
@@ -163,25 +163,23 @@ RESET (`ui[2]`) and REF_RESET (`ui[4]`) all go high:
 - The buffer of `ua[2]` is zeroed at every RESET, so its own offset is small (about 0.03 mV in simulation of the same
   circuit). The buffer of `ua[0]` is not, and has a millivolt or more, different on every chip.
 - To measure a node against the reference in one capture: put the node on `ua[0]`, leave `ua[2]` on REF, and take
-  `ua[0]` minus `ua[2]`. To remove the first buffer's offset: once, select REF on both (`ui[7:5]` = 011, `uio[3:2]` = 00)
-  and note `ua[0]` minus `ua[2]`; subtract it from later readings.
+  `ua[0]` minus `ua[2]`. To remove the first buffer's offset, select REF on both once (`ui[7:5]` = 011,
+  `uio[3:2]` = 00). Record `ua[0]` minus `ua[2]` and subtract it from later readings.
 - If `ua[0]` or its selector does not work, `ua[2]` still shows the answer (01) and both hidden states (10, 11).
 - **Selecting H1 or H2 kicks that neuron** toward the voltage of the channel selected before it, by 2.1 to 2.6% of the
   step between the two channels; the neuron then relaxes with a time constant of 47 to 51 us, back to where it would
   have settled. Deselecting leaves nothing that lasts. Read the hidden states after the network has settled, or keep
   the outputs on Z and REF while it computes.
-- **Waiting after a channel change: 175 us, and 250 us after selecting H1 or H2.** The output buffer follows a new
-  channel within 1 us, and the select lines themselves move the states by under 0.4 mV for under 75 us. After the
-  largest step simulated, 216 mV (input A to H2), the H2 reading was still up to 0.106 mV off after 175 us and within
-  0.034 mV after 250 us. Selecting F1, F2, REF, A or B was not simulated; these are driven nodes, and 175 us is
-  inferred for them. The simulated sequences waited less (†): 75 us between selections while the states were held,
-  and in the simulated learning through the pins and the input calibration each reading was taken 100 us after its
-  selection, with selections 118 us apart.
+- **Wait 175 us after a channel change, or 250 us after selecting H1 or H2.** In simulation the buffer followed the
+  newly selected node to within 0.1 mV in under 1 us. Feedthrough from the select lines alone moved the neuron states
+  by less than 0.4 mV. That disturbance fell below 0.1 mV in under 75 us. Switching from A to H2 kicked H2 by 4.874 mV
+  at typical. For that switch at typical and at slow 0 °C 1.71 V, the error was at most 0.106 mV after 175 us and
+  0.0345 mV after 250 us. For REF, A, B, F1 and F2, the 175 us wait is inferred from tests on other channels.
 
 ## Six-weight mode
 
-The sequences below are the ones simulated through the pins (†); on this chip's own model the stored values were
-set directly. Keep to the gaps given: other gaps have not been simulated, and some waits matter (BIAS_PROG, below).
+The AND calibration on this chip's model used the power-up sequence and the word and input writes below. Use the
+specified delays, including the wait after BIAS_PROG changes.
 
 ### Codes on `ua[1]`
 
@@ -199,13 +197,12 @@ Every word is written the same way: set the address pins, wait 1 us, set `ua[1]`
 2. Raise RES_SEL (`uio[6]`), wait 2 us, raise RESET, wait 2 us.
 3. Lower BIAS_PROG, WEIGHT_PROG, EXT_EN1 and EXT_EN2; keep RES_SEL high. Wait 6 us. The chip is now in fixed mode with
    writing enabled; the states are held at REF by RESET.
-4. For each resistor word: set its row and word address (table below), then **two** write pulses: first 0.2 V, then
-   the word's value. The first pulse starts the resistor's inner nodes from REF, so that the second lands the same way
-   every time, whatever was stored before.
-5. For each offset word: row (1, 1) and its word address, then the same two pulses, first 0.2 V and then the word's
-   value. This is how the offset words were written in the full sequence simulated through the pins (†). The word has
-   no inner node, so a single pulse at its value also writes it; that was simulated only in the circuit without the
-   neurons, with 3 us from setting `ua[1]` to raising WRITE.
+4. For each resistor word, set its row and word address (table below). Pulse WRITE with `ua[1]` at 0.2 V to bring the
+   resistor's inner nodes toward REF. Pulse WRITE again at the requested voltage.
+5. For each offset word, select row (1, 1) and its word address. The AND pin calibration used the same two pulses.
+   The offset cell stores the voltage on a gate. In the full circuit, one pulse at 0 V cleared it at typical and at
+   slow 0 °C 1.71 V (see *If the programmable part does not work*). In a simulation of the complete write path (†), each
+   offset word received one 0.75 V write, with 3 us between setting the DAC and raising WRITE.
 6. Lower RES_SEL, `ui[0]`, `ui[1]` and `uio[2]` (the simulated sequence left `ui[7]` as the last word set it), wait
    3 us, raise WEIGHT_PROG, wait 9 us. Keep RESET high and go on to the inputs. When RES_SEL, `ui[0]` and `ua[1]`
    change at the same instant after the writes, every stored gate is kicked by up to −5 / +15 mV for under 0.2 us and
@@ -287,11 +284,9 @@ Continue with RESET high after the words (or start here for the next input, with
    simulated; whether each is needed has not been established, and no reading was taken during them.
 5. Lower RES_SEL. The network computes. Keep WRITE, RESET, HOLD, `ui[0]`, `ui[1]` and `uio[3:2]` low and the four mode
    pins high until the next input.
-6. Wait 1.0 ms after the release, then read and check (*One nudge*); the simulated learning through the pins read 1.5 ms
-   after the release (†), and the controller written for these pins, for fixed offsets, waits 2.2 ms (†). The network's
-   own time constant is about 42 to 44 us, but near a switch of state it settles far more slowly: in four of the
-   learning runs of *Limits* that read the free state 350 us after the release, 76 of their 316 free readings were still
-   moving by more than 0.2 mV per 50 us, the worst by 2.5 mV per 50 us.
+6. Wait 1.0 ms after release, then begin the scan and check the readings (*One nudge*). Near a change of state the
+   network can still be moving when the wait ends. The earlier pin learning simulation (†) waited 1.5 ms before the
+   scan. The controller for fixed offsets (†) waits 2.2 ms.
 
 ### The output bias
 
@@ -304,44 +299,79 @@ REF. The simulations assumed a 500 Ohm source; calibrate with the real source.
 
 ### One nudge
 
-After reading the free state, step `ua[1]` from the output-bias code by the nudge, wait, read, return `ua[1]` to the
-output-bias code, wait and read again. Then do the same with the opposite nudge. The step on `ua[1]` is the only change
-allowed while the network computes. A nudge of one unit on Z is a step of 400 mV on `ua[1]`.
+1. Hold the written inputs and words fixed. At the programmed output bias on `ua[1]`, read F1, F2 and Z. These are the
+   *free* readings. Apply the positive nudge, read, return to the programmed bias and read again. Repeat with the
+   negative nudge, using the reset rule in step 4 if the first return failed.
+2. Wait 1.0 ms after release and after each bias step before starting the board scan. Select F1, F2 and Z in turn.
+   After each selection, wait 175 us as in *Output channels*, then take two readings on that channel 50 us apart.
+   Use the offset-corrected difference between `ua[0]` and REF on `ua[2]` (*Reading*). Give each reading its own
+   averaging window of at most 50 us. Keep the windows independent. A state is still moving if the two readings on
+   any channel differ by more than the movement threshold.
+3. If the original free state is still moving, discard both nudges. Otherwise, count a nudge if its own state has
+   stopped moving and its return passes on all three channels. For each return, compare the later reading on each
+   channel with the later reading on that channel in the original free state. The difference must be within the return
+   threshold in step 5.
+4. If the first return fails, RESET and release at the programmed bias. Take a fresh free reading. Use the negative
+   nudge only if this fresh state has stopped moving, agrees with the original free state within the return threshold
+   on every channel, and the negative nudge itself passes step 3.
+   Use the calibrated A and B levels applied for this input, in network units, in every phase. Take F1, F2 and Z from
+   that phase's readings above REF, also in network units. For the six weights calculate A×F1, B×F1, Z×F1, A×F2,
+   B×F2 and Z×F2. Use F1 and F2 for the hidden offsets and Z for the output bias. For each of these nine quantities,
+   if both nudges count, divide the plus value minus the minus value by twice the nudge size. If just one counts,
+   divide its value minus the original free value by its signed nudge.
+5. Measure the RMS difference between two independent averaged readings of a stationary channel, using the same pin
+   difference and averaging as in step 2. Use four times this RMS difference for each threshold, with a minimum of
+   0.2 mV for movement and 0.5 mV for return.
+6. Nudge by 0.5 bias units, about 200 mV on `ua[1]` at 1.80 V. Use the calibrated bias gain at the operating supply.
+   To reproduce the AND and XOR circuit runs at learning rate 0.6 in *Limits*, draw the high input level uniformly
+   from 0.95 to 1.10 times nominal once per update. Use it for all four input pairs during training and evaluate the
+   answers at nominal amplitude.
+   For each of 00, 01, 10 and 11, multiply each quotient in step 4 by free Z minus that input's target (0 or 1).
+   Count zero for an input if neither nudge passes or the absolute output error is below 0.002 units. For each
+   parameter, add the four contributions, divide by four and subtract 0.6 times this mean from its current value.
+   Keep weights within 0.25 to 0.75 and round to the nearest 0.001. Limit hidden offsets to −1.75 through 0 and output
+   bias to −1 through +1. At every update, rewrite the twelve resistor words and two offset words and set the new
+   output bias on `ua[1]`.
+7. At update 40, check all four AND or NOR outputs at nominal input amplitude. If any output is less than 30 mV on the
+   correct side of the decision level (half a network unit), restart from the function's weights and biases given below
+   and run 40 more updates. The XOR simulation used the separate restart test and duration below.
 
-- **Check each return.** Leave that input out of this update if F1, F2 or Z, read after either return, is more than
-  0.5 mV from its free reading. A nudge can switch the network into another state that it keeps when the nudge ends; the
-  reading after the return shows this, and an update from such an input would depend on which nudge came first. In the
-  ideal network with the self-terms left after nulling on this chip's model (XOR, nudge 0.5 units, 32 starts wrong at
-  reset, 91 updates each; not simulated on the chip), the minus nudge straight after the plus nudge gave nudged states
-  that depend on the order in 46 of the 11,648 inputs presented (0.4%). With the returns and this check, 1,038 of them
-  (8.9%) were left out and none of the 10,610 used depended on the order. A RESET between the two nudges removes the
-  dependence too, at the cost of a second settle from reset for each input, and did not learn better: with every order
-  tried, 16 to 20 of the 32 starts reached the low error (5 mV RMS, every input within 10 mV) by update 90.
-- **Wait 1.0 ms, then check that the reading has stopped moving.** Near a switch of state the network settles far more
-  slowly than its 42 to 44 us time constant. In the AND run with the 0.5-unit nudge, read 250 us after each step, 97 of
-  136 readings after the plus step and 110 of 136 after the minus step were still moving by more than 0.2 mV per 50 us,
-  the worst by 149 mV per 50 us: a hidden neuron read in the middle of switching. Wait 1.0 ms after the release and
-  after every step of `ua[1]`, the returns included, then read each of F1, F2 and Z twice, 50 us apart, and leave the
-  input out of this update if any of them still moves by more than 0.2 mV. With 1.0 ms waits none of the 99 readings of
-  three repeated calibration fits was still moving (the worst 0.020 mV per 50 us), and in the XOR run in this sequence
-  (*Limits*) 178 of the 180 readings up to its eighth update had stopped; the other two were at an input where the
-  network has two states, which the check of the returns leaves out as well.
-- **Size.** Use the large nudges of the learning recipes, not only a small one. With the chip in the loop and a nudge of
-  0.5 units (200 mV on `ua[1]`), AND reached four right answers, and so did XOR in the sequence of this section, at its
-  sixth update and the two after it (*Limits*). The recipe for XOR on this chip is the AND recipe with first-stage rates
-  0.9 and its second stage from step 30, validated on the ideal network only, with every phase settled from reset. From
-  32 starts near the middle of the ranges it is accepted at all 32, but those already give four right answers before
-  learning. From 32 starts spread over the ranges and wrong before learning, it is accepted at 14 by step 90; the others
-  end as a NAND-like or OR-like function with three of four right. With a restart from the middle of the ranges when
-  there is no acceptance by step 40, all 32 were accepted, in at most 80 steps. In the sequence above, with the returns
-  and the 0.5 mV check, the same rule accepts 29 to 31 of the 32 over four settings of the self-terms. The others stop
-  near a second state, where the check leaves out the very inputs that would move them on: four right answers with 36 to
-  39 mV of margin, but an RMS error of 5.7 to 6.9 mV against the 5 mV of the acceptance criterion. A small nudge of
-  0.035 units (about 14 mV, 70 codes) brought XOR to four right answers (†), but with it NOR stalled: H1 sat deep in its
-  limit and answered the nudge 4 to 6 times more weakly than in the ideal network (†).
-- **Timing, as simulated through the pins** (†, with the 0.035-unit nudge): step +70 codes, back, −70 codes and back,
-  read 1.0 ms after each of the two nudge steps. The controller written for these pins (†, for fixed offsets) waits
-  1.5 ms and steps toward the target first.
+With the restart, 15 to 16 of 16 AND starts finished with the 30 mV margin at nominal amplitude in the ideal model.
+This covered runs with no added board errors and runs with combined weight, offset and read errors. The latter averaged
+16 samples at 0.3 mV RMS per sample and used the thresholds in step 5.
+
+#### Reading the nudges
+
+In transistor-level simulation, a nudged XOR reading was still moving at the end of the 1.0 ms wait.
+In the ideal AND model some returns missed the 0.5 mV limit at 1.0 ms and settled back to free later.
+
+The tests of read noise alone at 0.3 and 1 mV RMS without averaging did not cover the 32 XOR starts. With other board
+errors present at 0.3 mV RMS, none of these starts passed with fixed thresholds and no averaging, even after restart.
+At 2 mV RMS per independent reading, step 5 gives 11.3 mV for both thresholds. At 500 kS/s per channel, a 50 us
+window holds up to 25 simultaneous sample pairs. With 0.8 to 1.6 mV RMS noise per pair, averaging down to 0.04 mV RMS
+takes 400 to 1,600 independent pairs. A longer window needs a separately checked settling test.
+
+#### Restart settings
+
+For a restart, draw each weight and bias independently and uniformly within ±0.01 of its centre in the table.
+Round each weight to the nearest 0.001.
+
+| Function | H1 weights (A, B, Z) | H2 weights (A, B, Z) | H1, H2 offsets (units) | Output bias (units) |
+| --- | --- | --- | --- | --- |
+| AND | 0.503, 0.495, 0.491 | 0.490, 0.506, 0.508 | −0.59953, −0.86762 | +0.00755 |
+| NOR | 0.505, 0.491, 0.482 | 0.481, 0.513, 0.517 | −0.37406, −0.83811 | 0 |
+| XOR | 0.500, 0.500, 0.500 | 0.500, 0.500, 0.500 | −0.600, −0.875 | 0 |
+
+For XOR, the ideal model checked every even update from 0 through 40. At nominal amplitude and time constants it
+required at most 5 mV RMS error over the four outputs and at most 10 mV error on any input (*low error*). Every
+output also needed a 30 mV margin on the correct side of the decision level at each combination of input amplitude
+and time constants. The amplitudes were 0.95, 1.0, 1.053 and 1.1 times nominal. The time constants for H1, H2 and Z, as
+multiples of nominal, were (1, 1, 1), (0.8, 1, 1.2), (1.2, 1, 0.8), (1.2, 0.8, 1) and (0.8, 1.2, 1). If no check
+passed by update 40, the model restarted and checked every second update for 90 more updates.
+
+In the ideal model, NOR could meet the margin and still miss low error when each weight moved only partway from
+its own starting value toward its command. Large fixed hidden self-terms could also defeat the restart. With both
+at +0.10 no XOR start passed, and with both at +0.15 no NOR start finished with 30 mV margin.
 
 ### Reading
 
@@ -358,17 +388,19 @@ removing the first buffer's offset (above).
 | The six weights and the self-terms | not readable directly: from the hidden states' and Z's response to a grid of input pairs (calibration items 4 and 5) |
 | A stored word | not readable |
 
-The simulated learning through the pins (†) read REF, Z, REF in the free phase and REF, A, B, F1, F2, Z, REF in each
-nudged phase, 100 us after each selection, taking 17 samples 1 us apart. The controller written for these pins (†, for
-fixed offsets) reads REF, A, B, F1, F2, Z, REF, Z, F2, F1, B, A, REF in every phase, 175 us after each selection.
+In the earlier pin learning simulation (†), the free scan selected REF, Z and REF. It allowed 590 us from REF to Z
+and 118 us back to REF. Each nudged scan selected REF, A, B, F1, F2, Z and REF. These selections and those for input
+calibration were 118 us apart. Sampling began 100 us after selection, with 17 samples 1 us apart. The controller
+for fixed offsets (†) reads REF, A, B, F1, F2, Z, REF, Z, F2, F1, B, A, REF in every phase, 175 us after each selection.
 
 ### What the board must calibrate, and why
 
-Calibrate in this order: REF and the buffers, the inputs, the output bias's zero, then the fourteen words. Read the
-network's states 1.0 ms after the release or after the step of `ua[1]` before them, as in *One nudge*. For the words:
-one common shift of the resistor words (round 0), the program's offset words (round 0b), then correction rounds that fit
-the weights, the self-terms, the output gain and the offsets and correct them all in one step, with the self-terms'
-targets at zero, until the program meets its criterion. A calibration holds for one supply and temperature.
+Calibrate REF and the buffers, then the inputs, the output bias zero and the fourteen words, at the supply and
+temperature to be used. Wait 1.0 ms after release or a step of `ua[1]` before starting the channel scan
+(see *One nudge*). For the words, first find the common resistor shift (round 0), then set the enabled offsets
+(round 0b).
+The correction rounds target the typical chip's fit for the same program, including its self-terms. To null the
+self-terms instead, use item 5.
 
 1. **REF and the output buffers.** Everything on the chip is measured from REF, which is half the supply, not a fixed
    voltage. Read REF on `ua[2]`, and the first buffer's offset as above.
@@ -396,153 +428,131 @@ targets at zero, until the program meets its criterion. A calibration holds for 
      does that, not one resistor by resistor.
 
    The procedure, as simulated:
-   - *The rule for one connection.* With the shunt's conductance gs and the bridge's gb in uS, the weight is
-     w = 0.1 × (100 / (20 + gs) + gb) and the load is 10 − 100 / (20 + gs) + gb. For a weight w and a load L the pair
-     is gb = (10 w + L − 10) / 2 and gs = 200 / (10 w − L + 10) − 20; at the standard load of 7.5 uS this is
-     gb = 100 / (20 + gs) − 2.5.
-   - *Round 0, one common shift.* Write both offset words at full (1.4 V) and set the output bias to zero (`ua[1]` at
-     REF). Move every conducting word by the same voltage (OFF words stay at 1.3 V), from −400 to +400 mV in 50 mV steps.
-     At each shift read H1 with both inputs at 0, in units of the supply / 18. That reading falls steadily as the shift
-     grows; keep the shift at which it equals what the typical chip gives with the same words (in simulation −1.758
-     units for the AND words used). With an offset word partly written, the reading also follows the offset network's
-     own change with the corner, and the scan finds the wrong shift. In simulation this scan found −189 and −235 mV at
-     the two 1.71 V corners (slow 0 °C; fast-NMOS slow-PMOS 0 °C) and +237 and +234 mV at the two 1.89 V corners (fast
-     85 °C; slow-NMOS fast-PMOS 50 °C). The scan cannot go lower than minus the lowest conducting word, because no word
-     can be written below 0 V (code 0): for the AND words used, whose lowest conducting word is 0.323 V, about −320 mV.
-   - *Round 0b, the program's offset words.* At the round-0 shift, move the program's two offset words together from
-     0.15 V below to 0.10 V above their first guess, in 25 mV steps, and at each step read H1 and H2 with both inputs
-     at 0. Set each word where its hidden neuron's reading crosses its expected value. The expected value can come from
-     the ideal network if the model carries each hidden neuron's self-term at the program's offset (about 0.035 plus
-     0.12 per uS by which the offset network's conductance falls short of 5.00 uS, item 5). In simulation that model
-     gave the typical chip's readings within 5 mV; without the self-term it was up to 19 mV off. In simulation the words
-     moved by 20 to 70 mV at the corners: up where the offset network's NMOS is slow, down where it is fast. Without
-     round 0b the AND program was wrong at two corners and the correction step left it so.
-   - *Correction rounds.* Measure the network on a grid of input pairs (for example A and B each at 0, 0.5 and 1 unit),
-     with the output nudged, reading H1, H2, F1, F2 and Z; again with all conducting shunts moved +20 mV; again with all
-     conducting bridges moved +20 mV. Fit the six weights, each hidden neuron's self-term, the output gain and the
-     offsets. Move the conducting words by the least change that brings these to their targets (a weight depends on its
-     own connection's two words; a self-term and the output gain on the words on that neuron's wire), at most 120 mV
-     per round, and move the offset words as in item 6. Test the program after every round, and go on until it meets
-     the criterion: four right answers with at least 30 mV of margin, every weight within 0.015 of its target and both
-     offsets within 0.05 units of theirs. Four right answers in one round are not the end; a later round can lose them
-     (see the results below).
-   - *A hidden neuron at its limit.* When a hidden neuron's activation stays at its limit at every reading of the grid,
-     the fit cannot tell its offset from its self-term. Judge that neuron by its state at inputs (0, 0) against the
-     typical chip's, within 5 mV, leave its self-term out of the step, and set its offset word by the rule of item 6.
-   - In the simulated calibrations the targets were the values the fit gives on the typical chip for the same program,
-     self-terms included.
-5. **The hidden self-terms, nulled.**
-   - *Why.* Below its full offset, a hidden neuron's offset branch acts as a current sink, and the neuron's summing node
-     (its bias input) sees less conductance: 4.03 to 4.06 uS from zero to half of the full offset instead of 5.00 uS.
-     That gives the neuron a positive feedback onto itself, its *self-term* (the fraction of its own activation fed
-     back to it). In simulation at typical (†), H2's self-term was +0.005 at full offset, +0.09 at 81% of full and
-     +0.13 at 35%, and H1's was +0.05 at full; at full offset it also depends on the program (+0.035 for H2 with an AND
-     program of weights 0.50 to 0.58).
-   - *What it does unnulled.* In the ideal network with these self-terms, the designed XOR and NOR stay right by about
-     30 mV but miss the low error (RMS 9.5 and 11.4 mV against 5 mV). In simulation (†), XOR's learning levelled at
-     8.6 mV RMS and NOR's stalled. Without nulling, a hidden neuron on its own (A and B at the same level, Z held at
-     REF) can hold either state over a window of up to 5 mV of input at an offset of 21% to 35% of full, and over none
-     at full offset. With nulling it holds only one at 35% of full; the 21% case is still being simulated (hold tests
-     from both sides, typical, 1.80 V).
-   - *How to null it.* In the correction rounds (item 4), set each self-term's target to zero and the output gain's to
-     1, and let the one step correct the weights, the self-terms and the gain together. Do not correct the weights and
-     the loads in separate steps: on this chip's model they are strongly coupled. Raising the A and B loads of both
-     hidden neurons by about 1.2 uS each lowered every weight by 0.02 to 0.06, the Z connections' included, and moved
-     the output gain from 1.02 to 1.06. Corrected separately (each weight by its own words, each self-term by its
-     neuron's A and B loads), the two overshot each other: over four rounds H1's self-term went +0.18, −0.02, −0.03,
-     +0.06 (typical, stored values set directly). A self-term falls by about 0.08 to 0.1 per uS of load added on its
-     neuron's A and B connections together. Start the correction rounds from the words for the target weights with each
-     hidden neuron's A and B loads raised in total by its self-term divided by this slope, half on each: the self-term
-     as measured at the table's words for the standard load, the words for the raised loads as in *Words for a raised
-     load* below. The rounds cannot make that raise where a connection's shunt is OFF, as it is at weight 0.75 (from
-     0.733 for H1 and 0.739 for H2): with the shunt off a connection's load is ten times its weight (*The rule for one
-     connection*, item 4), and the rounds move only the conducting words.
-   - *Words for a raised load.* These need shunt and bridge conductances that the seven rows above do not give
-     (bridges up to about 3.1 uS, shunts up to about 24 uS). Convert each conductance to a word with the table in
-     `word_conductance.csv`, beside this datasheet. It gives each part's simulated curve at typical, stored voltage
-     0.20 to 0.95 V; the same parts serve H1 and H2. A second column gives the conductance the part shows in the
-     network, which is a fit to in-circuit readings and not a simulation. In the network the shunt acts 7 to 53% more
-     conductive than on its own, more toward OFF; the bridge acts as on its own within about 5%. Interpolate the code
-     linearly against the logarithm of the conductance, within one part and one column. Both columns are starting
-     points; the calibration corrects the words on each chip.
-   - *Results.* On this chip's model at typical, with the stored values set directly and 1.0 ms waits before every
-     reading: for a program with weights 0.5 on H1's connections and 0.75 on H2's, H1's offset at 57% of full and H2's
-     at 35%, the starting words of the rule above (H2's A and B loads raised from 7.5 to 8.42 uS each) gave H2's
-     self-term −0.002 and the output gain 1.005, with every weight within 0.015 of its target, before any correction
-     round. Two correction rounds from the table's words for the standard load, where H2's shunts are OFF, had left H2's
-     self-term at +0.068. H1's activation stays at its limit at every reading at that offset, so its self-term cannot be
-     fitted (item 4). Nulling away from typical, or through the pins, has not been simulated.
-   - Null at the offsets that will be used: when an offset changes, its neuron's self-term changes with it.
-6. **The two offset words in the correction rounds.** The stored voltage for a given offset moves by about 0.1 V from
-   corner to corner; round 0b gives each word its starting point. In each correction round, step each word by its fitted
-   offset error divided by a secant slope of that neuron's offset against its word: from the neuron's own readings at
-   two words, or else from this chip's own scan in round 0b at the present word; never leave a word as it is. Within the
-   scan's range (0.15 V below to 0.10 V above the first guess) the board therefore never needs the typical curve, whose
-   slope was four to six times too flat at two corners of this chip's model (below). When a hidden neuron's activation
-   stays at its limit at every reading of the grid (item 4), step its word on its state at inputs (0, 0) against the
-   typical chip's instead, with a secant of that state against its word, from the same two sources (from the scan, its
-   two points either side of the typical chip's state). Move each word at most 50 mV per round and never above 1.4 V. In
-   the simulated rounds the first move took the typical curve's slope and could overshoot: at slow-NMOS fast-PMOS 50 °C
-   1.89 V it was cut to 50 mV and still took H2's offset 0.42 units (AND) and 0.52 units (XOR) past its target; XOR then
-   gave two right answers, and the next move, with the chip's own slope, brought both back. Or sweep each word's code
-   with A = B = 0 and read H1 (H2) against REF. The offset itself falls monotonically with the stored voltage at every
-   simulated condition, and once the resistor words are calibrated the reading follows it. Before that it need not: with
-   uncalibrated words at 1.89 V, H1 stays near its threshold whatever its offset (†).
+   - *The rule for one connection.* Two fixed 100 kOhm strips in series connect a hidden activation wire to A, B or
+     Z. The shunt connects their midpoint to REF. The bridge spans both strips. Hold either end at REF and drive the
+     other slightly above it. For transfer conductance, divide the current delivered to the held end by the voltage
+     difference. For load L, divide the current drawn at the driven end by that difference. The weight w is transfer
+     conductance divided by 10 uS. With shunt gs, bridge gb and load L in uS, w = (100 / (20 + gs) + gb) / 10 and
+     L = 10 − 100 / (20 + gs) + gb. For a target w and L, gb = (10 w + L − 10) / 2 and
+     gs = 200 / (10 w − L + 10) − 20. The standard load is 7.5 uS.
 
-**What this calibration has been shown to do, and what not.**
+     | Weight | Shunt gs (uS) | Bridge gb (uS) |
+     | ---: | ---: | ---: |
+     | 0.25 | 20 | 0 |
+     | 0.50 | 6.7 | 1.25 |
+     | 0.75 | 0 | 2.5 |
+
+   - *Round 0, one common shift.* Write both offset words at full (1.4 V) and set the output bias to zero
+     (`ua[1]` at REF). Shift all conducting resistor words together in 50 mV steps from −400 to +400 mV, skipping
+     shifts that take a word outside the writable range. Leave OFF words at 1.3 V. At each shift read H1 with both
+     inputs at zero, in units of supply / 18. Interpolate between the adjacent shifts that bracket the typical chip's
+     unshifted H1 reading, measured the same way. H1 can reverse direction near saturation. A partly written offset
+     changes the crossing with the corner.
+   - *Round 0b, the program's offset words.* Apply the round-0 resistor shift and the program's output bias. With both
+     inputs at zero, sweep the enabled offset words together from 0.15 V below to 0.10 V above their first guesses, in
+     25 mV steps. Keep the words within 0 to 1.4 V. A disabled offset stays at 0 V throughout the scan and corrections.
+     NOR adjusts only H2. At each step read H1 and H2 in units of supply / 18. Set each enabled word where its reading
+     crosses the typical chip's reading for that program, interpolating between the bracketing points. An alternative
+     target comes from the ideal network with each self-term estimated as 0.035 + 0.12 × (5.00 − G), where G is the
+     offset branch's incremental conductance in uS at the program's offset (item 5). Without this scan, the starting
+     offset words can leave the hidden neurons saturated and the program wrong.
+   - *Correction rounds.* Use the nine combinations of A and B at 0, 50 and 100 mV relative to REF. Measure H1, H2,
+     F1, F2 and Z with the output free and then nudged by +0.15 and −0.15 nominal units. The pin fit used these nine
+     pairs and each pair's free A and B readings in all three phases. With words set directly, the simulations also
+     measured (30, 70) and (70, 30) mV and included both pairs in all three phases when refitting a saturated hidden
+     neuron. Repeat the grid with all conducting shunt words raised by 20 mV. Restore the shunts and repeat with all
+     conducting bridge words raised by 20 mV. For nulling, use the six groups in item 5.
+     Fit the six weights, each measurable hidden self-term, the output gain and the offsets. Use the two changes to
+     estimate how each connection's conducting words affect its weight, and how the words on each neuron's wire
+     affect its self-term or gain. Choose the smallest combined change toward the targets, limiting each resistor
+     word to 120 mV per round. Move the enabled offset words as in item 6.
+     Test after every round, since a correction can lose a previously correct answer. The simulations required all four
+     answers on the correct side of their 50 mV decision level by at least 30 mV. Every fitted weight had to be within
+     0.015 of target and each enabled hidden offset within 5 mV of its typical target. At saturation the 5 mV tolerance
+     applies to the combined contribution below.
+   - *A hidden neuron at its limit.* If its activation stays at its limit across the grid, the fit measures offset
+     plus self-term times that activation. Compare this sum with the corresponding typical contribution for the pass
+     test. Leave the unmeasurable self-term out of the correction and set the enabled word from the neuron's free
+     state at inputs (0, 0), as in item 6.
+5. **The hidden self-terms, nulled.**
+   - *How the self-term arises.* Each neuron drives its wire to its own activation. Two internal resistor banks
+     compensate for the current that its connections draw at the design load. That load is 22.5 uS on each hidden
+     activation wire (three connections) and 17.5 uS on Z (two connections and the 2.5 uS output-bias feed).
+     The bias branch at each summing node is sized for 5.00 uS. A departure from either design value feeds a fraction
+     of the neuron's own activation into its input. This fraction is its *self-term*. Reducing the hidden offset from
+     full can lower the branch's incremental conductance and leave a positive self-term.
+   - *Effect before nulling.* A positive self-term can let H1 hold either of two states at the same input. In tests at
+     typical with Z held at REF and A and B driven together, H1 held different states when the same input was approached
+     from above and below at two settings below full offset. After nulling, each input tested on a 1.6 mV grid gave one
+     settled state.
+   - *How to null it.* Start with the table's words for the target weights at the standard load. Measure each
+     hidden neuron's self-term on the grid in item 4. In simulation it fell by about 0.08 to 0.1 per uS added to its
+     A and B connections together. Divide a positive self-term by the magnitude of that slope to get the total load
+     to add. Add half to A and half to B. Choose new shunt and bridge words for the target weights and raised loads.
+     The standard lookup commands the shunt OFF from weight 0.733 for H1 and 0.739 for H2. With the shunt OFF,
+     L = 10 w in uS, so changing the bridge alone cannot set weight and load independently.
+     Hold the offsets fixed. Measure the grid at the new words, then repeat it six times, each time raising only the
+     conducting words of one group by 20 mV from baseline. The groups are H1's A and B shunts, H1's A and B bridges,
+     H2's A and B shunts, H2's A and B bridges, the two Z shunts and the two Z bridges. Use each group's effect on
+     all six weights, the measurable self-terms and output gain to correct them together toward the target weights,
+     zero self-terms and a gain of 1. Separate weight and load corrections can overshoot.
+   - *Words for a raised load.* The loads in the simulations called for bridge conductances up to about 3.1 uS
+     and shunts up to about 24 uS. For values between or beyond rows of the word table, use `word_conductance.csv`
+     beside this datasheet. H1 and H2 use the same parts. At typical, each part's curve covers
+     stored voltages from 0.20 to 0.95 V. The in-circuit column adjusts the isolated conductance to match network
+     readings and extends the last fitted ratio outside the fit range. For each part, interpolate code linearly
+     against the logarithm of its conductance in the chosen column. Calibrate the starting words on each chip.
+   - *Nulling results.* The test targeted weights of 0.5 on H1's connections and 0.75 on H2's, with both Z loads at
+     7.5 uS. With the words set directly at typical and 1.0 ms waits for the final readings, all five offset settings
+     met these limits. Each measurable self-term was within 0.03 of zero, output gain within 2% of 1 and every weight
+     within 0.02 of target.
+   - Null at the offsets that will be used: when an offset changes, its neuron's self-term changes with it.
+6. **The two offset words in the correction rounds.** Start with the enabled words from round 0b. For each, divide
+   the target minus the fitted offset by the slope of offset against word voltage. Add the result to the present word,
+   limiting each move to 50 mV and the word to 0 through 1.4 V. Keep disabled words at 0 V.
+   At saturation use the free H1 or H2 state at inputs (0, 0) in place of the fitted offset and compare it with the
+   typical chip's state. Use the slope between two correction readings at different words. If that slope is unavailable
+   or too shallow, take the slope from round 0b. Use the scan segment bracketing the target free state at saturation
+   or the present word otherwise. Accept a measured slope only if it is more negative than −300 mV per volt of word
+   change. If neither measurement qualifies, use the typical offset curve even within the scan's range.
+   With words set directly, the first correction used a typical slope and could overshoot enough to lose a correct
+   answer. Through the pins, the first H2 correction used its measured scan slope. As an alternative, sweep each
+   enabled offset word with both inputs at zero and read its hidden state against REF after calibrating the resistor
+   words. With uncalibrated resistors at 1.89 V, H1 can stay near threshold throughout the sweep (†).
+
+**What this calibration has been shown to do**
 - *On this chip's model*, with the stored values set directly (not written through the pins), at four corners: slow
   0 °C 1.71 V, fast-NMOS slow-PMOS 0 °C 1.71 V, fast 85 °C 1.89 V and slow-NMOS fast-PMOS 50 °C 1.89 V. The targets
   were the values the fit gives on the typical chip for the same program, self-terms included.
-  - Round 0 found the shifts given above, and round 0b set every offset word. With those words, before any correction
-    round, AND gave four right answers at all four corners with 44 to 49 mV of margin, XOR with 12 to 36 mV and NOR
-    with 21 to 29 mV.
-  - 11 of the 12 function-and-corner pairs met the criterion (item 4) after one to three correction rounds, the same
-    pairs at the same rounds when a hidden neuron at its limit is judged by its state at inputs (0, 0), with the offsets
-    then within 0.036 units of their targets. Margins after the last round, on the model of the layout as submitted: AND
-    45.9 to 49.5 mV, XOR 30.7 to 40.7 mV, NOR 31.5 to 35.5 mV.
-  - The fits of these rounds rest on readings taken 350 us after the release and 250 us after each output step, 45% of
-    which were still moving by more than 0.2 mV per 50 us. Read with 1.0 ms waits instead, against the typical chip's
-    values read the same way and with the criterion also requiring each self-term within 0.03 and the output gain within
-    2% of its target, all four AND pairs met the criterion, with four right answers and 45.9 to 49.6 mV of margin:
-    fast-NMOS slow-PMOS 0 °C 1.71 V as read, fast 85 °C 1.89 V after one correction round, slow 0 °C 1.71 V after one
-    round with the rule of item 6, and slow-NMOS fast-PMOS 50 °C 1.89 V after two. The fits of XOR at fast 85 °C 1.89 V
-    and NOR at slow 0 °C 1.71 V were inside it as read (NOR's H1, its offset word at 0 V and its activation at its
-    limit, was not judged). As read, AND's final words from the rounds above had every weight within 0.012 of its target
-    and the output gain within 0.5%. At fast 85 °C H2's self-term was 0.040 off, and one round brought it back inside
-    the criterion, as the step had predicted. At slow 0 °C H2 was at its limit (the twelfth pair, below). At slow-NMOS
-    fast-PMOS 50 °C H2's self-term was 0.052 off; the first round stepped H2's offset word by the typical curve's slope,
-    about four times flatter than this corner's own, and left H2 at its limit, its state at inputs (0, 0) 10 mV from the
-    typical chip's; the second, with the slope from its own readings at two words, moved the word from 0.7379 to
-    0.7273 V and brought H2 off its limit. The other pairs were not read again: refitted with each reading moved to its
-    settled value, estimated from its drift, their weights move by 0.007 to 0.010, and the typical chip's targets, read
-    settled, by up to 0.007. No answer would have moved by more than 1 mV had it been read later.
-  - One round lost answers: XOR at slow-NMOS fast-PMOS 50 °C 1.89 V gave two right answers after the first
-    correction round (margin −6.2 mV), four after the second (37.3 mV), and met the criterion after the third
-    (item 6).
-  - The twelfth pair, AND at slow 0 °C 1.71 V, was right by 48.2 mV after four correction rounds, with its weights on
-    target, but H2's offset stayed 0.15 units below its target. Its second correction round moved H2's offset word by
-    +19 mV, by the typical curve's slope, about six times flatter than this corner's own: H2's state at inputs (0, 0)
-    fell by 29 mV instead of 5 mV, and its activation stayed at its limit at every reading from then on, where its
-    offset can no longer be told from its self-term; the step then left the word as it was. Read settled, one correction
-    round by the rule of item 6 brought H2's state at inputs (0, 0) to within 3.5 mV of the typical chip's, at which the
-    step had aimed (criterion 5 mV); nothing else moved past the criterion, and the four answers were right with 47.2 mV
-    of margin.
-- *Through the pins* (every word written through `ua[1]`, every reading at the output pins) (†), at fast 85 °C 1.89 V
-  only. AND (both offset words at the supply) was right with 50.6 mV of margin after round 0. After one correction
-  round AND, XOR and NOR were right by 49.8, 14.5 and 26.4 mV, with AND's weights within 0.001 of their targets. NOR
-  converged at the third round (32.9 mV); XOR was still being corrected.
-- *Not yet shown:*
-  - the procedure through the pins on this chip's model (being simulated for AND at two corners), at 1.71 V, or at
-    any condition other than fast 85 °C 1.89 V;
-  - the nulling's correction rounds on settled readings; nulling away from typical, or through the pins;
-  - a correction step on the slope of the round-0b scan.
+  - Round 0b set each enabled offset word at its crossing. NOR used only H2 and kept H1's word at 0 V.
+  - With short waits, every program met the criterion in item 4 at every corner tested except AND at slow 0 °C 1.71 V.
+    AND, XOR and NOR each gave four right answers at all five conditions, using
+    each corner's last-round words and the typical chip's own words at typical. Measured from the test's 50 mV
+    decision level, the smallest margins were about 45.9 mV for AND, 30.7 mV for XOR and 31.5 mV for NOR.
+  - With the free state read 350 us after release and the nudged states read 250 us after each step, 44% of the readings
+    used for the correction-round fits still moved by more than 0.2 mV in 50 us.
+    The 1.0 ms check used typical targets measured with the same wait. In addition to item 4, it required each
+    separately measurable self-term within 0.03 of target and the output gain within 2% of target. AND passed at
+    all four corners. The repeat fits for XOR at fast 85 °C 1.89 V and NOR at slow 0 °C 1.71 V met the fit tolerances.
+    A separate simulation repeated the final XOR fit at slow 0 °C 1.71 V with 1.0 ms waits.
+  - A correction can lose a previously right answer, as happened for XOR at slow-NMOS fast-PMOS 50 °C 1.89 V.
+  - At slow 0 °C 1.71 V, AND gave the right outputs even while saturated H2 missed its fitted target. With
+    1.0 ms waits and the correction in item 6, both H2's free state at inputs (0, 0) and its combined fitted offset
+    and self-term came within 5 mV of their respective typical targets.
+- *Through the pins on this chip's model.* The AND calibration wrote all words and inputs through the pins, using
+  typical pin readings as its targets. For fits and truth tables the channel scan began 1.0 ms after release or each
+  output step. AND met the criterion in item 4 at fast 85 °C 1.89 V and fast-NMOS slow-PMOS 0 °C 1.71 V after one
+  correction round. At typical and both corners H2 stayed saturated, so the test used its combined fitted offset and
+  self-term.
+- *Through the pins on the earlier model* (†), AND gave four right answers at fast 85 °C 1.89 V with both offset
+  words at the supply. NOR met the calibration criterion there. XOR gave four right answers while its worst weight
+  and H2's offset remained outside tolerance.
 
 ### Limits
 
-- **Supply:** 1.71 to 1.89 V (1.80 V ±5%), 0 to 85 °C in simulation. Six-weight mode needs the calibration above at
-  every supply (calibration item 4). Calibrated with the stored values set directly, AND, XOR and NOR were right at both
-  1.71 V corners and both 1.89 V corners tried; calibration through the pins has been simulated only at fast 85 °C
-  1.89 V (†).
+- **Supply.** The simulations covered 1.71 to 1.89 V (1.80 V ±5%) and 0 to 85 °C. Calibrate six-weight mode at its
+  operating supply and temperature (item 4). *What this calibration has been shown to do* gives the conditions tested
+  with the stored values set directly and through the pins.
 - **Supply current** (VDPWR), fixed mode, averaged over a transaction:
   - 1.37 to 1.40 mA at typical 1.80 V (2.5 mW);
   - 1.25 to 1.29 mA at the 1.71 V corners of the full test;
@@ -551,19 +561,24 @@ targets at zero, until the program meets its criterion. A calibration holds for 
 
   The largest instantaneous current in a simulated transaction was 2.3 mA. With the resistance of the chip's wiring
   included, 1.29 to 1.30 mA at typical. Six-weight mode: about 1.37 mA at typical while computing (†).
-- **Amplifier kicks:** kicked in either mode at typical and at two cold 1.71 V corners, no amplifier overshot by more
-  than 30% of the step on its own (at most 26.6% in fixed mode, 22.4% in six-weight mode) or rang past 1 us. Every
-  state came back within 0.009 mV of an unkicked run within 500 us. Near a threshold a kick moved the computation by 1
-  to 2 mV for some tens of microseconds, and the network returned to the same point.
+- **Amplifier kicks.** The paired kick tests covered typical, slow 0 °C 1.71 V and fast-NMOS slow-PMOS 0 °C 1.71 V.
+  Away from a switching threshold the largest amplifier overshoots were 26.6% of the step in fixed mode and 22.4% in
+  six-weight mode. Near a threshold H2's estimated overshoot reached about 28% in six-weight mode. No tested amplifier
+  showed ringing beyond 1 us. Near a threshold the network state moved by about 1 to 2 mV for tens of microseconds.
+  At 500 us every state was within 0.009 mV of the corresponding run without the kick.
 - **Analog pins:** between ground and the supply.
 - **Weights:** 0.25 to 0.75, positive only. The pair rule keeps each neuron's load the same at every weight in this
   range.
 - **Hidden offsets:** H1 and H2 each from 0 to −1.75 units; never positive. Below the full offset each hidden neuron
   has a positive self-term, which the board nulls with the resistor words (calibration item 5).
-- **Inputs:** written through the stores, in simulation, only at 0, 0.5 and one unit (†, at typical and fast 85 °C
-  1.89 V; 0 and one unit also at slow-NMOS fast-PMOS 50 °C 1.89 V). Inputs of 1.33 and 2 units were simulated only with
-  the inputs set directly. The same store and buffer circuit, simulated outside this chip with a third of this chip's
-  load, covered −1.75 to +2.25 units around REF (+2.0 at fast-NMOS slow-PMOS, 0 °C, 1.71 V).
+- **Inputs.** The AND pin calibration wrote the input stores at typical, fast 85 °C 1.89 V and fast-NMOS slow-PMOS
+  0 °C 1.71 V. The grid targeted 0, 50 and 100 mV above REF. Its 100 mV target is about 0.952 units at 1.89 V and
+  1.053 units at 1.71 V. Earlier pin tests (†) used levels of 0, 0.5 and one nominal unit at typical and fast
+  85 °C 1.89 V, and 0 and one at slow-NMOS fast-PMOS 50 °C 1.89 V. Two XOR programs (†) used directly driven inputs.
+  Their high levels were 133.3 and 200 mV above REF at each supply tested. In network units the pair was about
+  1.404 and 2.105 at 1.71 V, 1.33 and 2 at 1.80 V, and 1.270 and 1.905 at 1.89 V.
+  In simulations outside this chip, the same store and buffer circuit drove a third of this chip's load and
+  covered −1.75 to +2.25 units around REF (+2.0 at fast-NMOS slow-PMOS 0 °C 1.71 V).
 - **A program can have two stable states.** The network may settle in either, depending on which neuron moves first
   after the release.
   - An AND program learned at typical with H1's offset kept above −0.75 units (input weights about 0.57) is right in the
@@ -593,36 +608,31 @@ targets at zero, until the program meets its criterion. A calibration holds for 
   bridges to H2 at typical, whose +0.69 to +0.75 mV is uncertain by about its own size because they drift by themselves
   at −0.08 mV/ms. The rewrite at every update clears this, so it does not accumulate; without the rewrite the Z weights
   would rise at that rate, by about 0.013 over 30 updates.
-- **What has been simulated in six-weight mode** (besides the calibration above):
-  - *Learning with the chip in the loop*, at typical, with the stored values set directly and the readings taken inside
-    the chip. In these runs each input started from RESET, the free state was read 350 us after the release and each
-    nudged state 250 us after its step, and the minus nudge followed the plus nudge directly, with no return between
-    them and no check of the returns; the nudge was 0.5 units for the AND run and 0.035 units for the runs marked †:
-    - AND started from weights of about 0.5 and offsets of −0.60 (H1) and −0.87 (H2), with the 0.5-unit nudge. It had
-      four right answers at its fourth update (the ideal network predicted the sixteenth). The run ended at update 33.
-      Of the 29 updates after the fourth, 23 gave four right answers, with 5.9 to 24.1 mV RMS error. At updates 5, 9,
-      14, 17 and 24 one or both single-input answers (01, 10) jumped to the high level (93 to 112 mV); at update 6
-      the answer to 11 fell short (43.9 mV). At update 33 the error was 5.9 mV RMS, with the worst input 11.4 mV off,
-      and still falling: the low error (5 mV RMS, every input within 10 mV) was not reached. The onset of the jumps
-      belongs to the self-term at H1's low offset together with the Z–H1 feedback: the ideal network with the measured
-      self-terms reproduces it, and then settles by update 10. The later relapses, which the model does not show, have
-      no established cause. The run's readings had not settled (*One nudge*): the plus readings of inputs 01 and 10,
-      taken 250 us after the step, were still switching at 25 of the 29 updates from update 4 on, the five that led
-      into the jumps among them. With the self-terms nulled the model learns more slowly and relapses less (four
-      right first at about update 16, wrong only at the next two, low error at about 30).
-    - XOR, from a wrong program, had four right answers from the first update and levelled at 8.6 mV RMS with the two
-      offsets learned, 21.3 mV with them held (†, 0.035-unit nudge).
-    - NOR stalled at 33 mV RMS without nulling (†, 0.035-unit nudge). With the self-terms nulled (†) it had four right
-      answers first at update 3 and the low error first at update 9 (2.3 mV RMS); the prediction written beforehand
-      had them at updates 3 and 8.
-  - *Learning in the sequence of One nudge*, at typical, with the stored values set directly and the readings taken
-    inside the chip, every reading 1.0 ms after the release or the step before it: XOR, with the 0.5-unit nudge, from a
-    program with two right answers whose words came from one correction round with the self-terms' targets at zero
-    (item 5), started from the table's words for the standard load, and with the weights and self-terms refitted and
-    corrected every fourth update, had four right answers first at its sixth update and at the two after it; the
-    prediction written before the run said the ninth (window 6 to 12).
-  - A few learning updates of AND through the pins, at typical only (†).
-  - Nothing of the learning away from typical.
+- **Learning in six-weight mode.** All runs with successive weight updates used typical conditions.
+  - *Short waits.* In the transistor-level simulations each input started from RESET. The free reading came 350 us
+    after release and the nudged readings 250 us after each step. The minus nudge followed the plus nudge without a
+    return check.
+    AND and XOR both gave correct truth tables and later lost decisions. Some readings were still moving, including
+    AND readings before the later errors and XOR readings on the final update.
+    On the earlier model (†), learning the hidden offsets reduced XOR's error. NOR reached low error with its
+    self-terms nulled and stalled with them left in place.
+  - *Learning through the pins* (†). In the AND simulations the bias returned to its free value after each nudge.
+    Even with a 1.0 ms wait before the scan, F1 was still moving during a minus-nudge reading. The controller for
+    these pins (†, fixed offsets) steps toward the target first and waits 1.5 ms after the nudge before starting its
+    scan.
+  - With 1.0 ms waits, an earlier learning rule required both returns to pass. AND repeatedly excluded its only
+    high target, and XOR's analog outputs continued to swing even after it gave four right answers.
+  - *Learning with the procedure of One nudge.* On this chip's transistor-level model, AND and XOR used the
+    0.5-unit nudge and a learning rate of 0.6, counting each nudge separately. The simulator set the words directly,
+    applied ideal inputs, varied their amplitude during training and read the internal voltages 1.0 ms after release
+    and after each step. It set offset words from the typical curve. AND kept its starting resistor-word correction
+    throughout. XOR refitted its weights and self-terms at update 4.
+    - **AND gave all four right answers at nominal amplitude from update 5 through the final update, 7.** Its RMS
+      error was still falling at the end of the run (7.55 mV).
+    - XOR gave four right answers at nominal amplitude even though the plus nudge for input 00 failed its return
+      check. Both functions finished above the low-error limits in *One nudge*.
+  - The simulations with directly set words assumed matched cells, omitted pin-write errors and bypassed the output
+    buffers and ADC. *Holding the stored values* describes the separate pin test of drift through one update.
 
 ## If the programmable part does not work
 
@@ -679,7 +689,9 @@ learning need:
   through the pins assumed 16 bits over 2.048 V at 1 MS/s each, †);
 - logic that drives all sixteen digital inputs with microsecond timing.
 
-At 3.3 V one ideal code of the RP2350's 12-bit ADC is 0.806 mV, with up to 500 kS/s total across channels. Include the
-actual board and instrument impedances. The ETR demo board adds 10 MOhm from each analog header to ground.
+At 3.3 V one ideal code of the RP2350's 12-bit ADC is 0.806 mV. It shares a maximum of 500 kS/s across channels.
+Sixteen sequential pairs therefore take at least 64 us. The same number of pairs on simultaneous channels at
+500 kS/s each takes 32 us, within the 50 us movement interval in *One nudge*. Include the actual board and instrument
+impedances. The ETR demo board adds 10 MOhm from each analog header to ground.
 [RP2350 ADC](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html#hardware_adc)
 · [ETR board analog headers](https://tinytapeout.com/guides/get-started-demoboard-etr/).
