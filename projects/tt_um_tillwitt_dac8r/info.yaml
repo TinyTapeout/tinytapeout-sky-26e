@@ -1,0 +1,67 @@
+# Tiny Tapeout project information
+project:
+  title:        "8-bit current-steering DAC with on-chip reference, serial trim/code interface and temperature sensor (revision 2)"
+  author:       "Till Witt"
+  discord:      ""
+  description:  "8-bit NMOS DAC (0.5 mA full scale, cascoded sources, differential current steering out/dump) with an on-chip 31.4 uA reference current source (4-bit trim, switchable, external override through IREF), 63 per-bit trim bits for calibration at the operating temperature and supply, an on-chip temperature sensor (about 0.4 mV/K) and a serial interface (68-bit configuration chain, 8-bit code chain, read-back); guard rings and secondary ESD diodes; six analog pins: IOUT, IREF, TSENS and three pins of two bare test transistors (NMOS 2/0.5 unit cell, PMOS 4/5 mirror finger) for checking the transistor models against measurements"
+  language:     "Analog"
+  clock_hz:     20000000
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "2x2"          # Valid values for analog projects: 1x2, 2x2
+
+  # How many analog pins does your project use?
+  analog_pins: 6        # Valid values: 0 to 6
+  uses_vapwr: false     # Set to true if your project uses second analog power supply (VAPWR) in addition to 1.8V (VDPWR)
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_tillwitt_dac8r"
+
+  # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
+  source_files:
+    - "project.v"
+    - "dac8r_ctrl.nl.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: ""
+  ui[1]: ""
+  ui[2]: ""
+  ui[3]: ""
+  ui[4]: ""
+  ui[5]: ""
+  ui[6]: ""
+  ui[7]: ""
+
+  # Outputs
+  uo[0]: ""
+  uo[1]: ""
+  uo[2]: ""
+  uo[3]: ""
+  uo[4]: ""
+  uo[5]: ""
+  uo[6]: ""
+  uo[7]: ""
+
+  # Bidirectional pins
+  uio[0]: "CLK (serial clock, input, up to 20 MHz; the rising edge shifts SDI into the shift register)"
+  uio[1]: "SDI (serial data in, MSB first, input; change it on the falling edge of CLK)"
+  uio[2]: "LOAD (1 at a rising CLK edge copies the selected chain into its output register, input)"
+  uio[3]: "RST_N (asynchronous reset, active low, input: code 0, trim word = mid-word 0x880a0280cc9e3c, RTRIM = 1000, REN = 1)"
+  uio[4]: "SEL (chain select, input: 0 = configuration chain 68 bit (trim word, RTRIM, REN), 1 = code chain 8 bit)"
+  uio[5]: "SDO (serial data out, output: MSB of the selected chain for read-back; sample it on the falling edge of CLK)"
+  uio[6]: ""
+  uio[7]: ""
+
+  # Analog pins - make sure to also set "analog_pins" above, else the pins won't be connected
+  ua[0]: "IOUT (DAC output current sink, 0 to 0.5 mA; the complementary current flows internally into VDPWR; keep the pin between 0.65 V and 1.8 V)"
+  ua[1]: "IREF (bias node of the DAC: monitor of the on-chip 31.4 uA reference, about 1.18 V; with REN = 0 feed 31.4 uA = 16 LSB from an external source; an external capacitor here lowers the output noise)"
+  ua[2]: "TSENS (on-chip temperature sensor output: diode voltage of a replica of the bias stack carrying 16 LSB, about 0.55 V at 300 K, about 0.4 mV/K; high-impedance voltmeter, 1 MOhm costs 0.4 mV)"
+  ua[3]: "TGATE (common gate of the two test transistors, 0 to 1.8 V, no DC current)"
+  ua[4]: "TDN (drain of the NMOS test transistor sky130_fd_pr__nfet_01v8_lvt 2/0.5, the DAC unit cell; source on VGND; current sink, 0 to 1.8 V, about 0.56 mA at Vgs = Vds = 1.8 V)"
+  ua[5]: "TDP (drain of the PMOS test transistor sky130_fd_pr__pfet_01v8_lvt 4/5, the reference mirror finger; source on VDPWR; current source, 0 to 1.8 V, about 45 uA at Vsg = Vsd = 1.8 V)"
+
+# Do not change!
+yaml_version: 6
