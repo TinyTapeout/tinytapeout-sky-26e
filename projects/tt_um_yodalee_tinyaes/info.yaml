@@ -40,22 +40,22 @@ pinout:
   # Inputs
   ui[0]: "input valid"
   ui[1]: "output ready"
-  ui[2]: ""
-  ui[3]: ""
+  ui[2]: "Unused"
+  ui[3]: "Unused"
   ui[4]: "security level[0]"
   ui[5]: "security level[1]"
-  ui[6]: "is_decrypt, encryption/decryption select"
-  ui[7]: ""
+  ui[6]: "is_first_round_key select used in decryption"
+  ui[7]: "is_decrypt, encryption/decryption select"
 
   # Outputs
   uo[0]: "input ready"
   uo[1]: "output valid"
-  uo[2]: "status"
-  uo[3]: "status"
-  uo[4]: "status"
-  uo[5]: "status"
-  uo[6]: "status"
-  uo[7]: "status"
+  uo[2]: "Unused"
+  uo[3]: "State Machine enum value"
+  uo[4]: "State Machine enum value"
+  uo[5]: "State Machine enum value"
+  uo[6]: "State Machine enum value"
+  uo[7]: "State Machine enum value"
 
   # Bidirectional pins
   uio[0]: "data input output"
