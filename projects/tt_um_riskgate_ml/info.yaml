@@ -1,0 +1,57 @@
+# Tiny Tapeout project information
+project:
+  title:        "RiskGate-ML: Pre-Trade Risk Gateway with On-Chip ML"
+  author:       "Mert Rassa"
+  discord:      ""                  # Your discord username (optional)
+  description:  "Blocks dangerous trading orders in hardware: 5 hard risk rules plus a decision-tree anomaly detector trained in Python"
+  language:     "Verilog"
+  clock_hz:     25000000
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username.
+  # If you rename it, also rename it in src/project.v, test/tb.v and demo/riskgate_demo.py.
+  top_module:  "tt_um_riskgate_ml"
+
+  # List your project's source files here.
+  # Source files must be in ./src and you must list each source file separately, one per line.
+  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
+  source_files:
+    - "project.v"
+    - "rg_tree.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+pinout:
+  # Inputs
+  ui[0]: "DATA0"
+  ui[1]: "DATA1"
+  ui[2]: "DATA2"
+  ui[3]: "DATA3"
+  ui[4]: "DATA4"
+  ui[5]: "DATA5"
+  ui[6]: "DATA6"
+  ui[7]: "DATA7"
+
+  # Outputs
+  uo[0]: "RDATA0 / SEG_A"
+  uo[1]: "RDATA1 / SEG_B"
+  uo[2]: "RDATA2 / SEG_C"
+  uo[3]: "RDATA3 / SEG_D"
+  uo[4]: "RDATA4 / SEG_E"
+  uo[5]: "RDATA5 / SEG_F"
+  uo[6]: "RDATA6 / SEG_G"
+  uo[7]: "RDATA7 / SEG_DP (ML flag)"
+
+  # Bidirectional pins
+  uio[0]: "ADDR0 (in)"
+  uio[1]: "ADDR1 (in)"
+  uio[2]: "ADDR2 (in)"
+  uio[3]: "ADDR3 (in)"
+  uio[4]: "WR strobe (in)"
+  uio[5]: "KILL switch (in)"
+  uio[6]: "ACCEPT LED (out)"
+  uio[7]: "REJECT LED (out)"
+
+# Do not change!
+yaml_version: 6
