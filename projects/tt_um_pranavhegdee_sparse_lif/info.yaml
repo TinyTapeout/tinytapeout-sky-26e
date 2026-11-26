@@ -1,0 +1,58 @@
+# Tiny Tapeout project information
+project:
+  title:        "Sparse Event-Driven LIF Neurons"
+  author:       "Pranav B Hegde, R Sunidhi, Rakshaa C H, Satvik B C, Eleena Mohapatra"
+  discord:      ""
+  description:  "4 leaky integrate-and-fire neurons, 8 spike inputs, one shared adder. Sparse mode skips silent inputs (9+4S cycles) vs dense mode (41 cycles)."
+  language:     "Verilog"
+  clock_hz:     10000000      # 10 MHz
+
+  # 1x1 is the target. If the OpenLane flow reports the design does not fit
+  # (utilisation / placement errors), change to "1x2" (or shrink weights to 2 bits).
+  tiles: "1x1"
+
+  top_module:  "tt_um_pranavhegdee_sparse_lif"
+
+  source_files:
+    - "project.v"
+    - "input_sync.v"
+    - "config_store.v"
+    - "weight_mux.v"
+    - "prio_encoder.v"
+    - "spike_latch.v"
+    - "membrane_file.v"
+    - "neuron_alu.v"
+    - "threshold_cmp.v"
+    - "control_fsm.v"
+    - "output_reg.v"
+    - "diag_counters.v"
+
+pinout:
+  ui[0]: "spike in 0"
+  ui[1]: "spike in 1"
+  ui[2]: "spike in 2"
+  ui[3]: "spike in 3"
+  ui[4]: "spike in 4"
+  ui[5]: "spike in 5"
+  ui[6]: "spike in 6"
+  ui[7]: "spike in 7"
+
+  uo[0]: "neuron 0 fired"
+  uo[1]: "neuron 1 fired"
+  uo[2]: "neuron 2 fired"
+  uo[3]: "neuron 3 fired"
+  uo[4]: "diag[0] (RD_SEL)"
+  uo[5]: "diag[1]"
+  uo[6]: "diag[2]"
+  uo[7]: "diag[3]"
+
+  uio[0]: "CFG_EN (in)"
+  uio[1]: "CFG_CLK (in)"
+  uio[2]: "CFG_DATA (in)"
+  uio[3]: "STEP (in)"
+  uio[4]: "DENSE (in)"
+  uio[5]: "RD_SEL[0] (in)"
+  uio[6]: "RD_SEL[1] (in)"
+  uio[7]: "BUSY (out)"
+
+yaml_version: 6
