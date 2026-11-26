@@ -1,0 +1,48 @@
+# Tiny Tapeout project information (Wokwi project)
+project:
+  wokwi_id: "480337522217648129" # Set this to the ID of your Wokwi project (the number from the project's URL)
+  title: "TBMPPT" # Project title
+  author: "Pedro Toledo" # Your name
+  discord: "toles2103" # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description: "Digital controller of MPPT based energy harvester" # One line description of what your project does
+  language: "Wokwi" # other examples include SystemVerilog, Amaranth, VHDL, etc
+  clock_hz: 1 # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1" # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "Set"
+  ui[1]: "Reset"
+  ui[2]: ""
+  ui[3]: ""
+  ui[4]: ""
+  ui[5]: ""
+  ui[6]: ""
+  ui[7]: "Select"
+
+  # Outputs
+  uo[0]: "State_0"
+  uo[1]: "State_1"
+  uo[2]: "State_2"
+  uo[3]: "OVd"
+  uo[4]: "Ov"
+  uo[5]: "Reset_D_RV"
+  uo[6]: "UpDown"
+  uo[7]: "SW"
+
+  # Bidirectional pins
+  uio[0]: "SC_0"
+  uio[1]: "SC_1"
+  uio[2]: "DCC"
+  uio[3]: "MUX_0"
+  uio[4]: "MUX_1"
+  uio[5]: "MUX_2"
+  uio[6]: "MUX_3"
+  uio[7]: "MUX_4"
+
+# Do not change!
+yaml_version: 6
