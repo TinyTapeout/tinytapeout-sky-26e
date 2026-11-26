@@ -1,0 +1,2966 @@
+{
+  "version": 1,
+  "author": "ALU 3 bits (base: Uri Shaked template)",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-dip-switch-8",
+      "id": "sw1",
+      "top": -176.5,
+      "left": -94.5,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-clock-generator",
+      "id": "clock1",
+      "top": -355.2,
+      "left": -115.2,
+      "attrs": {
+        "frequency": "10000"
+      }
+    },
+    {
+      "type": "wokwi-gnd",
+      "id": "pwr2",
+      "top": -76.8,
+      "left": 3545.8,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-vcc",
+      "id": "pwr1",
+      "top": -229.64,
+      "left": -115.2,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-7segment",
+      "id": "sevseg1",
+      "top": -183.24,
+      "left": 3532.2799999999997,
+      "attrs": {
+        "common": "cathode"
+      }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "sw2",
+      "top": -370,
+      "left": -35.3,
+      "attrs": {
+        "value": "1"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -349,
+      "left": 19.2,
+      "attrs": {
+        "color": "grey",
+        "label": "Step",
+        "bounce": "0",
+        "key": "s"
+      }
+    },
+    {
+      "type": "wokwi-vcc",
+      "id": "pwr3",
+      "top": -373.64,
+      "left": 105.6,
+      "attrs": {}
+    },
+    {
+      "type": "board-tt-block-input",
+      "id": "ttin",
+      "top": -228.13,
+      "left": 4.8,
+      "attrs": {
+        "verilogRole": "input"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": -301,
+      "left": -134.4,
+      "attrs": {
+        "color": "grey",
+        "label": "RESET",
+        "bounce": "0",
+        "key": "r"
+      }
+    },
+    {
+      "type": "wokwi-gnd",
+      "id": "gnd1",
+      "top": -259.2,
+      "left": -163.8,
+      "attrs": {}
+    },
+    {
+      "type": "board-tt-block-output",
+      "id": "ttout",
+      "top": -208.93,
+      "left": 3280,
+      "attrs": {
+        "verilogRole": "output"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -293.65,
+      "left": -211.2,
+      "attrs": {
+        "value": "1000"
+      }
+    },
+    {
+      "type": "wokwi-vcc",
+      "id": "pwr5",
+      "top": -325.64,
+      "left": -230.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text1",
+      "top": -96,
+      "left": -144,
+      "attrs": {
+        "text": "2. Change input values"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text2",
+      "top": -288,
+      "left": 38.4,
+      "attrs": {
+        "text": "3. Tap to advance clock"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text3",
+      "top": -432,
+      "left": -230.4,
+      "attrs": {
+        "text": "1. Simulate with the green \u25b6 button"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text5",
+      "top": -268.8,
+      "left": 3354.4,
+      "attrs": {
+        "text": "4. Watch the outputs changing"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "help",
+      "top": -520,
+      "left": -230,
+      "attrs": {
+        "text": "ALU 3 bits\nSW1-3 = A   SW4-6 = B   SW7-8 = operacao\n00: A+B   01: A-B (ponto = negativo)   10: A AND B   11: A OR B\nResultado em hexadecimal no display"
+      }
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor1",
+      "top": -150,
+      "left": 250,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and1",
+      "top": -150,
+      "left": 340,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor2",
+      "top": -150,
+      "left": 430,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor3",
+      "top": -150,
+      "left": 520,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and2",
+      "top": -150,
+      "left": 610,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and3",
+      "top": -150,
+      "left": 700,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or1",
+      "top": -80,
+      "left": 250,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor4",
+      "top": -80,
+      "left": 340,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor5",
+      "top": -80,
+      "left": 430,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and4",
+      "top": -80,
+      "left": 520,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and5",
+      "top": -80,
+      "left": 610,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or2",
+      "top": -80,
+      "left": 700,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not1",
+      "top": -150,
+      "left": 910,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not2",
+      "top": -150,
+      "left": 1000,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not3",
+      "top": -150,
+      "left": 1090,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor6",
+      "top": -150,
+      "left": 1180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not4",
+      "top": -150,
+      "left": 1270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or3",
+      "top": -150,
+      "left": 1360,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor7",
+      "top": -80,
+      "left": 910,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor8",
+      "top": -80,
+      "left": 1000,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and6",
+      "top": -80,
+      "left": 1090,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and7",
+      "top": -80,
+      "left": 1180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or4",
+      "top": -80,
+      "left": 1270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor9",
+      "top": -80,
+      "left": 1360,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor10",
+      "top": -10,
+      "left": 910,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and8",
+      "top": -10,
+      "left": 1000,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and9",
+      "top": -10,
+      "left": 1090,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or5",
+      "top": -10,
+      "left": 1180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not5",
+      "top": -10,
+      "left": 1270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not6",
+      "top": -10,
+      "left": 1360,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not7",
+      "top": 60,
+      "left": 910,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor11",
+      "top": 60,
+      "left": 1000,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not8",
+      "top": 60,
+      "left": 1090,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or6",
+      "top": 60,
+      "left": 1180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor12",
+      "top": 60,
+      "left": 1270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor13",
+      "top": 60,
+      "left": 1360,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and10",
+      "top": 130,
+      "left": 910,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and11",
+      "top": 130,
+      "left": 1000,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or7",
+      "top": 130,
+      "left": 1090,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor14",
+      "top": 130,
+      "left": 1180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-xor-2",
+      "id": "xor15",
+      "top": 130,
+      "left": 1270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and12",
+      "top": 130,
+      "left": 1360,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and13",
+      "top": 200,
+      "left": 910,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or8",
+      "top": 200,
+      "left": 1000,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not9",
+      "top": 200,
+      "left": 1090,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mux-2",
+      "id": "mux1",
+      "top": 200,
+      "left": 1180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mux-2",
+      "id": "mux2",
+      "top": 200,
+      "left": 1270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mux-2",
+      "id": "mux3",
+      "top": 200,
+      "left": 1360,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or9",
+      "top": -150,
+      "left": 1570,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or10",
+      "top": -150,
+      "left": 1660,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or11",
+      "top": -150,
+      "left": 1750,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mux-2",
+      "id": "mux4",
+      "top": -150,
+      "left": 1960,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mux-2",
+      "id": "mux5",
+      "top": -150,
+      "left": 2050,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mux-2",
+      "id": "mux6",
+      "top": -150,
+      "left": 2140,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mux-2",
+      "id": "mux7",
+      "top": -150,
+      "left": 2230,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mux-2",
+      "id": "mux8",
+      "top": -150,
+      "left": 2320,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mux-2",
+      "id": "mux9",
+      "top": -150,
+      "left": 2410,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mux-2",
+      "id": "mux10",
+      "top": -80,
+      "left": 1960,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mux-2",
+      "id": "mux11",
+      "top": -80,
+      "left": 2050,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-mux-2",
+      "id": "mux12",
+      "top": -80,
+      "left": 2140,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not10",
+      "top": -80,
+      "left": 2230,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not11",
+      "top": -80,
+      "left": 2320,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and14",
+      "top": -80,
+      "left": 2410,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and15",
+      "top": -10,
+      "left": 1960,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and16",
+      "top": -10,
+      "left": 2050,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and17",
+      "top": -10,
+      "left": 2140,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not12",
+      "top": -150,
+      "left": 2620,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not13",
+      "top": -150,
+      "left": 2710,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not14",
+      "top": -150,
+      "left": 2800,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-not",
+      "id": "not15",
+      "top": -150,
+      "left": 2890,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and18",
+      "top": -150,
+      "left": 2980,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and19",
+      "top": -150,
+      "left": 3070,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and20",
+      "top": -80,
+      "left": 2620,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and21",
+      "top": -80,
+      "left": 2710,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and22",
+      "top": -80,
+      "left": 2800,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and23",
+      "top": -80,
+      "left": 2890,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and24",
+      "top": -80,
+      "left": 2980,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and25",
+      "top": -80,
+      "left": 3070,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or12",
+      "top": -10,
+      "left": 2620,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or13",
+      "top": -10,
+      "left": 2710,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or14",
+      "top": -10,
+      "left": 2800,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or15",
+      "top": -10,
+      "left": 2890,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or16",
+      "top": -10,
+      "left": 2980,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and26",
+      "top": -10,
+      "left": 3070,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and27",
+      "top": 60,
+      "left": 2620,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and28",
+      "top": 60,
+      "left": 2710,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and29",
+      "top": 60,
+      "left": 2800,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and30",
+      "top": 60,
+      "left": 2890,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and31",
+      "top": 60,
+      "left": 2980,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or17",
+      "top": 60,
+      "left": 3070,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or18",
+      "top": 130,
+      "left": 2620,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or19",
+      "top": 130,
+      "left": 2710,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or20",
+      "top": 130,
+      "left": 2800,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and32",
+      "top": 130,
+      "left": 2890,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and33",
+      "top": 130,
+      "left": 2980,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and34",
+      "top": 130,
+      "left": 3070,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or21",
+      "top": 200,
+      "left": 2620,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or22",
+      "top": 200,
+      "left": 2710,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or23",
+      "top": 200,
+      "left": 2800,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or24",
+      "top": 200,
+      "left": 2890,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and35",
+      "top": 200,
+      "left": 2980,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and36",
+      "top": 200,
+      "left": 3070,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and37",
+      "top": 270,
+      "left": 2620,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and38",
+      "top": 270,
+      "left": 2710,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and39",
+      "top": 270,
+      "left": 2800,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and40",
+      "top": 270,
+      "left": 2890,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or25",
+      "top": 270,
+      "left": 2980,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or26",
+      "top": 270,
+      "left": 3070,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or27",
+      "top": 340,
+      "left": 2620,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or28",
+      "top": 340,
+      "left": 2710,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and41",
+      "top": 340,
+      "left": 2800,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and42",
+      "top": 340,
+      "left": 2890,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or29",
+      "top": 340,
+      "left": 2980,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or30",
+      "top": 340,
+      "left": 3070,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or31",
+      "top": 410,
+      "left": 2620,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and43",
+      "top": 410,
+      "left": 2710,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and44",
+      "top": 410,
+      "left": 2800,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and45",
+      "top": 410,
+      "left": 2890,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or32",
+      "top": 410,
+      "left": 2980,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or33",
+      "top": 410,
+      "left": 3070,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or34",
+      "top": 480,
+      "left": 2620,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or35",
+      "top": 480,
+      "left": 2710,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and46",
+      "top": 480,
+      "left": 2800,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-and-2",
+      "id": "and47",
+      "top": 480,
+      "left": 2890,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or36",
+      "top": 480,
+      "left": 2980,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or37",
+      "top": 480,
+      "left": 3070,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or38",
+      "top": 550,
+      "left": 2620,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gate-or-2",
+      "id": "or39",
+      "top": 550,
+      "left": 2710,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_add",
+      "top": -200,
+      "left": 250,
+      "attrs": {
+        "text": "SOMA A+B"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_sub",
+      "top": -200,
+      "left": 910,
+      "attrs": {
+        "text": "SUBTRACAO |A-B| (e sinal)"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_logic",
+      "top": -200,
+      "left": 1570,
+      "attrs": {
+        "text": "A AND B / A OR B"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_sel",
+      "top": -200,
+      "left": 1960,
+      "attrs": {
+        "text": "ESCOLHA DA OPERACAO (mux)"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "lbl_seg",
+      "top": -200,
+      "left": 2620,
+      "attrs": {
+        "text": "DESCODIFICADOR 7 SEGMENTOS"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "pwr1:VCC",
+      "sw1:8a",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "pwr1:VCC",
+      "sw1:7a",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "pwr1:VCC",
+      "sw1:6a",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "pwr1:VCC",
+      "sw1:5a",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "pwr1:VCC",
+      "sw1:4a",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "pwr1:VCC",
+      "sw1:1a",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "pwr1:VCC",
+      "sw1:2a",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "pwr1:VCC",
+      "sw1:3a",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "ttout:EXTOUT0",
+      "sevseg1:A",
+      "green",
+      [
+        "h21.01",
+        "v-28.8",
+        "h96"
+      ]
+    ],
+    [
+      "ttout:EXTOUT1",
+      "sevseg1:B",
+      "green",
+      [
+        "h11.41",
+        "v-48",
+        "h122.99",
+        "v41.34"
+      ]
+    ],
+    [
+      "ttout:EXTOUT2",
+      "sevseg1:C",
+      "green",
+      [
+        "h30.61",
+        "v-38.4",
+        "h115.2",
+        "v105.6",
+        "h-28.8"
+      ]
+    ],
+    [
+      "ttout:EXTOUT3",
+      "sevseg1:D",
+      "green",
+      [
+        "h57.6",
+        "v57.6",
+        "h48"
+      ]
+    ],
+    [
+      "sevseg1:E",
+      "ttout:EXTOUT4",
+      "green",
+      [
+        "v9.6",
+        "h-48",
+        "v-38.4"
+      ]
+    ],
+    [
+      "ttout:EXTOUT5",
+      "sevseg1:F",
+      "green",
+      [
+        "h69.01",
+        "v-57.6",
+        "h28.8"
+      ]
+    ],
+    [
+      "ttout:EXTOUT6",
+      "sevseg1:G",
+      "green",
+      [
+        "h78.61",
+        "v-57.6"
+      ]
+    ],
+    [
+      "ttout:EXTOUT7",
+      "sevseg1:DP",
+      "green",
+      [
+        "v28.8",
+        "h136.21"
+      ]
+    ],
+    [
+      "pwr2:GND",
+      "sevseg1:COM.1",
+      "black",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "sw2:1",
+      "clock1:CLK",
+      "blue",
+      [
+        "h-19.2",
+        "v-57.6"
+      ]
+    ],
+    [
+      "sw1:1b",
+      "ttin:EXTIN0",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "sw1:2b",
+      "ttin:EXTIN1",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "ttin:EXTIN2",
+      "sw1:3b",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "ttin:EXTIN3",
+      "sw1:4b",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "sw1:5b",
+      "ttin:EXTIN4",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "ttin:EXTIN5",
+      "sw1:6b",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "sw1:7b",
+      "ttin:EXTIN6",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "sw1:8b",
+      "ttin:EXTIN7",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "sw2:2",
+      "ttin:EXTCLK",
+      "blue",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "btn1:1.l",
+      "sw2:3",
+      "blue",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "pwr3:VCC",
+      "btn1:2.r",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "btn2:2.l",
+      "gnd1:GND",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "ttin:EXTRST_N",
+      "btn2:1.r",
+      "orange",
+      [
+        "h-38.4",
+        "v-96"
+      ]
+    ],
+    [
+      "btn2:1.l",
+      "r2:2",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "pwr5:VCC",
+      "r2:1",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "ttin:IN0",
+      "xor1:A",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN3",
+      "xor1:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN0",
+      "and1:A",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN3",
+      "and1:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN1",
+      "xor2:A",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN4",
+      "xor2:B",
+      "green",
+      []
+    ],
+    [
+      "xor2:OUT",
+      "xor3:A",
+      "green",
+      []
+    ],
+    [
+      "and1:OUT",
+      "xor3:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN1",
+      "and2:A",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN4",
+      "and2:B",
+      "green",
+      []
+    ],
+    [
+      "xor2:OUT",
+      "and3:A",
+      "green",
+      []
+    ],
+    [
+      "and1:OUT",
+      "and3:B",
+      "green",
+      []
+    ],
+    [
+      "and2:OUT",
+      "or1:A",
+      "green",
+      []
+    ],
+    [
+      "and3:OUT",
+      "or1:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN2",
+      "xor4:A",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN5",
+      "xor4:B",
+      "green",
+      []
+    ],
+    [
+      "xor4:OUT",
+      "xor5:A",
+      "green",
+      []
+    ],
+    [
+      "or1:OUT",
+      "xor5:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN2",
+      "and4:A",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN5",
+      "and4:B",
+      "green",
+      []
+    ],
+    [
+      "xor4:OUT",
+      "and5:A",
+      "green",
+      []
+    ],
+    [
+      "or1:OUT",
+      "and5:B",
+      "green",
+      []
+    ],
+    [
+      "and4:OUT",
+      "or2:A",
+      "green",
+      []
+    ],
+    [
+      "and5:OUT",
+      "or2:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN3",
+      "not1:IN",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN4",
+      "not2:IN",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN5",
+      "not3:IN",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN0",
+      "xor6:A",
+      "green",
+      []
+    ],
+    [
+      "not1:OUT",
+      "xor6:B",
+      "green",
+      []
+    ],
+    [
+      "xor6:OUT",
+      "not4:IN",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN0",
+      "or3:A",
+      "green",
+      []
+    ],
+    [
+      "not1:OUT",
+      "or3:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN1",
+      "xor7:A",
+      "green",
+      []
+    ],
+    [
+      "not2:OUT",
+      "xor7:B",
+      "green",
+      []
+    ],
+    [
+      "xor7:OUT",
+      "xor8:A",
+      "green",
+      []
+    ],
+    [
+      "or3:OUT",
+      "xor8:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN1",
+      "and6:A",
+      "green",
+      []
+    ],
+    [
+      "not2:OUT",
+      "and6:B",
+      "green",
+      []
+    ],
+    [
+      "xor7:OUT",
+      "and7:A",
+      "green",
+      []
+    ],
+    [
+      "or3:OUT",
+      "and7:B",
+      "green",
+      []
+    ],
+    [
+      "and6:OUT",
+      "or4:A",
+      "green",
+      []
+    ],
+    [
+      "and7:OUT",
+      "or4:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN2",
+      "xor9:A",
+      "green",
+      []
+    ],
+    [
+      "not3:OUT",
+      "xor9:B",
+      "green",
+      []
+    ],
+    [
+      "xor9:OUT",
+      "xor10:A",
+      "green",
+      []
+    ],
+    [
+      "or4:OUT",
+      "xor10:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN2",
+      "and8:A",
+      "green",
+      []
+    ],
+    [
+      "not3:OUT",
+      "and8:B",
+      "green",
+      []
+    ],
+    [
+      "xor9:OUT",
+      "and9:A",
+      "green",
+      []
+    ],
+    [
+      "or4:OUT",
+      "and9:B",
+      "green",
+      []
+    ],
+    [
+      "and8:OUT",
+      "or5:A",
+      "green",
+      []
+    ],
+    [
+      "and9:OUT",
+      "or5:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN0",
+      "not5:IN",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN1",
+      "not6:IN",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN2",
+      "not7:IN",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN3",
+      "xor11:A",
+      "green",
+      []
+    ],
+    [
+      "not5:OUT",
+      "xor11:B",
+      "green",
+      []
+    ],
+    [
+      "xor11:OUT",
+      "not8:IN",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN3",
+      "or6:A",
+      "green",
+      []
+    ],
+    [
+      "not5:OUT",
+      "or6:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN4",
+      "xor12:A",
+      "green",
+      []
+    ],
+    [
+      "not6:OUT",
+      "xor12:B",
+      "green",
+      []
+    ],
+    [
+      "xor12:OUT",
+      "xor13:A",
+      "green",
+      []
+    ],
+    [
+      "or6:OUT",
+      "xor13:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN4",
+      "and10:A",
+      "green",
+      []
+    ],
+    [
+      "not6:OUT",
+      "and10:B",
+      "green",
+      []
+    ],
+    [
+      "xor12:OUT",
+      "and11:A",
+      "green",
+      []
+    ],
+    [
+      "or6:OUT",
+      "and11:B",
+      "green",
+      []
+    ],
+    [
+      "and10:OUT",
+      "or7:A",
+      "green",
+      []
+    ],
+    [
+      "and11:OUT",
+      "or7:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN5",
+      "xor14:A",
+      "green",
+      []
+    ],
+    [
+      "not7:OUT",
+      "xor14:B",
+      "green",
+      []
+    ],
+    [
+      "xor14:OUT",
+      "xor15:A",
+      "green",
+      []
+    ],
+    [
+      "or7:OUT",
+      "xor15:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN5",
+      "and12:A",
+      "green",
+      []
+    ],
+    [
+      "not7:OUT",
+      "and12:B",
+      "green",
+      []
+    ],
+    [
+      "xor14:OUT",
+      "and13:A",
+      "green",
+      []
+    ],
+    [
+      "or7:OUT",
+      "and13:B",
+      "green",
+      []
+    ],
+    [
+      "and12:OUT",
+      "or8:A",
+      "green",
+      []
+    ],
+    [
+      "and13:OUT",
+      "or8:B",
+      "green",
+      []
+    ],
+    [
+      "or5:OUT",
+      "not9:IN",
+      "green",
+      []
+    ],
+    [
+      "not4:OUT",
+      "mux1:A",
+      "green",
+      []
+    ],
+    [
+      "not8:OUT",
+      "mux1:B",
+      "green",
+      []
+    ],
+    [
+      "not9:OUT",
+      "mux1:SEL",
+      "green",
+      []
+    ],
+    [
+      "xor8:OUT",
+      "mux2:A",
+      "green",
+      []
+    ],
+    [
+      "xor13:OUT",
+      "mux2:B",
+      "green",
+      []
+    ],
+    [
+      "not9:OUT",
+      "mux2:SEL",
+      "green",
+      []
+    ],
+    [
+      "xor10:OUT",
+      "mux3:A",
+      "green",
+      []
+    ],
+    [
+      "xor15:OUT",
+      "mux3:B",
+      "green",
+      []
+    ],
+    [
+      "not9:OUT",
+      "mux3:SEL",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN0",
+      "or9:A",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN3",
+      "or9:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN1",
+      "or10:A",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN4",
+      "or10:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN2",
+      "or11:A",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN5",
+      "or11:B",
+      "green",
+      []
+    ],
+    [
+      "xor1:OUT",
+      "mux4:A",
+      "green",
+      []
+    ],
+    [
+      "mux1:OUT",
+      "mux4:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN6",
+      "mux4:SEL",
+      "green",
+      []
+    ],
+    [
+      "and1:OUT",
+      "mux5:A",
+      "green",
+      []
+    ],
+    [
+      "or9:OUT",
+      "mux5:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN6",
+      "mux5:SEL",
+      "green",
+      []
+    ],
+    [
+      "mux4:OUT",
+      "mux6:A",
+      "green",
+      []
+    ],
+    [
+      "mux5:OUT",
+      "mux6:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN7",
+      "mux6:SEL",
+      "green",
+      []
+    ],
+    [
+      "xor3:OUT",
+      "mux7:A",
+      "green",
+      []
+    ],
+    [
+      "mux2:OUT",
+      "mux7:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN6",
+      "mux7:SEL",
+      "green",
+      []
+    ],
+    [
+      "and2:OUT",
+      "mux8:A",
+      "green",
+      []
+    ],
+    [
+      "or10:OUT",
+      "mux8:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN6",
+      "mux8:SEL",
+      "green",
+      []
+    ],
+    [
+      "mux7:OUT",
+      "mux9:A",
+      "green",
+      []
+    ],
+    [
+      "mux8:OUT",
+      "mux9:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN7",
+      "mux9:SEL",
+      "green",
+      []
+    ],
+    [
+      "xor5:OUT",
+      "mux10:A",
+      "green",
+      []
+    ],
+    [
+      "mux3:OUT",
+      "mux10:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN6",
+      "mux10:SEL",
+      "green",
+      []
+    ],
+    [
+      "and4:OUT",
+      "mux11:A",
+      "green",
+      []
+    ],
+    [
+      "or11:OUT",
+      "mux11:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN6",
+      "mux11:SEL",
+      "green",
+      []
+    ],
+    [
+      "mux10:OUT",
+      "mux12:A",
+      "green",
+      []
+    ],
+    [
+      "mux11:OUT",
+      "mux12:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN7",
+      "mux12:SEL",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN6",
+      "not10:IN",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN7",
+      "not11:IN",
+      "green",
+      []
+    ],
+    [
+      "not10:OUT",
+      "and14:A",
+      "green",
+      []
+    ],
+    [
+      "not11:OUT",
+      "and14:B",
+      "green",
+      []
+    ],
+    [
+      "or2:OUT",
+      "and15:A",
+      "green",
+      []
+    ],
+    [
+      "and14:OUT",
+      "and15:B",
+      "green",
+      []
+    ],
+    [
+      "ttin:IN6",
+      "and16:A",
+      "green",
+      []
+    ],
+    [
+      "not11:OUT",
+      "and16:B",
+      "green",
+      []
+    ],
+    [
+      "not9:OUT",
+      "and17:A",
+      "green",
+      []
+    ],
+    [
+      "and16:OUT",
+      "and17:B",
+      "green",
+      []
+    ],
+    [
+      "mux6:OUT",
+      "not12:IN",
+      "green",
+      []
+    ],
+    [
+      "mux9:OUT",
+      "not13:IN",
+      "green",
+      []
+    ],
+    [
+      "mux12:OUT",
+      "not14:IN",
+      "green",
+      []
+    ],
+    [
+      "and15:OUT",
+      "not15:IN",
+      "green",
+      []
+    ],
+    [
+      "not12:OUT",
+      "and18:A",
+      "green",
+      []
+    ],
+    [
+      "not14:OUT",
+      "and18:B",
+      "green",
+      []
+    ],
+    [
+      "mux9:OUT",
+      "and19:A",
+      "green",
+      []
+    ],
+    [
+      "mux12:OUT",
+      "and19:B",
+      "green",
+      []
+    ],
+    [
+      "mux9:OUT",
+      "and20:A",
+      "green",
+      []
+    ],
+    [
+      "not15:OUT",
+      "and20:B",
+      "green",
+      []
+    ],
+    [
+      "mux6:OUT",
+      "and21:A",
+      "green",
+      []
+    ],
+    [
+      "mux12:OUT",
+      "and21:B",
+      "green",
+      []
+    ],
+    [
+      "and21:OUT",
+      "and22:A",
+      "green",
+      []
+    ],
+    [
+      "not15:OUT",
+      "and22:B",
+      "green",
+      []
+    ],
+    [
+      "not12:OUT",
+      "and23:A",
+      "green",
+      []
+    ],
+    [
+      "and15:OUT",
+      "and23:B",
+      "green",
+      []
+    ],
+    [
+      "not13:OUT",
+      "and24:A",
+      "green",
+      []
+    ],
+    [
+      "not14:OUT",
+      "and24:B",
+      "green",
+      []
+    ],
+    [
+      "and24:OUT",
+      "and25:A",
+      "green",
+      []
+    ],
+    [
+      "and15:OUT",
+      "and25:B",
+      "green",
+      []
+    ],
+    [
+      "and18:OUT",
+      "or12:A",
+      "green",
+      []
+    ],
+    [
+      "and19:OUT",
+      "or12:B",
+      "green",
+      []
+    ],
+    [
+      "and20:OUT",
+      "or13:A",
+      "green",
+      []
+    ],
+    [
+      "and22:OUT",
+      "or13:B",
+      "green",
+      []
+    ],
+    [
+      "and23:OUT",
+      "or14:A",
+      "green",
+      []
+    ],
+    [
+      "and25:OUT",
+      "or14:B",
+      "green",
+      []
+    ],
+    [
+      "or12:OUT",
+      "or15:A",
+      "green",
+      []
+    ],
+    [
+      "or13:OUT",
+      "or15:B",
+      "green",
+      []
+    ],
+    [
+      "or15:OUT",
+      "or16:A",
+      "green",
+      []
+    ],
+    [
+      "or14:OUT",
+      "or16:B",
+      "green",
+      []
+    ],
+    [
+      "or16:OUT",
+      "ttout:OUT0",
+      "violet",
+      []
+    ],
+    [
+      "not12:OUT",
+      "and26:A",
+      "green",
+      []
+    ],
+    [
+      "not13:OUT",
+      "and26:B",
+      "green",
+      []
+    ],
+    [
+      "and26:OUT",
+      "and27:A",
+      "green",
+      []
+    ],
+    [
+      "not15:OUT",
+      "and27:B",
+      "green",
+      []
+    ],
+    [
+      "mux6:OUT",
+      "and28:A",
+      "green",
+      []
+    ],
+    [
+      "mux9:OUT",
+      "and28:B",
+      "green",
+      []
+    ],
+    [
+      "and28:OUT",
+      "and29:A",
+      "green",
+      []
+    ],
+    [
+      "not15:OUT",
+      "and29:B",
+      "green",
+      []
+    ],
+    [
+      "mux6:OUT",
+      "and30:A",
+      "green",
+      []
+    ],
+    [
+      "not13:OUT",
+      "and30:B",
+      "green",
+      []
+    ],
+    [
+      "and30:OUT",
+      "and31:A",
+      "green",
+      []
+    ],
+    [
+      "and15:OUT",
+      "and31:B",
+      "green",
+      []
+    ],
+    [
+      "and18:OUT",
+      "or17:A",
+      "green",
+      []
+    ],
+    [
+      "and24:OUT",
+      "or17:B",
+      "green",
+      []
+    ],
+    [
+      "and27:OUT",
+      "or18:A",
+      "green",
+      []
+    ],
+    [
+      "and29:OUT",
+      "or18:B",
+      "green",
+      []
+    ],
+    [
+      "or17:OUT",
+      "or19:A",
+      "green",
+      []
+    ],
+    [
+      "or18:OUT",
+      "or19:B",
+      "green",
+      []
+    ],
+    [
+      "or19:OUT",
+      "or20:A",
+      "green",
+      []
+    ],
+    [
+      "and31:OUT",
+      "or20:B",
+      "green",
+      []
+    ],
+    [
+      "or20:OUT",
+      "ttout:OUT1",
+      "violet",
+      []
+    ],
+    [
+      "mux6:OUT",
+      "and32:A",
+      "green",
+      []
+    ],
+    [
+      "not14:OUT",
+      "and32:B",
+      "green",
+      []
+    ],
+    [
+      "mux12:OUT",
+      "and33:A",
+      "green",
+      []
+    ],
+    [
+      "not15:OUT",
+      "and33:B",
+      "green",
+      []
+    ],
+    [
+      "not14:OUT",
+      "and34:A",
+      "green",
+      []
+    ],
+    [
+      "and15:OUT",
+      "and34:B",
+      "green",
+      []
+    ],
+    [
+      "and30:OUT",
+      "or21:A",
+      "green",
+      []
+    ],
+    [
+      "and32:OUT",
+      "or21:B",
+      "green",
+      []
+    ],
+    [
+      "and24:OUT",
+      "or22:A",
+      "green",
+      []
+    ],
+    [
+      "and33:OUT",
+      "or22:B",
+      "green",
+      []
+    ],
+    [
+      "or21:OUT",
+      "or23:A",
+      "green",
+      []
+    ],
+    [
+      "or22:OUT",
+      "or23:B",
+      "green",
+      []
+    ],
+    [
+      "or23:OUT",
+      "or24:A",
+      "green",
+      []
+    ],
+    [
+      "and34:OUT",
+      "or24:B",
+      "green",
+      []
+    ],
+    [
+      "or24:OUT",
+      "ttout:OUT2",
+      "violet",
+      []
+    ],
+    [
+      "and28:OUT",
+      "and35:A",
+      "green",
+      []
+    ],
+    [
+      "not14:OUT",
+      "and35:B",
+      "green",
+      []
+    ],
+    [
+      "and30:OUT",
+      "and36:A",
+      "green",
+      []
+    ],
+    [
+      "mux12:OUT",
+      "and36:B",
+      "green",
+      []
+    ],
+    [
+      "not12:OUT",
+      "and37:A",
+      "green",
+      []
+    ],
+    [
+      "mux9:OUT",
+      "and37:B",
+      "green",
+      []
+    ],
+    [
+      "and37:OUT",
+      "and38:A",
+      "green",
+      []
+    ],
+    [
+      "mux12:OUT",
+      "and38:B",
+      "green",
+      []
+    ],
+    [
+      "and18:OUT",
+      "and39:A",
+      "green",
+      []
+    ],
+    [
+      "not15:OUT",
+      "and39:B",
+      "green",
+      []
+    ],
+    [
+      "not13:OUT",
+      "and40:A",
+      "green",
+      []
+    ],
+    [
+      "and15:OUT",
+      "and40:B",
+      "green",
+      []
+    ],
+    [
+      "and35:OUT",
+      "or25:A",
+      "green",
+      []
+    ],
+    [
+      "and36:OUT",
+      "or25:B",
+      "green",
+      []
+    ],
+    [
+      "and38:OUT",
+      "or26:A",
+      "green",
+      []
+    ],
+    [
+      "and39:OUT",
+      "or26:B",
+      "green",
+      []
+    ],
+    [
+      "or25:OUT",
+      "or27:A",
+      "green",
+      []
+    ],
+    [
+      "or26:OUT",
+      "or27:B",
+      "green",
+      []
+    ],
+    [
+      "or27:OUT",
+      "or28:A",
+      "green",
+      []
+    ],
+    [
+      "and40:OUT",
+      "or28:B",
+      "green",
+      []
+    ],
+    [
+      "or28:OUT",
+      "ttout:OUT3",
+      "violet",
+      []
+    ],
+    [
+      "mux9:OUT",
+      "and41:A",
+      "green",
+      []
+    ],
+    [
+      "and15:OUT",
+      "and41:B",
+      "green",
+      []
+    ],
+    [
+      "mux12:OUT",
+      "and42:A",
+      "green",
+      []
+    ],
+    [
+      "and15:OUT",
+      "and42:B",
+      "green",
+      []
+    ],
+    [
+      "and37:OUT",
+      "or29:A",
+      "green",
+      []
+    ],
+    [
+      "and18:OUT",
+      "or29:B",
+      "green",
+      []
+    ],
+    [
+      "and41:OUT",
+      "or30:A",
+      "green",
+      []
+    ],
+    [
+      "and42:OUT",
+      "or30:B",
+      "green",
+      []
+    ],
+    [
+      "or29:OUT",
+      "or31:A",
+      "green",
+      []
+    ],
+    [
+      "or30:OUT",
+      "or31:B",
+      "green",
+      []
+    ],
+    [
+      "or31:OUT",
+      "ttout:OUT4",
+      "violet",
+      []
+    ],
+    [
+      "not12:OUT",
+      "and43:A",
+      "green",
+      []
+    ],
+    [
+      "mux12:OUT",
+      "and43:B",
+      "green",
+      []
+    ],
+    [
+      "not13:OUT",
+      "and44:A",
+      "green",
+      []
+    ],
+    [
+      "mux12:OUT",
+      "and44:B",
+      "green",
+      []
+    ],
+    [
+      "and44:OUT",
+      "and45:A",
+      "green",
+      []
+    ],
+    [
+      "not15:OUT",
+      "and45:B",
+      "green",
+      []
+    ],
+    [
+      "and26:OUT",
+      "or32:A",
+      "green",
+      []
+    ],
+    [
+      "and43:OUT",
+      "or32:B",
+      "green",
+      []
+    ],
+    [
+      "and45:OUT",
+      "or33:A",
+      "green",
+      []
+    ],
+    [
+      "and41:OUT",
+      "or33:B",
+      "green",
+      []
+    ],
+    [
+      "or32:OUT",
+      "or34:A",
+      "green",
+      []
+    ],
+    [
+      "or33:OUT",
+      "or34:B",
+      "green",
+      []
+    ],
+    [
+      "or34:OUT",
+      "or35:A",
+      "green",
+      []
+    ],
+    [
+      "and34:OUT",
+      "or35:B",
+      "green",
+      []
+    ],
+    [
+      "or35:OUT",
+      "ttout:OUT5",
+      "violet",
+      []
+    ],
+    [
+      "mux9:OUT",
+      "and46:A",
+      "green",
+      []
+    ],
+    [
+      "not14:OUT",
+      "and46:B",
+      "green",
+      []
+    ],
+    [
+      "mux6:OUT",
+      "and47:A",
+      "green",
+      []
+    ],
+    [
+      "and15:OUT",
+      "and47:B",
+      "green",
+      []
+    ],
+    [
+      "and37:OUT",
+      "or36:A",
+      "green",
+      []
+    ],
+    [
+      "and46:OUT",
+      "or36:B",
+      "green",
+      []
+    ],
+    [
+      "and45:OUT",
+      "or37:A",
+      "green",
+      []
+    ],
+    [
+      "and47:OUT",
+      "or37:B",
+      "green",
+      []
+    ],
+    [
+      "or36:OUT",
+      "or38:A",
+      "green",
+      []
+    ],
+    [
+      "or37:OUT",
+      "or38:B",
+      "green",
+      []
+    ],
+    [
+      "or38:OUT",
+      "or39:A",
+      "green",
+      []
+    ],
+    [
+      "and34:OUT",
+      "or39:B",
+      "green",
+      []
+    ],
+    [
+      "or39:OUT",
+      "ttout:OUT6",
+      "violet",
+      []
+    ],
+    [
+      "and17:OUT",
+      "ttout:OUT7",
+      "violet",
+      []
+    ]
+  ],
+  "dependencies": {}
+}
