@@ -1,0 +1,66 @@
+# Tiny Tapeout project information
+project:
+  title:        "Sub-uVrms 1-uW GOhm-input ECG amplifier"      # Project title
+  author:       "Jose Luis Valtierra"      # Your name
+  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "ECG front end: complementary bulk switching + AC-coupled DTMOS, 0.9 uVrms, >2 GOhm, ~1 uW at 1 V"      # One line description of what your project does
+  language:     "Analog" # other examples include Verilog, Amaranth, VHDL, etc
+  clock_hz:     2000       # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "2x2"          # Valid values for analog projects: 1x2, 2x2
+
+  # How many analog pins does your project use?
+  analog_pins: 6        # Valid values: 0 to 6
+  uses_vapwr: false       # Set to true if your project uses second analog power supply (VAPWR) in addition to 1.8V (VDPWR)
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_jlvsdlv_ecg"
+
+  # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
+  source_files:        
+    - "project.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "CT0 (input trim LSB)"
+  ui[1]: "CT1"
+  ui[2]: "CT2"
+  ui[3]: "CT3"
+  ui[4]: "CT4"
+  ui[5]: "CT5"
+  ui[6]: "CT6"
+  ui[7]: "CT7"
+
+  # Outputs
+  uo[0]: ""
+  uo[1]: ""
+  uo[2]: ""
+  uo[3]: ""
+  uo[4]: ""
+  uo[5]: ""
+  uo[6]: ""
+  uo[7]: ""
+
+  # Bidirectional pins
+  uio[0]: "CT8 (in)"
+  uio[1]: "CT9 (in, trim MSB)"
+  uio[2]: "EN (in, bulk switching on)"
+  uio[3]: "RST (in, reset high-Z nodes)"
+  uio[4]: "IT0 (in, bias trim)"
+  uio[5]: "IT1 (in, bias trim)"
+  uio[6]: ""
+  uio[7]: ""
+
+  # Analog pins - make sure to also set "analog_pins" above, else the pins won't be connected
+  ua[0]: "VIN1 electrode"
+  ua[1]: "VIN2 electrode"
+  ua[2]: "VOUT1 (8.8 pF ext.)"
+  ua[3]: "VOUT2 (8.8 pF ext.)"
+  ua[4]: "DRL bias-electrode out"
+  ua[5]: "VDD_A 1.0 V supply in"
+
+# Do not change!
+yaml_version: 6
