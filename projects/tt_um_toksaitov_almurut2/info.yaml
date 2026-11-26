@@ -1,0 +1,71 @@
+# Tiny Tapeout project information
+project:
+  title:        "Almurut II"
+  author:       "Dmitrii Toksaitov"
+  discord:      ""
+  description:  "A 32-bit teaching computer with its own instruction set and an AI accelerator for neural networks"
+  language:     "SystemVerilog"
+  clock_hz:     12500000
+
+  # How many tiles the design occupies
+  tiles: "8x2"
+
+  # The top module name must start with "tt_um_"
+  top_module:  "tt_um_toksaitov_almurut2"
+
+  # The source files in ./src, the file of the top module first. The test in
+  # ./test builds the chip from this list.
+  source_files:
+    - "tt_um_toksaitov_almurut2.sv"
+    - "asc_reset_filter.sv"
+    - "asc_irq_filter.sv"
+    - "asc_bus.sv"
+    - "asc_soc.sv"
+    - "asc_cpu.sv"
+    - "asc_decoder.sv"
+    - "asc_regs.sv"
+    - "asc_alu.sv"
+    - "asc_tlb.sv"
+    - "asc_icache.sv"
+    - "asc_word.sv"
+    - "asc_dot.sv"
+    - "asc_dot_cell.sv"
+    - "asc_pic.sv"
+    - "asc_pit.sv"
+    - "asc_kbdc.sv"
+    - "asc_ps2.sv"
+
+# The pinout of the project, for the datasheet. DO NOT delete or add any pins.
+pinout:
+  # Inputs
+  ui[0]: "ACK"
+  ui[1]: "IRQ"
+  ui[2]: "DBG_CK"
+  ui[3]: ""
+  ui[4]: "DBG_DI"
+  ui[5]: "KBD_CLK"
+  ui[6]: "KBD_DATA"
+  ui[7]: "STOP"
+
+  # Outputs
+  uo[0]: "REQ"
+  uo[1]: "DBG_DO"
+  uo[2]: "UIO_OE"
+  uo[3]: "FRAME"
+  uo[4]: ""
+  uo[5]: ""
+  uo[6]: ""
+  uo[7]: ""
+
+  # Bidirectional pins
+  uio[0]: "D0"
+  uio[1]: "D1"
+  uio[2]: "D2"
+  uio[3]: "D3"
+  uio[4]: "D4"
+  uio[5]: "D5"
+  uio[6]: "D6"
+  uio[7]: "D7"
+
+# Do not change!
+yaml_version: 6
