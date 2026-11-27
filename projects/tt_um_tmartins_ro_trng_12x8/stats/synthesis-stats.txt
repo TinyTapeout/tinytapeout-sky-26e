@@ -1,0 +1,104 @@
+107. Printing statistics.
+
+=== ro_trng_ring15 ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+       17        - wires
+       17        - wire bits
+       17        - public wires
+       17        - public wire bits
+        2        - ports
+        2        - port bits
+       16   57.555 cells
+        1    5.005   sky130_fd_sc_hd__buf_2
+       14    52.55   sky130_fd_sc_hd__inv_2
+        1        -   sky130_fd_sc_hd__nand2_1
+
+   Area for cell type \sky130_fd_sc_hd__nand2_1 is unknown!
+
+   Chip area for module '\ro_trng_ring15': 57.555200
+     of which used for sequential elements: 0.000000 (0.00%)
+
+=== tt_um_tmartins_ro_trng_12x8 ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+      473        - wires
+      508        - wire bits
+      308        - public wires
+      343        - public wire bits
+        8        - ports
+       43        - port bits
+      393  5.1E+03 cells
+      104 1.04E+03   sky130_fd_sc_hd__a22o_2
+       28  210.202   sky130_fd_sc_hd__and2_2
+        7   61.309   sky130_fd_sc_hd__and2b_2
+        2   15.014   sky130_fd_sc_hd__and3_2
+        1    10.01   sky130_fd_sc_hd__and4_2
+        2   22.522   sky130_fd_sc_hd__and4b_2
+       96  480.461   sky130_fd_sc_hd__buf_2
+       16   60.058   sky130_fd_sc_hd__conb_1
+       96 2.52E+03   sky130_fd_sc_hd__dfrtp_2
+       24  540.518   sky130_fd_sc_hd__mux4_2
+        1    6.256   sky130_fd_sc_hd__nand2_2
+        3   26.275   sky130_fd_sc_hd__nand2b_2
+        4   25.024   sky130_fd_sc_hd__nor2_2
+        8   70.067   sky130_fd_sc_hd__o21a_2
+        1    6.256   sky130_fd_sc_hd__or2_2
+       96        - submodules
+       96        -   ro_trng_ring15
+
+   Area for cell type \sky130_fd_sc_hd__nand2_1 is unknown!
+
+   Chip area for module '\tt_um_tmartins_ro_trng_12x8': 5097.388800
+     of which used for sequential elements: 2522.419200 (49.48%)
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        |        +-Area including submodules.
+        |        | 
+     1929 1.06E+04 tt_um_tmartins_ro_trng_12x8
+       16   57.555 ro_trng_ring15
+
+        +----------Count including submodules.
+        |        +-Area including submodules.
+        |        | 
+     2105        - wires
+     2140        - wire bits
+     1940        - public wires
+     1975        - public wire bits
+      200        - ports
+      235        - port bits
+        -        - memories
+        -        - memory bits
+        -        - processes
+     1929 1.06E+04 cells
+      104 1.04E+03   sky130_fd_sc_hd__a22o_2
+       28  210.202   sky130_fd_sc_hd__and2_2
+        7   61.309   sky130_fd_sc_hd__and2b_2
+        2   15.014   sky130_fd_sc_hd__and3_2
+        1    10.01   sky130_fd_sc_hd__and4_2
+        2   22.522   sky130_fd_sc_hd__and4b_2
+      192  960.922   sky130_fd_sc_hd__buf_2
+       16   60.058   sky130_fd_sc_hd__conb_1
+       96 2.52E+03   sky130_fd_sc_hd__dfrtp_2
+     1344 5.04E+03   sky130_fd_sc_hd__inv_2
+       24  540.518   sky130_fd_sc_hd__mux4_2
+       96        -   sky130_fd_sc_hd__nand2_1
+        1    6.256   sky130_fd_sc_hd__nand2_2
+        3   26.275   sky130_fd_sc_hd__nand2b_2
+        4   25.024   sky130_fd_sc_hd__nor2_2
+        8   70.067   sky130_fd_sc_hd__o21a_2
+        1    6.256   sky130_fd_sc_hd__or2_2
+       96 5.53E+03 submodules
+       96 5.53E+03   ro_trng_ring15
+
+   Area for cell type \sky130_fd_sc_hd__nand2_1 is unknown!
+
+   Chip area for top module '\tt_um_tmartins_ro_trng_12x8': 10622.688000
+     of which used for sequential elements: 2522.419200 (23.75%)
+

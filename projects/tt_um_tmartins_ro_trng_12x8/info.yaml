@@ -1,0 +1,40 @@
+# Tiny Tapeout SKY130 Verilog project
+project:
+  title: "12x8 Ring Oscillator TRNG - Raw Bit Sampler"
+  author: "tmartins-tech"
+  discord: ""
+  description: "96 enabled ring oscillators in twelve groups of eight, individually sampled by 96 DFFs, with selectable 8-bit raw output and no XOR. Group codes 12-15 return zero."
+  language: "Verilog"
+  clock_hz: 1000000  # Nominal example; sampling clock may be varied externally
+  tiles: "1x1"      # Initial target; physical feasibility determined by GDS
+  top_module: "tt_um_tmartins_ro_trng_12x8"
+  source_files:
+    - "project.v"
+
+pinout:
+  ui[0]: "GROUP0"
+  ui[1]: "GROUP1"
+  ui[2]: "GROUP2"
+  ui[3]: "RUN"
+  ui[4]: "TEST_MODE"
+  ui[5]: "GROUP3"
+  ui[6]: ""
+  ui[7]: ""
+  uo[0]: "BIT0"
+  uo[1]: "BIT1"
+  uo[2]: "BIT2"
+  uo[3]: "BIT3"
+  uo[4]: "BIT4"
+  uo[5]: "BIT5"
+  uo[6]: "BIT6"
+  uo[7]: "BIT7"
+  uio[0]: "TEST_BIT0"
+  uio[1]: "TEST_BIT1"
+  uio[2]: "TEST_BIT2"
+  uio[3]: "TEST_BIT3"
+  uio[4]: "TEST_BIT4"
+  uio[5]: "TEST_BIT5"
+  uio[6]: "TEST_BIT6"
+  uio[7]: "TEST_BIT7"
+
+yaml_version: 6
