@@ -1,0 +1,66 @@
+# Tiny Tapeout project information
+project:
+  title:        "2nd-order VCO Delta-Sigma ADC"      # Project title
+  author:       "Arcadia-1"      # Your name
+  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "Pseudo-differential second-order closed-loop VCO delta-sigma ADC: OTA integrator, ring-VCO quantizer, 7-element resistor DAC per half"      # One line description of what your project does
+  language:     "Analog" # other examples include Verilog, Amaranth, VHDL, etc
+  clock_hz:     10000000       # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x2"          # Valid values for analog projects: 1x2, 2x2
+
+  # How many analog pins does your project use?
+  analog_pins: 2        # Valid values: 0 to 6
+  uses_vapwr: false       # Set to true if your project uses second analog power supply (VAPWR) in addition to 1.8V (VDPWR)
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_arcadia1_vco_adc"
+
+  # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
+  source_files:        
+    - "project.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: ""
+  ui[1]: ""
+  ui[2]: ""
+  ui[3]: ""
+  ui[4]: ""
+  ui[5]: ""
+  ui[6]: ""
+  ui[7]: ""
+
+  # Outputs
+  uo[0]: "PHP6 (P half, sampled ring stage 6 output)"
+  uo[1]: "PHP4 (P half, sampled ring stage 4 output)"
+  uo[2]: "PHP1 (P half, sampled ring stage 1 output)"
+  uo[3]: "PHP2 (P half, sampled ring stage 2 output)"
+  uo[4]: "PHP5 (P half, sampled ring stage 5 output)"
+  uo[5]: "PHP3 (P half, sampled ring stage 3 output)"
+  uo[6]: "PHP0 (P half, sampled ring stage 0 output)"
+  uo[7]: "MONP (P ring stage 0 output, unsampled)"
+
+  # Bidirectional pins
+  uio[0]: "MONN (N ring stage 0 output, unsampled)"
+  uio[1]: "PHN0 (N half, sampled ring stage 0 output)"
+  uio[2]: "PHN3 (N half, sampled ring stage 3 output)"
+  uio[3]: "PHN5 (N half, sampled ring stage 5 output)"
+  uio[4]: "PHN2 (N half, sampled ring stage 2 output)"
+  uio[5]: "PHN1 (N half, sampled ring stage 1 output)"
+  uio[6]: "PHN4 (N half, sampled ring stage 4 output)"
+  uio[7]: "PHN6 (N half, sampled ring stage 6 output)"
+
+  # Analog pins - make sure to also set "analog_pins" above, else the pins won't be connected
+  ua[0]: "VINP (positive analog input, around 0.9 V)"
+  ua[1]: "VINN (negative analog input, around 0.9 V)"
+  ua[2]: ""
+  ua[3]: ""
+  ua[4]: ""
+  ua[5]: ""
+
+# Do not change!
+yaml_version: 6
