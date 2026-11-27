@@ -1,0 +1,55 @@
+# Tiny Tapeout project information
+project:
+  title:        "Flexible 8-bit Streaming MAC"      # Project title
+  author:       "Misab A R, Naren Sridharan, Manaswi, Saloni Jadhav, Dr. Eleena Mohapatra, Shylashree N, RV College of Engineering"
+  description:  "Weight-stationary 8x8 MAC, 1 MAC/cycle, 1x1/2x2/3x3 windows, 24-bit pipelined readout"
+  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
+  clock_hz:     50000000
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_flex_mac"
+
+  # List your project's source files here.
+  # Source files must be in ./src and you must list each source file separately, one per line.
+  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
+  source_files:
+    - "tt_um_flex_mac.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "DATA[0] (weight / activation)"
+  ui[1]: "DATA[1] (weight / activation)"
+  ui[2]: "DATA[2] (weight / activation)"
+  ui[3]: "DATA[3] (weight / activation)"
+  ui[4]: "DATA[4] (weight / activation)"
+  ui[5]: "DATA[5] (weight / activation)"
+  ui[6]: "DATA[6] (weight / activation)"
+  ui[7]: "DATA[7] (weight / activation)"
+
+  # Outputs
+  uo[0]: "RESULT[0] (shadow byte sel. by READ_SEL)"
+  uo[1]: "RESULT[1] (shadow byte sel. by READ_SEL)"
+  uo[2]: "RESULT[2] (shadow byte sel. by READ_SEL)"
+  uo[3]: "RESULT[3] (shadow byte sel. by READ_SEL)"
+  uo[4]: "RESULT[4] (shadow byte sel. by READ_SEL)"
+  uo[5]: "RESULT[5] (shadow byte sel. by READ_SEL)"
+  uo[6]: "RESULT[6] (shadow byte sel. by READ_SEL)"
+  uo[7]: "RESULT[7] (shadow byte sel. by READ_SEL)"
+
+  # Bidirectional pins
+  uio[0]: "MODE (1=load weights, 0=compute)"
+  uio[1]: "VALID_IN"
+  uio[2]: "LATCH_AND_CLEAR"
+  uio[3]: "WINDOW_SIZE[0]"
+  uio[4]: "WINDOW_SIZE[1]"
+  uio[5]: "READ_SEL[0]"
+  uio[6]: "READ_SEL[1]"
+  uio[7]: ""
+
+# Do not change!
+yaml_version: 6
