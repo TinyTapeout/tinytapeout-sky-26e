@@ -1,0 +1,56 @@
+# Tiny Tapeout project information
+project:
+  title:        "JAMGUARD DSSS Anti-Jam Link"
+  author:       "Marc Boudames"
+  discord:      ""
+  description:  "Gold-code DSSS modem, 31 or 127 chips for 14.9 or 21.0 dB processing gain, self-acquiring and phase-tracking receiver, SECDED FEC, frequency hopping, four jammer kinds and a built-in bit error rate tester"
+  language:     "Verilog"
+  clock_hz:     10000000
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_1marcb_jamguard"
+
+  # List your project's source files here.
+  # Source files must be in ./src and you must list each source file separately, one per line.
+  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
+  source_files:
+    - "project.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "TX_DATA0 / p0 CODE_ID0 / p1 FEC_EN / p2 TX_CODE_HI0 / p3 JAM_KIND0"
+  ui[1]: "TX_DATA1 / p0 CODE_ID1 / p1 FRAME_EN / p2 TX_CODE_HI1 / p3 JAM_KIND1"
+  ui[2]: "TX_DATA2 / p0 CODE_ID2 / p1 FHSS_EN / p2 RX_CODE_HI0 / p3 FOL_DELAY0"
+  ui[3]: "TX_DATA3 / p0 CODE_ID3 / p1 PBJ_EN / p2 RX_CODE_HI1 / p3 FOL_DELAY1"
+  ui[4]: "TX_DATA4 / p0 CODE_ID4 / p1 JAM_FINE / p2 LEN127"
+  ui[5]: "TX_DATA5 / p0 JAM_LVL0 / p1 DISP_PAGE0 / p2 TRK_EN / p3 PULSE_DUTY0"
+  ui[6]: "TX_DATA6 / p0 JAM_LVL1 / p1 DISP_PAGE1 / p2 PRBS_EN / p3 PULSE_DUTY1"
+  ui[7]: "TX_DATA7 / p0 ACQ_EN / p1 TX_PINS_OFF / p2 RX_POP_EN / p3 DISP_PAGE3"
+
+  # Outputs
+  uo[0]: "RX_DATA0 / status (16 pages, see datasheet)"
+  uo[1]: "RX_DATA1 / status"
+  uo[2]: "RX_DATA2 / status"
+  uo[3]: "RX_DATA3 / status"
+  uo[4]: "RX_DATA4 / status"
+  uo[5]: "RX_DATA5 / status"
+  uo[6]: "RX_DATA6 / status LOCKED or JAM_NOW"
+  uo[7]: "RX_DATA7 / status VALID or TX_BUSY"
+
+  # Bidirectional pins
+  uio[0]: "TX_START or RX_POP (in) / p0 RX_CODE0 / p1 HOP_FAST"
+  uio[1]: "RX_CHIP (in) / p0 RX_CODE1 / p1 PBJ_BAND0"
+  uio[2]: "RX_EPOCH (in) / p0 RX_CODE2 / p1 PBJ_BAND1 / p2 DISP_PAGE2"
+  uio[3]: "LOOPBACK_EN (in) / p0 RX_CODE3 / cfg PAGE_SEL0"
+  uio[4]: "JAM_EN (in) / p0 RX_CODE4 / cfg PAGE_SEL1"
+  uio[5]: "DISP_SEL (in) / cfg PAGE_GROUP"
+  uio[6]: "TX_CHIP (out)"
+  uio[7]: "TX_EPOCH (out)"
+
+# Do not change!
+yaml_version: 6
