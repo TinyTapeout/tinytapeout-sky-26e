@@ -6,7 +6,7 @@ MACRO tt_um_rakesh_tiny_nfc
   CLASS BLOCK ;
   FOREIGN tt_um_rakesh_tiny_nfc ;
   ORIGIN 0.000 0.000 ;
-  SIZE 161.000 BY 225.760 ;
+  SIZE 334.880 BY 225.760 ;
   PIN VDPWR
     DIRECTION INOUT ;
     USE POWER ;
@@ -17,6 +17,18 @@ MACRO tt_um_rakesh_tiny_nfc
     PORT
       LAYER met4 ;
         RECT 86.960 2.480 88.560 223.280 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 166.960 2.480 168.560 223.280 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 246.960 2.480 248.560 223.280 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 326.960 2.480 328.560 223.280 ;
     END
   END VDPWR
   PIN VGND
@@ -29,6 +41,18 @@ MACRO tt_um_rakesh_tiny_nfc
     PORT
       LAYER met4 ;
         RECT 90.260 2.480 91.860 223.280 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 170.260 2.480 171.860 223.280 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 250.260 2.480 251.860 223.280 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 330.260 2.480 331.860 223.280 ;
     END
   END VGND
   PIN clk
@@ -69,7 +93,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN ua[1]
     DIRECTION INOUT ;
     USE SIGNAL ;
-    ANTENNADIFFAREA 7.128000 ;
+    ANTENNADIFFAREA 6.960000 ;
     PORT
       LAYER met4 ;
         RECT 132.490 0.000 133.390 1.000 ;
@@ -126,7 +150,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN ui_in[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.570000 ;
+    ANTENNAGATEAREA 0.813000 ;
     PORT
       LAYER met4 ;
         RECT 138.310 224.760 138.610 225.760 ;
@@ -144,7 +168,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN ui_in[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.495000 ;
+    ANTENNAGATEAREA 0.621000 ;
     PORT
       LAYER met4 ;
         RECT 132.790 224.760 133.090 225.760 ;
@@ -153,7 +177,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN ui_in[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.990000 ;
+    ANTENNAGATEAREA 0.621000 ;
     PORT
       LAYER met4 ;
         RECT 130.030 224.760 130.330 225.760 ;
@@ -162,7 +186,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN ui_in[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 1.485000 ;
+    ANTENNAGATEAREA 1.732500 ;
     PORT
       LAYER met4 ;
         RECT 127.270 224.760 127.570 225.760 ;
@@ -171,7 +195,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN ui_in[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 2.232000 ;
+    ANTENNAGATEAREA 2.353500 ;
     PORT
       LAYER met4 ;
         RECT 124.510 224.760 124.810 225.760 ;
@@ -180,7 +204,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN ui_in[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 2.970000 ;
+    ANTENNAGATEAREA 2.848500 ;
     PORT
       LAYER met4 ;
         RECT 121.750 224.760 122.050 225.760 ;
@@ -189,7 +213,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN ui_in[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 2.106000 ;
+    ANTENNAGATEAREA 1.980000 ;
     PORT
       LAYER met4 ;
         RECT 118.990 224.760 119.290 225.760 ;
@@ -198,6 +222,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN uio_in[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.495000 ;
     PORT
       LAYER met4 ;
         RECT 116.230 224.760 116.530 225.760 ;
@@ -206,6 +231,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN uio_in[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.570000 ;
     PORT
       LAYER met4 ;
         RECT 113.470 224.760 113.770 225.760 ;
@@ -214,6 +240,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN uio_in[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 2.115000 ;
     PORT
       LAYER met4 ;
         RECT 110.710 224.760 111.010 225.760 ;
@@ -222,6 +249,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN uio_in[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 2.115000 ;
     PORT
       LAYER met4 ;
         RECT 107.950 224.760 108.250 225.760 ;
@@ -230,6 +258,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN uio_in[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 2.115000 ;
     PORT
       LAYER met4 ;
         RECT 105.190 224.760 105.490 225.760 ;
@@ -238,6 +267,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN uio_in[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.742500 ;
     PORT
       LAYER met4 ;
         RECT 102.430 224.760 102.730 225.760 ;
@@ -435,7 +465,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN uo_out[5]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 1.494000 ;
+    ANTENNAGATEAREA 1.489500 ;
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
@@ -445,7 +475,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN uo_out[6]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 1.741500 ;
+    ANTENNAGATEAREA 0.994500 ;
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
@@ -455,7 +485,7 @@ MACRO tt_um_rakesh_tiny_nfc
   PIN uo_out[7]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 1.003500 ;
+    ANTENNAGATEAREA 1.120500 ;
     ANTENNADIFFAREA 0.445500 ;
     PORT
       LAYER met4 ;
@@ -464,15 +494,15 @@ MACRO tt_um_rakesh_tiny_nfc
   END uo_out[7]
   OBS
       LAYER nwell ;
-        RECT 2.570 2.635 158.430 223.230 ;
+        RECT 2.570 2.635 332.310 223.230 ;
       LAYER li1 ;
-        RECT 2.760 2.635 158.240 223.125 ;
+        RECT 2.760 2.635 332.120 223.125 ;
       LAYER met1 ;
-        RECT 2.370 1.060 158.540 223.280 ;
+        RECT 2.760 1.060 332.970 223.680 ;
       LAYER met2 ;
-        RECT 2.400 1.030 157.350 225.605 ;
+        RECT 3.780 0.155 332.940 224.925 ;
       LAYER met3 ;
-        RECT 3.285 2.215 157.255 225.585 ;
+        RECT 5.790 0.175 332.515 224.905 ;
       LAYER met4 ;
         RECT 5.815 224.360 30.270 224.905 ;
         RECT 31.370 224.360 33.030 224.905 ;
@@ -517,23 +547,27 @@ MACRO tt_um_rakesh_tiny_nfc
         RECT 139.010 224.360 140.670 224.905 ;
         RECT 141.770 224.360 143.430 224.905 ;
         RECT 144.530 224.360 146.190 224.905 ;
-        RECT 147.290 224.360 156.105 224.905 ;
-        RECT 5.815 223.680 156.105 224.360 ;
+        RECT 147.290 224.360 323.545 224.905 ;
+        RECT 5.815 223.680 323.545 224.360 ;
         RECT 5.815 2.080 6.560 223.680 ;
         RECT 8.960 2.080 9.860 223.680 ;
         RECT 12.260 2.080 86.560 223.680 ;
         RECT 88.960 2.080 89.860 223.680 ;
-        RECT 92.260 2.080 156.105 223.680 ;
-        RECT 5.815 1.400 156.105 2.080 ;
-        RECT 5.815 1.000 16.170 1.400 ;
-        RECT 17.870 1.000 35.490 1.400 ;
-        RECT 37.190 1.000 54.810 1.400 ;
-        RECT 56.510 1.000 74.130 1.400 ;
-        RECT 75.830 1.000 93.450 1.400 ;
-        RECT 95.150 1.000 112.770 1.400 ;
-        RECT 114.470 1.000 132.090 1.400 ;
-        RECT 133.790 1.000 151.410 1.400 ;
-        RECT 153.110 1.000 156.105 1.400 ;
+        RECT 92.260 2.080 166.560 223.680 ;
+        RECT 168.960 2.080 169.860 223.680 ;
+        RECT 172.260 2.080 246.560 223.680 ;
+        RECT 248.960 2.080 249.860 223.680 ;
+        RECT 252.260 2.080 323.545 223.680 ;
+        RECT 5.815 1.400 323.545 2.080 ;
+        RECT 5.815 0.175 16.170 1.400 ;
+        RECT 17.870 0.175 35.490 1.400 ;
+        RECT 37.190 0.175 54.810 1.400 ;
+        RECT 56.510 0.175 74.130 1.400 ;
+        RECT 75.830 0.175 93.450 1.400 ;
+        RECT 95.150 0.175 112.770 1.400 ;
+        RECT 114.470 0.175 132.090 1.400 ;
+        RECT 133.790 0.175 151.410 1.400 ;
+        RECT 153.110 0.175 323.545 1.400 ;
   END
 END tt_um_rakesh_tiny_nfc
 END LIBRARY
