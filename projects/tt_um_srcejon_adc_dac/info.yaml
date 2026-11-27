@@ -1,0 +1,66 @@
+# Tiny Tapeout project information
+project:
+  title:        "8-bit ADC and DAC"      # Project title
+  author:       "srcejon"      # Your name
+  discord:      "srcejon"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "An 8-bit successive-approximation ADC and a resistor DAC, with their control logic in Verilog"      # One line description of what your project does
+  language:     "Analog"       # other examples include Verilog, Amaranth, VHDL, etc
+  clock_hz:     10000000       # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x2"          # Valid values for analog projects: 1x2, 2x2
+
+  # How many analog pins does your project use?
+  analog_pins: 2          # Valid values: 0 to 6
+  uses_vapwr: false       # Set to true if your project uses second analog power supply (VAPWR) in addition to 1.8V (VDPWR)
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_srcejon_adc_dac"
+
+  # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
+  source_files:        
+    - "project.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "DAC0"
+  ui[1]: "DAC1"
+  ui[2]: "DAC2"
+  ui[3]: "DAC3"
+  ui[4]: "DAC4"
+  ui[5]: "DAC5"
+  ui[6]: "DAC6"
+  ui[7]: "DAC7"
+
+  # Outputs
+  uo[0]: "ADC0"
+  uo[1]: "ADC1"
+  uo[2]: "ADC2"
+  uo[3]: "ADC3"
+  uo[4]: "ADC4"
+  uo[5]: "ADC5"
+  uo[6]: "ADC6"
+  uo[7]: "ADC7"
+
+  # Bidirectional pins
+  uio[0]: "VALID"
+  uio[1]: "BUSY"
+  uio[2]: "CMP"
+  uio[3]: "START"
+  uio[4]: "DAC_SRC"
+  uio[5]: ""
+  uio[6]: ""
+  uio[7]: ""
+
+  # Analog pins - make sure to also set "analog_pins" above, else the pins won't be connected
+  ua[0]: "ADC_IN"
+  ua[1]: "DAC_OUT"
+  ua[2]: ""
+  ua[3]: ""
+  ua[4]: ""
+  ua[5]: ""
+
+# Do not change!
+yaml_version: 6
