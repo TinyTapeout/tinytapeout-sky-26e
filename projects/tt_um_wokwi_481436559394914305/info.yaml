@@ -1,0 +1,36 @@
+project:
+  title: SLIPT Manchester Receiver
+  author: Eduardo Caria
+  discord: ''
+  description: PV optical data receiver with selectable center sampling, oversampling,
+    and boost-synchronous blanking.
+  language: Wokwi
+  clock_hz: 80000
+  tiles: 1x1
+  wokwi_id: 481436559394914305
+pinout:
+  ui[0]: Comparator data
+  ui[1]: Blank sample
+  ui[2]: Enable blanking
+  ui[3]: Wired frame start
+  ui[4]: Center pair only
+  ui[5]: Invert comparator polarity
+  ui[6]: ''
+  ui[7]: ''
+  uo[0]: Decoded data
+  uo[1]: Bit strobe
+  uo[2]: Bit erasure
+  uo[3]: Frame active
+  uo[4]: Retained pairs bit 0
+  uo[5]: Retained pairs bit 1
+  uo[6]: Retained pairs bit 2
+  uo[7]: Retained pairs bit 3
+  uio[0]: ''
+  uio[1]: ''
+  uio[2]: ''
+  uio[3]: ''
+  uio[4]: ''
+  uio[5]: ''
+  uio[6]: ''
+  uio[7]: ''
+yaml_version: 6
