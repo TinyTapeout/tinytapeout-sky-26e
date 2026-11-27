@@ -3,11 +3,11 @@ project:
   title:        "tiny_nfc - ISO14443A NFC Type 2 tag (mixed-signal)"
   author:       "Rakesh"
   discord:      ""
-  description:  "Semi-passive ISO/IEC 14443A / NFC Forum Type 2 tag: on-chip RF front end (clock recovery, pause detector, load-mod switch) + protocol core"
-  language:     "Verilog + custom analog (std-cell AFE, poly-R / MIM-C macros)"
+  description:  "Semi-passive ISO/IEC 14443A / NFC Forum Type 2 tag: transistor-level RF front end (clock recovery, pause detector) + std-cell fallback AFE, analog test mux, 48-byte RW protocol core"
+  language:     "Verilog + custom analog (transistor-level AFE macro, std-cell AFE, poly-R / MIM-C macros)"
   clock_hz:     13560000
 
-  tiles: "1x2"
+  tiles: "2x2"
 
   analog_pins: 2
   uses_vapwr: false
@@ -20,7 +20,7 @@ project:
 pinout:
   # Inputs
   ui[0]: "MODE (0=RF, 1=emulation)"
-  ui[1]: "PAUSE_IN (emulation)"
+  ui[1]: "PAUSE_IN (emulation / hybrid)"
   ui[2]: "FDT_TRIM[0]"
   ui[3]: "FDT_TRIM[1]"
   ui[4]: "UID_CFG[0]"
@@ -39,18 +39,18 @@ pinout:
   uo[7]: "STATE[2]"
 
   # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
+  uio[0]: "HYBRID (in: AFE clock + PAUSE_IN)"
+  uio[1]: "AFE_SEL (in: 0 analog AFE, 1 std-cell AFE)"
+  uio[2]: "TM_SEL[0] (in: analog test mux)"
+  uio[3]: "TM_SEL[1] (in)"
+  uio[4]: "TM_SEL[2] (in)"
+  uio[5]: "TM_BYP (in: 1 = unbuffered)"
   uio[6]: ""
   uio[7]: ""
 
   # Analog pins
   ua[0]: "RF_IN (clamped antenna tap)"
-  ua[1]: "LM (open-drain load modulation)"
+  ua[1]: "TEST (analog test-mux output)"
   ua[2]: ""
   ua[3]: ""
   ua[4]: ""
