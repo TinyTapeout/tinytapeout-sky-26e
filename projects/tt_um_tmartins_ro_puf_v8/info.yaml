@@ -1,0 +1,42 @@
+# Tiny Tapeout SKY130 — RO-PUF V8 (experimental; pre-silicon)
+project:
+  title: "RO-PUF V8 - 64 ROs Dual Ripple Counter"
+  author: "tmartins-tech"
+  discord: ""
+  description: "Two banks of 32 enabled SKY130 ring oscillators, common selection, 24-bit ripple counters, compare/readout and digital self-test"
+  language: "Verilog"
+  clock_hz: 0 # External reference clock is user-configurable; count window is 1024 cycles
+  tiles: "1x1" # Single Tiny Tapeout SKY130 tile; physical fit must be verified by GDS
+  top_module: "tt_um_tmartins_ro_puf_v8"
+  source_files:
+    - "project.v"
+
+pinout:
+  ui[0]: "SEL0"
+  ui[1]: "SEL1"
+  ui[2]: "SEL2"
+  ui[3]: "SEL3"
+  ui[4]: "SEL4"
+  ui[5]: "START"
+  ui[6]: "TEST_MODE"
+  ui[7]: "TEST_SLOW_B"
+
+  uo[0]: "READ_D0"
+  uo[1]: "READ_D1"
+  uo[2]: "READ_D2"
+  uo[3]: "READ_D3"
+  uo[4]: "READ_D4"
+  uo[5]: "READ_D5"
+  uo[6]: "READ_D6"
+  uo[7]: "READ_D7"
+
+  uio[0]: "READ_ADDR0"
+  uio[1]: "READ_ADDR1"
+  uio[2]: "READ_ADDR2"
+  uio[3]: "RO_A_OUT"
+  uio[4]: "RO_B_OUT"
+  uio[5]: "PUF_BIT"
+  uio[6]: "DONE"
+  uio[7]: "TIE"
+
+yaml_version: 6
