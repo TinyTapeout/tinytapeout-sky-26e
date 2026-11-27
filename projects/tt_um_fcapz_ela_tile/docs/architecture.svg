@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2004" height="842" viewBox="0 0 2004 842" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" style="background:#f8fafc">
+  <defs>
+    <marker id="ah-solid" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1f2937"/></marker>
+    <marker id="ah-thin" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#374151"/></marker>
+    <marker id="ah-stream" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#5C5C00"/></marker>
+    <marker id="ah-axil" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#0D47A1"/></marker>
+    <marker id="ah-tilelink" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#00796B"/></marker>
+    <marker id="ah-cdc" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#6A1B9A"/></marker>
+    <marker id="ah-open" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0.5,0.5 L0.5,5.5 L8,3 z" fill="#f8fafc" stroke="#1f2937" stroke-width="1"/></marker>
+    <linearGradient id="grad-sync" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="50%" stop-color="#FFCC80"/><stop offset="50%" stop-color="#90CAF9"/></linearGradient>
+  </defs>
+  <rect width="2004" height="842" fill="#f8fafc" id="_canvas_bg"/>
+  <text x="866.0" y="24" text-anchor="middle" font-size="21" font-weight="600" fill="#1f2937" letter-spacing="0.2">fcapz ELA tile (1x1) on the Tiny Tapeout shell</text>
+  <rect id="group_core" x="380" y="202" width="612" height="290" fill="none" stroke="#374151" stroke-width="1.2" stroke-dasharray="6,4" rx="10"/>
+  <text x="394" y="220" font-size="14" font-weight="700" letter-spacing="1.2" fill="#374151">FCAPZ_ELA_MINI: ELA CORE</text>
+  <rect id="group_shell" x="380" y="530" width="972" height="126" fill="none" stroke="#374151" stroke-width="1.2" stroke-dasharray="6,4" rx="10"/>
+  <text x="394" y="548" font-size="14" font-weight="700" letter-spacing="1.2" fill="#374151">TT_UM_FCAPZ_ELA_TILE: SPI REGISTER BRIDGE</text>
+  <rect id="pin_probe" x="36" y="66" width="220" height="84" fill="#E0E0E0" stroke="#424242" stroke-width="1.4" rx="8"/>
+  <text x="146" y="104" text-anchor="middle" font-size="17" font-weight="600" fill="#1f2937">ui_in[3:0]</text>
+  <text x="146" y="122" text-anchor="middle" font-size="17" font-weight="500" fill="#1f2937">PROBE0..3</text>
+  <rect id="pin_mirror" x="1476" y="66" width="220" height="84" fill="#E0E0E0" stroke="#424242" stroke-width="1.4" rx="8"/>
+  <text x="1586" y="104" text-anchor="middle" font-size="17" font-weight="600" fill="#1f2937">uo_out[3:0]</text>
+  <text x="1586" y="122" text-anchor="middle" font-size="17" font-weight="500" fill="#1f2937">probe mirror (comb.)</text>
+  <rect id="pin_trig_in" x="36" y="230" width="220" height="84" fill="#E0E0E0" stroke="#424242" stroke-width="1.4" rx="8"/>
+  <text x="146" y="268" text-anchor="middle" font-size="17" font-weight="600" fill="#1f2937">uio_in[3]</text>
+  <text x="146" y="286" text-anchor="middle" font-size="17" font-weight="500" fill="#1f2937">TRIG_IN</text>
+  <rect id="pin_status" x="1476" y="230" width="220" height="84" fill="#E0E0E0" stroke="#424242" stroke-width="1.4" rx="8"/>
+  <text x="1586" y="268" text-anchor="middle" font-size="17" font-weight="600" fill="#1f2937">uo_out[4] ARMED</text>
+  <text x="1586" y="286" text-anchor="middle" font-size="17" font-weight="500" fill="#1f2937">uo_out[7] TRIG_OUT</text>
+  <rect id="pin_spi" x="36" y="558" width="220" height="84" fill="#E0E0E0" stroke="#424242" stroke-width="1.4" rx="8"/>
+  <text x="146" y="596" text-anchor="middle" font-size="17" font-weight="600" fill="#1f2937">uio_in[2:0]</text>
+  <text x="146" y="614" text-anchor="middle" font-size="17" font-weight="500" fill="#1f2937">SCLK / MOSI / CS_N</text>
+  <rect id="pin_miso" x="1476" y="558" width="220" height="84" fill="#E0E0E0" stroke="#424242" stroke-width="1.4" rx="8"/>
+  <text x="1586" y="596" text-anchor="middle" font-size="17" font-weight="600" fill="#1f2937">uio_out[4] MISO</text>
+  <text x="1586" y="614" text-anchor="middle" font-size="17" font-weight="500" fill="#1f2937">uio_oe = 0x30</text>
+  <rect id="pin_busy" x="756" y="722" width="220" height="84" fill="#E0E0E0" stroke="#424242" stroke-width="1.4" rx="8"/>
+  <text x="866" y="760" text-anchor="middle" font-size="17" font-weight="600" fill="#1f2937">uio_out[5]</text>
+  <text x="866" y="778" text-anchor="middle" font-size="17" font-weight="500" fill="#1f2937">BUSY</text>
+  <rect id="inregs" x="396" y="230" width="220" height="84" fill="#90CAF9" stroke="#0D47A1" stroke-width="1.4" rx="8"/>
+  <text x="506" y="262" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">input regs</text>
+  <text x="506" y="277" text-anchor="middle" font-size="14" font-weight="500" fill="#1f2937">probe_r / probe_prev</text>
+  <text x="506" y="292" text-anchor="middle" font-size="14" font-weight="500" fill="#1f2937">TRIG_IN 2-FF sync</text>
+  <rect id="trigcap" x="756" y="230" width="220" height="84" fill="#90CAF9" stroke="#0D47A1" stroke-width="1.4" rx="8"/>
+  <text x="866" y="262" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">trigger + capture FSM</text>
+  <text x="866" y="277" text-anchor="middle" font-size="14" font-weight="500" fill="#1f2937">EQ / CHANGED, ext OR / AND</text>
+  <text x="866" y="292" text-anchor="middle" font-size="14" font-weight="500" fill="#1f2937">armed, pre/post count</text>
+  <rect id="ram" x="396" y="394" width="220" height="84" fill="#90CAF9" stroke="#0D47A1" stroke-width="1.4" rx="8"/>
+  <text x="506" y="432" text-anchor="middle" font-size="17" font-weight="600" fill="#1f2937">sample buffer</text>
+  <text x="506" y="450" text-anchor="middle" font-size="17" font-weight="500" fill="#1f2937">16 x 4b flop ring</text>
+  <rect id="regs" x="756" y="394" width="220" height="84" fill="#90CAF9" stroke="#0D47A1" stroke-width="1.4" rx="8"/>
+  <text x="866" y="426" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">config regs + read mux</text>
+  <text x="866" y="441" text-anchor="middle" font-size="14" font-weight="500" fill="#1f2937">0.5 register map subset</text>
+  <text x="866" y="456" text-anchor="middle" font-size="14" font-weight="500" fill="#1f2937">DATA @ 0x100 + 4i</text>
+  <rect id="sync" x="396" y="558" width="220" height="84" fill="url(#grad-sync)" stroke="#1f2937" stroke-width="1.4" rx="8"/>
+  <text x="506" y="596" text-anchor="middle" font-size="17" font-weight="600" fill="#1f2937">2-FF synchronisers</text>
+  <text x="506" y="614" text-anchor="middle" font-size="17" font-weight="500" fill="#1f2937">SCLK rise detect</text>
+  <rect id="bridge" x="756" y="558" width="220" height="84" fill="#90CAF9" stroke="#0D47A1" stroke-width="1.4" rx="8"/>
+  <text x="866" y="590" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">SPI frame decoder</text>
+  <text x="866" y="605" text-anchor="middle" font-size="14" font-weight="500" fill="#1f2937">1 rw + 16 addr + 32 data</text>
+  <text x="866" y="620" text-anchor="middle" font-size="14" font-weight="500" fill="#1f2937">wr_pulse / rd_pulse</text>
+  <rect id="miso" x="1116" y="558" width="220" height="84" fill="#90CAF9" stroke="#0D47A1" stroke-width="1.4" rx="8"/>
+  <text x="1226" y="596" text-anchor="middle" font-size="17" font-weight="600" fill="#1f2937">MISO shift-out</text>
+  <text x="1226" y="614" text-anchor="middle" font-size="17" font-weight="500" fill="#1f2937">rd_snap[7:0] + live [31:8]</text>
+  <mask id="edge-label-clearance" maskUnits="userSpaceOnUse">
+    <rect width="2004" height="842" fill="#ffffff"/>
+    <rect x="855.7" y="69.0" width="20.7" height="19.0" fill="#000000"/>
+    <rect x="332.0" y="180.5" width="20.7" height="19.0" fill="#000000"/>
+    <rect x="311.3" y="265.0" width="57.3" height="19.0" fill="#000000"/>
+    <rect x="641.7" y="247.0" width="88.6" height="19.0" fill="#000000"/>
+    <rect x="512.0" y="324.5" width="20.7" height="19.0" fill="#000000"/>
+    <rect x="634.0" y="329.0" width="81.9" height="19.0" fill="#000000"/>
+    <rect x="1183.8" y="247.0" width="84.4" height="19.0" fill="#000000"/>
+    <rect x="736.4" y="364.5" width="87.0" height="19.0" fill="#000000"/>
+    <rect x="908.7" y="324.5" width="44.0" height="19.0" fill="#000000"/>
+    <rect x="675.7" y="411.0" width="20.7" height="19.0" fill="#000000"/>
+    <rect x="280.7" y="575.0" width="20.7" height="19.0" fill="#000000"/>
+    <rect x="620.0" y="575.0" width="77.8" height="19.0" fill="#000000"/>
+    <rect x="872.0" y="528.5" width="87.4" height="19.0" fill="#000000"/>
+    <rect x="1083.0" y="411.0" width="29.0" height="19.0" fill="#000000"/>
+    <rect x="1026.1" y="575.0" width="39.8" height="19.0" fill="#000000"/>
+    <rect x="1360.7" y="575.0" width="20.7" height="19.0" fill="#000000"/>
+    <rect x="872.0" y="652.5" width="20.7" height="19.0" fill="#000000"/>
+  </mask>
+  <path id="edge_pin_probe_to_pin_mirror" d="M 256.0,94.0 L 1476.0,94.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_pin_probe_to_inregs" d="M 256.0,122.0 L 326.0,122.0 L 326.0,258.0 L 396.0,258.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_pin_trig_in_to_inregs" d="M 256.0,286.0 L 396.0,286.0" stroke="#6A1B9A" stroke-width="1.8" fill="none" marker-end="url(#ah-cdc)" stroke-dasharray="6,3" mask="url(#edge-label-clearance)"/>
+  <path id="edge_inregs_to_trigcap" d="M 616.0,272.0 L 756.0,272.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_inregs_to_ram" d="M 506.0,314.0 L 506.0,354.0 L 506.0,394.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_trigcap_to_ram" d="M 790.0,314.0 L 790.0,354.0 L 560.0,354.0 L 560.0,394.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_trigcap_to_pin_status" d="M 976.0,272.0 L 1476.0,272.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_regs_to_trigcap" d="M 829.3,394.0 L 829.3,354.0 L 829.3,314.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_trigcap_to_regs" d="M 902.7,314.0 L 902.7,354.0 L 902.7,394.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_ram_to_regs" d="M 616.0,436.0 L 756.0,436.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_pin_spi_to_sync" d="M 256.0,600.0 L 326.0,600.0 L 396.0,600.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_sync_to_bridge" d="M 616.0,600.0 L 686.0,600.0 L 756.0,600.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_bridge_to_regs" d="M 866.0,558.0 L 866.0,518.0 L 866.0,478.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_regs_to_miso" d="M 976.0,436.0 L 1226.0,436.0 L 1226.0,558.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_bridge_to_miso" d="M 976.0,600.0 L 1116.0,600.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_miso_to_pin_miso" d="M 1336.0,600.0 L 1406.0,600.0 L 1476.0,600.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <path id="edge_bridge_to_pin_busy" d="M 866.0,642.0 L 866.0,682.0 L 866.0,722.0" stroke="#374151" stroke-width="1.4" fill="none" marker-end="url(#ah-thin)" mask="url(#edge-label-clearance)"/>
+  <text x="866.0" y="83.8" text-anchor="middle" font-size="15" fill="#1f2937">4b</text>
+  <text x="342.3" y="195.2" text-anchor="middle" font-size="15" fill="#1f2937">4b</text>
+  <text x="340.0" y="279.8" text-anchor="middle" font-size="15" fill="#1f2937">CDC 1b</text>
+  <text x="686.0" y="261.8" text-anchor="middle" font-size="15" fill="#1f2937">probe + prev</text>
+  <text x="522.3" y="339.2" text-anchor="middle" font-size="15" fill="#1f2937">4b</text>
+  <text x="675.0" y="343.8" text-anchor="middle" font-size="15" fill="#1f2937">we + wr_ptr</text>
+  <text x="1226.0" y="261.8" text-anchor="middle" font-size="15" fill="#1f2937">armed + fire</text>
+  <text x="779.9" y="379.2" text-anchor="middle" font-size="15" fill="#1f2937">config + arm</text>
+  <text x="930.7" y="339.2" text-anchor="middle" font-size="15" fill="#1f2937">status</text>
+  <text x="686.0" y="425.8" text-anchor="middle" font-size="15" fill="#1f2937">4b</text>
+  <text x="291.0" y="589.8" text-anchor="middle" font-size="15" fill="#1f2937">3b</text>
+  <text x="658.9" y="589.8" text-anchor="middle" font-size="15" fill="#1f2937">edge + bits</text>
+  <text x="915.7" y="543.2" text-anchor="middle" font-size="15" fill="#1f2937">wr addr data</text>
+  <text x="1097.5" y="425.8" text-anchor="middle" font-size="15" fill="#1f2937">32b</text>
+  <text x="1046.0" y="589.8" text-anchor="middle" font-size="15" fill="#1f2937">bitcnt</text>
+  <text x="1371.0" y="589.8" text-anchor="middle" font-size="15" fill="#1f2937">1b</text>
+  <text x="882.3" y="667.2" text-anchor="middle" font-size="15" fill="#1f2937">1b</text>
+  <rect id="legend_card" x="1748" y="46" width="240" height="94" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" rx="6"/>
+  <text x="1868" y="74" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2937" letter-spacing="0.4">Clock domains</text>
+  <rect x="1762" y="86" width="22" height="14" fill="#90CAF9" stroke="#0D47A1" stroke-width="1.2" rx="2"/>
+  <text x="1794" y="98" font-size="13" fill="#1f2937">clk  50 MHz</text>
+  <rect x="1762" y="108" width="22" height="14" fill="#FFCC80" stroke="#E65100" stroke-width="1.2" rx="2"/>
+  <text x="1794" y="120" font-size="13" fill="#1f2937">spi_host</text>
+</svg>
