@@ -1,11 +1,7 @@
 # How it works
+Chacha20 core with an lantancy of 324 cycles 
 
-This baseline preserves Dinis Santos's existing 1QR ChaCha20 core: one complete
-quarter round per cycle, all 20 rounds, and XOR of the first 128 keystream bits
-with a 128-bit plaintext. It returns 16 ciphertext bytes per request, not the
-complete 64-byte ChaCha20 block. No Poly1305 is implemented.
-
-The core is unchanged. The wrapper adds a 512-bit input shift register and
+The wrapper adds a 512-bit input shift register and
 command/status logic. All payload fields are reloaded for each operation.
 The counter is supplied by the host and is not incremented automatically.
 Do not reuse the same key/nonce/counter for distinct plaintexts.
