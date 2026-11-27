@@ -1,0 +1,64 @@
+122. Printing statistics.
+
+=== tt_um_lrama_spatial_sd ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+      948        - wires
+      983        - wire bits
+       95        - public wires
+      130        - public wire bits
+        8        - ports
+       43        - port bits
+      964 9.37E+03 cells
+        3   30.029   sky130_fd_sc_hd__a211o_2
+       10  100.096   sky130_fd_sc_hd__a21bo_2
+        4   45.043   sky130_fd_sc_hd__a21boi_2
+       47  411.645   sky130_fd_sc_hd__a21o_2
+       41  359.094   sky130_fd_sc_hd__a21oi_2
+        3   33.782   sky130_fd_sc_hd__a221o_2
+        1   15.014   sky130_fd_sc_hd__a221oi_2
+        5   50.048   sky130_fd_sc_hd__a22o_2
+        2   25.024   sky130_fd_sc_hd__a22oi_2
+        1   11.261   sky130_fd_sc_hd__a2bb2o_2
+        1   11.261   sky130_fd_sc_hd__a311o_2
+       21  183.926   sky130_fd_sc_hd__a31o_2
+        3   37.536   sky130_fd_sc_hd__a31oi_2
+        1   16.266   sky130_fd_sc_hd__a32oi_2
+        1   11.261   sky130_fd_sc_hd__a41o_2
+       57   427.91   sky130_fd_sc_hd__and2_2
+       14  122.618   sky130_fd_sc_hd__and2b_2
+       44  330.317   sky130_fd_sc_hd__and3_2
+        4   40.038   sky130_fd_sc_hd__and3b_2
+        3   30.029   sky130_fd_sc_hd__and4_2
+       18   67.565   sky130_fd_sc_hd__conb_1
+       93 1.98E+03   sky130_fd_sc_hd__dfxtp_2
+       26   97.594   sky130_fd_sc_hd__inv_2
+        4   45.043   sky130_fd_sc_hd__mux2_1
+      143  894.608   sky130_fd_sc_hd__nand2_2
+        7   61.309   sky130_fd_sc_hd__nand2b_2
+       16  160.154   sky130_fd_sc_hd__nand3_2
+        3   37.536   sky130_fd_sc_hd__nand4_2
+       66  412.896   sky130_fd_sc_hd__nor2_2
+        5   50.048   sky130_fd_sc_hd__nor3_2
+        1   12.512   sky130_fd_sc_hd__o2111a_2
+        5   50.048   sky130_fd_sc_hd__o211a_2
+        4   50.048   sky130_fd_sc_hd__o211ai_2
+       35  306.544   sky130_fd_sc_hd__o21a_2
+       55  481.712   sky130_fd_sc_hd__o21ai_2
+        3   30.029   sky130_fd_sc_hd__o21ba_2
+        1   11.261   sky130_fd_sc_hd__o21bai_2
+        1    10.01   sky130_fd_sc_hd__o22a_2
+        1   11.261   sky130_fd_sc_hd__o2bb2a_2
+        4   40.038   sky130_fd_sc_hd__o31a_2
+        1   12.512   sky130_fd_sc_hd__o31ai_2
+       88  550.528   sky130_fd_sc_hd__or2_2
+       21  157.651   sky130_fd_sc_hd__or3_2
+        4   35.034   sky130_fd_sc_hd__or3b_2
+       63 1.02E+03   sky130_fd_sc_hd__xnor2_2
+       30  487.968   sky130_fd_sc_hd__xor2_2
+
+   Chip area for module '\tt_um_lrama_spatial_sd': 9368.985600
+     of which used for sequential elements: 1978.147200 (21.11%)
+
