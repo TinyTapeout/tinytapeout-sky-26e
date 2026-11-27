@@ -7,6 +7,8 @@ You can also include images in this folder and reference them in the markdown. E
 512 kb in size, and the combined size of all images must be less than 1 MB.
 -->
 
+![Arbiter PUF Architecture](arbiter_puf.png)
+
 ## How it works
 
 This is a physically unclonable function (PUF).
@@ -24,7 +26,7 @@ These generate a response by racing a rising edge between two different paths, d
 In this design, the racing paths are formed using n stages, each stage formed by 2 multiplexers (muxes), both mux under the same control bit (which corresponds to the challenge) and both racing paths connected to both muxes but if path is on the first input on one mux, is then connected on the second input on the other.
 
 There are 8 digital inputs, so, 16 muxes are used to achieve 8 bit challenge, also, to add extra delay, and more mismatch to exploit, 2 inverters are added before each mux input path.
-The racing edges first to arrive is detected using a d-type flip flop (DFF) with one racing path on the d input while the other on the clock. 
+The racing edges first to arrive is detected using a D-type flip flop (DFF) with one racing path on the D input while the other on the clock. 
 If the edge on the clock path arrives first, the D input is still `0` so the output is `0`.
 If the edge on the D input arrives first, when the clock edge arrives, there is a signal on the D input and the output is `1`.
 Because this puf is a 1-bit response puf, and, to make use of the tile area, 8 instances of the arbiter puf are added, all under the same challenge, resulting in a 8 bit response.
