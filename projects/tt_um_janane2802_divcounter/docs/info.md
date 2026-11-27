@@ -339,3 +339,9 @@ LibreLane's own signoff STA, not by precheck.
   the algorithm; gate-level only needs to catch a synthesis-introduced
   bug, not re-prove it. See `test/test_golden.py`'s `GATE_LEVEL_SIM`
   branch.
+
+## Credits
+
+We gratefully acknowledge the Center of Excellence (CoE) in Integrated Circuits and Systems (ICAS) and the Department of Electronics and Communication Engineering (ECE) for providing the necessary resources and guidance.
+
+Special thanks to Dr. H V Ravish Aradhya (HoD - ECE), Dr. K R Usha Rani (Associate Dean - PG), Dr. K. S. Geetha (Vice Principal) and Dr. K. N. Subramanya (Principal) for their constant encouragement and support in facilitating this Tiny Tapeout SKY26E submission.
