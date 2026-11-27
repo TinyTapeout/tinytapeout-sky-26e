@@ -1,7 +1,7 @@
 # Tiny Tapeout project information (Wokwi project)
 project:
-  wokwi_id: "481521423124405249" # Set this to the ID of your Wokwi project (the number from the project's URL)
-  title: "7-segment \"Hello ISEL ISEL\" display (tt07) - v2" # Project title
+  wokwi_id: "481774177156248577" # Set this to the ID of your Wokwi project (the number from the project's URL)
+  title: "Seven_Seg_Disp_Hello_ISEL_ISEL_display_v5" # Project title
   author: "Jose Rocha" # Your name
   discord: "" # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description: "This circuit will output a string of characters ('Hello ISEL
@@ -16,24 +16,24 @@ project:
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
   # Inputs
-  ui[0]: "Reset"
-  ui[1]: "Clock_Disable"
-  ui[2]: "A"
-  ui[3]: "B"
-  ui[4]: "C"
-  ui[5]: "D"
-  ui[6]: "CLK"
-  ui[7]: ""
+  ui[0]: "clk"
+  ui[1]: "rst_N"
+  ui[2]: "Clear_Cnt"
+  ui[3]: "Man_4bit_word_2_SSD"
+  ui[4]: "A_MSB"
+  ui[5]: "B"
+  ui[6]: "C"
+  ui[7]: "D_LSB"
 
   # Outputs
-  uo[0]: "a_7SSD"
-  uo[1]: "b_7SSD"
-  uo[2]: "c_7SSD"
-  uo[3]: "d_7SSD"
-  uo[4]: "e_7SSD"
-  uo[5]: "f_7SSD"
-  uo[6]: "g_7SSD"
-  uo[7]: ""
+  uo[0]: "a_7SD"
+  uo[1]: "b_7SD"
+  uo[2]: "c_7SD"
+  uo[3]: "d_7SD"
+  uo[4]: "e_7SD"
+  uo[5]: "f_7SD"
+  uo[6]: "g_7SD"
+  uo[7]: "dp_7SD"
 
   # Bidirectional pins
   uio[0]: ""
