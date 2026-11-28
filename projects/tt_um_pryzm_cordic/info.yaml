@@ -16,6 +16,10 @@ project:
   # adder, arctangent operand mux and 34-bit accumulate path size the die.
   # A 320x202 um die fits the area but not the routing: 2,779 DRC violations
   # at 85.7% density. Density is a routing constraint, not just an area one.
+  # The die measures 334.88 x 225.76 um, not the nominal 334 x 216: the extra
+  # 9.76 um of height is the core area bought by lowering BOTTOM/TOP_MARGIN_MULT
+  # from 4 to 3, which brings the met4 power straps inside the precheck's 10 um
+  # die-edge rule. See docs/PRECHECK.md.
   tiles: "2x2"                          # Valid: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2, 8x2
 
   # The top module name must start with "tt_um_". Keep it unique.
