@@ -1,0 +1,58 @@
+# Tiny Tapeout project information
+project:
+  title:        "Fault-Tolerant TMR + SECDED ALU"
+  author:       "M V Amarnath,Manthan S Bhatt,Phani Saran Challa,Prajwal B K,Shylashree N, RV College of Engineering"
+  discord:      ""
+  description:  "Fault-Tolerant 8-bit ALU & Register File with Triple Modular Redundancy (TMR) and Hamming (13,8) SECDED"
+  language:     "Verilog"
+  clock_hz:     10000000
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"
+
+  # Your top module name must start with "tt_um_".
+  top_module:  "tt_um_tmr_secded_alu"
+
+  # List your project's source files here.
+  source_files:
+    - "project.v"
+    - "alu_8bit.v"
+    - "tmr_voter.v"
+    - "hamming_13_8_enc.v"
+    - "hamming_13_8_dec.v"
+    - "regfile_secded.v"
+
+# The pinout of your project.
+pinout:
+  # Inputs
+  ui[0]: "nibble_in[0]"
+  ui[1]: "nibble_in[1]"
+  ui[2]: "nibble_in[2]"
+  ui[3]: "nibble_in[3]"
+  ui[4]: "mode[0] (00=LoadInstr, 01=Exec, 10=LoadMask, 11=Debug)"
+  ui[5]: "mode[1]"
+  ui[6]: "step_strobe (rising edge trigger)"
+  ui[7]: "fault_inject_en (1=enable masks, 0=disable)"
+
+  # Outputs
+  uo[0]: "uo_out[0] (result[0] or debug[0])"
+  uo[1]: "uo_out[1] (result[1] or debug[1])"
+  uo[2]: "uo_out[2] (result[2] or debug[2])"
+  uo[3]: "uo_out[3] (result[3] or debug[3])"
+  uo[4]: "uo_out[4] (result[4] or debug[4])"
+  uo[5]: "uo_out[5] (result[5] or debug[5])"
+  uo[6]: "uo_out[6] (result[6] or debug[6])"
+  uo[7]: "uo_out[7] (result[7] or debug[7])"
+
+  # Bidirectional pins (all configured as dedicated status outputs)
+  uio[0]: "tmr_disagreement (ALU lane mismatch healed by TMR)"
+  uio[1]: "hamming_sec_flag (1-bit reg error corrected by SECDED)"
+  uio[2]: "hamming_ded_flag (2-bit uncorrectable reg error detected)"
+  uio[3]: "alu_zero"
+  uio[4]: "alu_carry"
+  uio[5]: "healed_err_cnt[0]"
+  uio[6]: "healed_err_cnt[1]"
+  uio[7]: "healed_err_cnt[2]"
+
+# Do not change!
+yaml_version: 6
