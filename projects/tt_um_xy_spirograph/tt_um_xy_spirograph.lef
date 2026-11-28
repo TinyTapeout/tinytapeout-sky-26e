@@ -1,0 +1,265 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO tt_um_xy_spirograph
+  CLASS BLOCK ;
+  FOREIGN tt_um_xy_spirograph ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 70.380 BY 51.680 ;
+  PIN VGND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER met2 ;
+        RECT 4.660 2.480 5.460 49.200 ;
+    END
+    PORT
+      LAYER met2 ;
+        RECT 65.840 2.480 66.640 49.200 ;
+    END
+    PORT
+      LAYER met3 ;
+        RECT 2.760 19.900 67.620 20.900 ;
+    END
+    PORT
+      LAYER met3 ;
+        RECT 2.760 41.660 67.620 42.660 ;
+    END
+  END VGND
+  PIN VPWR
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER met2 ;
+        RECT 3.280 2.480 4.080 49.200 ;
+    END
+    PORT
+      LAYER met2 ;
+        RECT 64.460 2.480 65.260 49.200 ;
+    END
+    PORT
+      LAYER met3 ;
+        RECT 2.760 9.020 67.620 10.020 ;
+    END
+    PORT
+      LAYER met3 ;
+        RECT 2.760 30.780 67.620 31.780 ;
+    END
+  END VPWR
+  PIN clk
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.852000 ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 2.910 70.380 3.210 ;
+    END
+  END clk
+  PIN rst_n
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.213000 ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 5.630 70.380 5.930 ;
+    END
+  END rst_n
+  PIN ui_in[0]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.213000 ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 8.350 70.380 8.650 ;
+    END
+  END ui_in[0]
+  PIN ui_in[1]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.213000 ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 11.070 70.380 11.370 ;
+    END
+  END ui_in[1]
+  PIN ui_in[2]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 13.790 70.380 14.090 ;
+    END
+  END ui_in[2]
+  PIN ui_in[3]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 16.510 70.380 16.810 ;
+    END
+  END ui_in[3]
+  PIN ui_in[4]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 19.230 70.380 19.530 ;
+    END
+  END ui_in[4]
+  PIN ui_in[5]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 21.950 70.380 22.250 ;
+    END
+  END ui_in[5]
+  PIN ui_in[6]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 24.670 70.380 24.970 ;
+    END
+  END ui_in[6]
+  PIN ui_in[7]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 27.390 70.380 27.690 ;
+    END
+  END ui_in[7]
+  PIN uo_out[0]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 30.110 70.380 30.410 ;
+    END
+  END uo_out[0]
+  PIN uo_out[1]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 32.830 70.380 33.130 ;
+    END
+  END uo_out[1]
+  PIN uo_out[2]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 35.550 70.380 35.850 ;
+    END
+  END uo_out[2]
+  PIN uo_out[3]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 38.270 70.380 38.570 ;
+    END
+  END uo_out[3]
+  PIN uo_out[4]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 40.990 70.380 41.290 ;
+    END
+  END uo_out[4]
+  PIN uo_out[5]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 43.710 70.380 44.010 ;
+    END
+  END uo_out[5]
+  PIN uo_out[6]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 46.430 70.380 46.730 ;
+    END
+  END uo_out[6]
+  PIN uo_out[7]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 69.380 49.150 70.380 49.450 ;
+    END
+  END uo_out[7]
+  OBS
+      LAYER nwell ;
+        RECT 2.570 2.635 67.810 49.150 ;
+      LAYER li1 ;
+        RECT 2.760 2.635 67.620 49.045 ;
+      LAYER met1 ;
+        RECT 2.760 2.480 68.470 49.200 ;
+      LAYER met2 ;
+        RECT 7.000 49.480 68.450 49.485 ;
+        RECT 7.000 2.875 64.180 49.480 ;
+        RECT 65.540 2.875 65.560 49.480 ;
+        RECT 66.920 2.875 68.450 49.480 ;
+      LAYER met3 ;
+        RECT 24.905 48.750 68.980 49.465 ;
+        RECT 24.905 47.130 69.380 48.750 ;
+        RECT 24.905 46.030 68.980 47.130 ;
+        RECT 24.905 44.410 69.380 46.030 ;
+        RECT 24.905 43.310 68.980 44.410 ;
+        RECT 24.905 43.060 69.380 43.310 ;
+        RECT 68.020 41.690 69.380 43.060 ;
+        RECT 68.020 41.260 68.980 41.690 ;
+        RECT 24.905 40.590 68.980 41.260 ;
+        RECT 24.905 38.970 69.380 40.590 ;
+        RECT 24.905 37.870 68.980 38.970 ;
+        RECT 24.905 36.250 69.380 37.870 ;
+        RECT 24.905 35.150 68.980 36.250 ;
+        RECT 24.905 33.530 69.380 35.150 ;
+        RECT 24.905 32.430 68.980 33.530 ;
+        RECT 24.905 32.180 69.380 32.430 ;
+        RECT 68.020 30.810 69.380 32.180 ;
+        RECT 68.020 30.380 68.980 30.810 ;
+        RECT 24.905 29.710 68.980 30.380 ;
+        RECT 24.905 28.090 69.380 29.710 ;
+        RECT 24.905 26.990 68.980 28.090 ;
+        RECT 24.905 25.370 69.380 26.990 ;
+        RECT 24.905 24.270 68.980 25.370 ;
+        RECT 24.905 22.650 69.380 24.270 ;
+        RECT 24.905 21.550 68.980 22.650 ;
+        RECT 24.905 21.300 69.380 21.550 ;
+        RECT 68.020 19.930 69.380 21.300 ;
+        RECT 68.020 19.500 68.980 19.930 ;
+        RECT 24.905 18.830 68.980 19.500 ;
+        RECT 24.905 17.210 69.380 18.830 ;
+        RECT 24.905 16.110 68.980 17.210 ;
+        RECT 24.905 14.490 69.380 16.110 ;
+        RECT 24.905 13.390 68.980 14.490 ;
+        RECT 24.905 11.770 69.380 13.390 ;
+        RECT 24.905 10.670 68.980 11.770 ;
+        RECT 24.905 10.420 69.380 10.670 ;
+        RECT 68.020 9.050 69.380 10.420 ;
+        RECT 68.020 8.620 68.980 9.050 ;
+        RECT 24.905 7.950 68.980 8.620 ;
+        RECT 24.905 6.330 69.380 7.950 ;
+        RECT 24.905 5.230 68.980 6.330 ;
+        RECT 24.905 3.610 69.380 5.230 ;
+        RECT 24.905 2.895 68.980 3.610 ;
+  END
+END tt_um_xy_spirograph
+END LIBRARY
+
