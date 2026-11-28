@@ -1,0 +1,66 @@
+# Tiny Tapeout project information
+project:
+  title:        "REDA debug tile"  # Project title
+  author:       "Robutler"  # Your name
+  discord:      ""  # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "Test structures that show which step of the REDA design flow a failing chip comes from: ring oscillators, via chains, an antenna pair, combs, a scan chain and a first-order modulator, read over SPI"  # One line description of what your project does
+  language:     "Analog"  # other examples include Verilog, Amaranth, VHDL, etc
+  clock_hz:     1024000  # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "2x2"  # Valid values for analog projects: 1x2, 2x2
+
+  # How many analog pins does your project use?
+  analog_pins: 6  # Valid values: 0 to 6
+  uses_vapwr: false  # Set to true if your project uses second analog power supply (VAPWR) in addition to 1.8V (VDPWR)
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_robutler_dbg"
+
+  # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
+  source_files:        
+    - "project.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
+pinout:
+  # Inputs
+  ui[0]: "SPI SCK"
+  ui[1]: "SPI SDI"
+  ui[2]: "SPI CS_N"
+  ui[3]: "scan enable (with test mode)"
+  ui[4]: "scan in"
+  ui[5]: "test mode (hold low)"
+  ui[6]: "island I/O enable"
+  ui[7]: "echo in"
+
+  # Outputs
+  uo[0]: "SPI SDO"
+  uo[1]: "selected ring oscillator, divided"
+  uo[2]: "scan out"
+  uo[3]: "modulator bitstream"
+  uo[4]: "modulator sampling phase"
+  uo[5]: "comparator raw output"
+  uo[6]: "echo out"
+  uo[7]: "heartbeat, clk / 256"
+
+  # Bidirectional pins
+  uio[0]: "via chain licon+mcon far end (out)"
+  uio[1]: "via chain via far end (out)"
+  uio[2]: "via chain via2 far end (out)"
+  uio[3]: "via chain via3 far end (out)"
+  uio[4]: "comb short (out)"
+  uio[5]: "signature run done (out)"
+  uio[6]: "island chain out (out)"
+  uio[7]: "routing-stress ring / 4096 (out)"
+
+  # Analog pins - make sure to also set "analog_pins" above, else the pins won't be connected
+  ua[0]: "Kelvin force"
+  ua[1]: "Kelvin sense"
+  ua[2]: "island supply (1.8 V, 4 mA max)"
+  ua[3]: "modulator input"
+  ua[4]: "VCM"
+  ua[5]: "probe out (sense only)"
+
+# Do not change!
+yaml_version: 6
