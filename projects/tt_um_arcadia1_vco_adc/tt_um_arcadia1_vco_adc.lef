@@ -228,8 +228,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_oe[0]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 2013.560913 ;
-    ANTENNADIFFAREA 495.641602 ;
     PORT
       LAYER met4 ;
         RECT 49.990 224.760 50.290 225.760 ;
@@ -238,8 +236,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_oe[1]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 2013.560913 ;
-    ANTENNADIFFAREA 495.641602 ;
     PORT
       LAYER met4 ;
         RECT 47.230 224.760 47.530 225.760 ;
@@ -248,8 +244,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_oe[2]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 2013.560913 ;
-    ANTENNADIFFAREA 495.641602 ;
     PORT
       LAYER met4 ;
         RECT 44.470 224.760 44.770 225.760 ;
@@ -258,8 +252,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_oe[3]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 2013.560913 ;
-    ANTENNADIFFAREA 495.641602 ;
     PORT
       LAYER met4 ;
         RECT 41.710 224.760 42.010 225.760 ;
@@ -268,8 +260,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_oe[4]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 2013.560913 ;
-    ANTENNADIFFAREA 495.641602 ;
     PORT
       LAYER met4 ;
         RECT 38.950 224.760 39.250 225.760 ;
@@ -278,8 +268,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_oe[5]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 2013.560913 ;
-    ANTENNADIFFAREA 495.641602 ;
     PORT
       LAYER met4 ;
         RECT 36.190 224.760 36.490 225.760 ;
@@ -288,8 +276,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_oe[6]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 2013.560913 ;
-    ANTENNADIFFAREA 495.641602 ;
     PORT
       LAYER met4 ;
         RECT 33.430 224.760 33.730 225.760 ;
@@ -298,8 +284,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_oe[7]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 2013.560913 ;
-    ANTENNADIFFAREA 495.641602 ;
     PORT
       LAYER met4 ;
         RECT 30.670 224.760 30.970 225.760 ;
@@ -317,7 +301,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_out[1]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.621000 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
@@ -327,7 +310,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_out[2]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.621000 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
@@ -337,7 +319,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_out[3]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.621000 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
@@ -347,7 +328,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_out[4]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.621000 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
@@ -357,7 +337,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_out[5]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.621000 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
@@ -367,7 +346,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_out[6]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.621000 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
@@ -377,7 +355,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uio_out[7]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.621000 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
@@ -387,7 +364,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uo_out[0]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.621000 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
@@ -397,7 +373,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uo_out[1]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.621000 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
@@ -407,7 +382,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uo_out[2]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.621000 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
@@ -417,7 +391,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uo_out[3]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.621000 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
@@ -427,7 +400,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uo_out[4]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.621000 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
@@ -437,7 +409,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uo_out[5]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.621000 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;
@@ -447,7 +418,6 @@ MACRO tt_um_arcadia1_vco_adc
   PIN uo_out[6]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
-    ANTENNAGATEAREA 0.621000 ;
     ANTENNADIFFAREA 0.891000 ;
     PORT
       LAYER met4 ;

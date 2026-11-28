@@ -1,7 +1,7 @@
 # Tiny Tapeout project information
 project:
   title:        "2nd-order VCO Delta-Sigma ADC"      # Project title
-  author:       "Arcadia-1"      # Your name
+  author:       "Zhishuai Zhang"      # Your name
   discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "Pseudo-differential second-order closed-loop VCO delta-sigma ADC: OTA integrator, ring-VCO quantizer, 7-element resistor DAC per half"      # One line description of what your project does
   language:     "Analog" # other examples include Verilog, Amaranth, VHDL, etc
