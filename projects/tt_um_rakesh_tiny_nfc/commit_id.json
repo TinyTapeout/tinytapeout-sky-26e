@@ -1,8 +1,8 @@
 {
   "app": "custom_gds action",
   "repo": "https://github.com/rpolasa/tiny_nfc",
-  "commit": "1635ba45bf53d23e3da8919b822aa6843ff0f109",
-  "workflow_url": "https://github.com/rpolasa/tiny_nfc/actions/runs/46045859373",
+  "commit": "564d7b70971ccd3bb59c7ebc9e91a94abc9b28fe",
+  "workflow_url": "https://github.com/rpolasa/tiny_nfc/actions/runs/46111411428",
   "project_id": 6609,
   "sort_id": 1795106697345,
   "analog": true
