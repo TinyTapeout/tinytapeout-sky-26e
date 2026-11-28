@@ -1,9 +1,9 @@
 # Tiny Tapeout project information
 project:
-  title:        "SKY130 SRAM 32x8 (OpenRAM)"
+  title:        "SKY130 SRAM 32x8 (OpenRAM, custom StrongARM sense amp)"
   author:       "Rudr Bisht, Karthik Raj Palleboyina"
   discord:      ""
-  description:  "256-bit single-port SRAM (32 words x 8 bits) made with OpenRAM, pins wired directly to the TT pins"
+  description:  "256-bit single-port SRAM (32 words x 8 bits) made with OpenRAM, with a custom StrongARM sense amp (SR output latch), pins wired directly to the TT pins"
   language:     "Full Custom"
   clock_hz:     25000000
 
