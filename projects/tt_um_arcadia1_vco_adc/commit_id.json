@@ -1,8 +1,8 @@
 {
   "app": "custom_gds action",
   "repo": "https://github.com/Arcadia-1/tt-vco-adc",
-  "commit": "4983ca31e5f158fc11b66ac768adfe6d211fd33a",
-  "workflow_url": "https://github.com/Arcadia-1/tt-vco-adc/actions/runs/46026299933",
+  "commit": "fbdbf6b46a414d56f96d2465a996a8617d714ef2",
+  "workflow_url": "https://github.com/Arcadia-1/tt-vco-adc/actions/runs/46124089707",
   "project_id": 6766,
   "sort_id": 1795793939167,
   "analog": true
